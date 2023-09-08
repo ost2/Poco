@@ -1,0 +1,59 @@
+[gd_scene load_steps=5 format=3 uid="uid://ddxgllyi8uqh8"]
+
+[ext_resource type="Script" path="res://pause_menu.cs" id="1_s0yu8"]
+[ext_resource type="PackedScene" uid="uid://dmhpbcuggjc0f" path="res://menu_button.tscn" id="2_sy6c2"]
+[ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="3_rjcvq"]
+[ext_resource type="Texture2D" uid="uid://ejhtyjdx8ret" path="res://Sprites/UISprites/HealthBarSprites/HealthBar3.png" id="4_q1hkd"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_s0yu8")
+
+[node name="ContinueButton" parent="." instance=ExtResource("2_sy6c2")]
+offset_left = 748.0
+offset_top = 195.88
+offset_right = -748.0
+offset_bottom = -419.88
+text = "START"
+
+[node name="OptionsButton" parent="." instance=ExtResource("2_sy6c2")]
+offset_left = 748.0
+offset_top = 491.88
+offset_right = -749.0
+offset_bottom = -122.88
+text = "OPTIONS
+"
+
+[node name="MainMenuButton" parent="." instance=ExtResource("2_sy6c2")]
+offset_left = 752.0
+offset_top = 927.88
+offset_right = -745.0
+offset_bottom = 313.12
+text = "QUIT"
+
+[node name="Text" type="Label" parent="."]
+offset_left = 312.0
+offset_top = -212.0
+offset_right = 406.0
+offset_bottom = -191.0
+scale = Vector2(18, 18)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_rjcvq")
+text = "PAUSED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LDecoration" type="Sprite2D" parent="."]
+position = Vector2(-512, -534)
+scale = Vector2(16, 16)
+texture = ExtResource("4_q1hkd")
+
+[node name="RDecoration" type="Sprite2D" parent="."]
+position = Vector2(496, -534)
+scale = Vector2(16, 16)
+texture = ExtResource("4_q1hkd")
+flip_h = true

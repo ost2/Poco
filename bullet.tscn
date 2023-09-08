@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://b8waircowm4g8"]
+
+[ext_resource type="Script" path="res://bullet.cs" id="1_om1ky"]
+[ext_resource type="Texture2D" uid="uid://bwcct7e40l0bi" path="res://Sprites/CannonSprites/Bullet-1.png.png" id="2_fqgtn"]
+[ext_resource type="AudioStream" uid="uid://bsl8lyvkixpdr" path="res://Audio/MachinegunSounds/SingleBullet.mp3" id="4_gd4lj"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2x5kd"]
+radius = 2.0
+height = 8.0
+
+[sub_resource type="Gradient" id="Gradient_yk0xc"]
+offsets = PackedFloat32Array(0, 0.232258, 0.922581)
+colors = PackedColorArray(0, 0, 0, 0, 0.487097, 0.487097, 0.487097, 0.487097, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_ik2oc"]
+gradient = SubResource("Gradient_yk0xc")
+
+[node name="Bullet" type="Area2D"]
+top_level = true
+scale = Vector2(1.5, 1)
+collision_layer = 14
+collision_mask = 14
+script = ExtResource("1_om1ky")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_2x5kd")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.745098)
+z_index = 1
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_fqgtn")
+
+[node name="BulletFiredSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gd4lj")
+volume_db = -15.204
+autoplay = true
+
+[node name="TrailSprite" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.745098)
+show_behind_parent = true
+z_index = -2
+position = Vector2(-19.6458, 0)
+scale = Vector2(0.531901, 0.0332031)
+texture = SubResource("GradientTexture2D_ik2oc")

@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://bn3jakxbsf32q"]
+
+[ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="1_bpp7i"]
+[ext_resource type="Script" path="res://wave_text.cs" id="1_pcrkg"]
+
+[node name="WaveText" type="CanvasLayer"]
+script = ExtResource("1_pcrkg")
+
+[node name="WaveNumberLabel" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.847059)
+anchors_preset = -1
+anchor_left = -0.266146
+anchor_top = 0.0620371
+anchor_right = -0.225521
+anchor_bottom = 0.0620371
+offset_left = 936.0
+offset_top = 175.0
+offset_right = 989.0
+offset_bottom = 205.0
+grow_horizontal = 2
+rotation = -0.00420864
+scale = Vector2(13, 13)
+pivot_offset = Vector2(26.5, 2.08165e-12)
+theme_override_colors/font_color = Color(0.960784, 0.839216, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_bpp7i")
+text = "WAVE: 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="SubLabel" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.847059)
+anchors_preset = -1
+anchor_top = 0.0601852
+anchor_right = 0.00677083
+anchor_bottom = 0.0601852
+offset_left = 928.0
+offset_top = 431.0
+offset_right = 981.0
+offset_bottom = 461.0
+scale = Vector2(8, 8)
+pivot_offset = Vector2(32.5, 2.08165e-12)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_bpp7i")
+text = "15 enemies"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

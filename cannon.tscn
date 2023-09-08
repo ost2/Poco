@@ -1,0 +1,119 @@
+[gd_scene load_steps=15 format=3 uid="uid://cfdrfli6rl2on"]
+
+[ext_resource type="Script" path="res://cannon.cs" id="1_rrmam"]
+[ext_resource type="Texture2D" uid="uid://cqc2ll0rxc4fa" path="res://Sprites/CannonSprites/Cross1-1.png.png" id="2_5un87"]
+[ext_resource type="Texture2D" uid="uid://c5mufvdc6bgru" path="res://Sprites/CannonSprites/Cannon1-1.png.png" id="2_dredd"]
+[ext_resource type="PackedScene" uid="uid://b8waircowm4g8" path="res://bullet.tscn" id="2_ipkrk"]
+[ext_resource type="Texture2D" uid="uid://cctsi1egh4sc7" path="res://Sprites/CannonSprites/Cross2-1.png.png" id="3_6h1rk"]
+[ext_resource type="Texture2D" uid="uid://bgiy5roivyha0" path="res://Sprites/CannonSprites/Cross3-1.png.png" id="4_4t4j4"]
+[ext_resource type="Texture2D" uid="uid://bxjsjra4m0ta1" path="res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp" id="4_5nv3e"]
+[ext_resource type="Texture2D" uid="uid://bapb0g3wqgr7l" path="res://Sprites/CannonSprites/MuzzleFlash1.png" id="5_gle6l"]
+[ext_resource type="Texture2D" uid="uid://c1rirwo4b7lhd" path="res://Sprites/CannonSprites/MuzzleFlash2.png" id="6_o0no6"]
+[ext_resource type="Texture2D" uid="uid://bbi7dxscgqrta" path="res://Sprites/CannonSprites/MuzzleFlash3.png" id="7_27hyg"]
+[ext_resource type="Texture2D" uid="uid://cbv7iu548jb3s" path="res://Sprites/CannonSprites/MuzzleFlash4.png" id="8_awp06"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7sl61"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dredd")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gfgj0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_gle6l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_o0no6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_27hyg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_awp06")
+}],
+"loop": false,
+"name": &"default",
+"speed": 45.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tpkt7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_4t4j4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6h1rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_5un87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6h1rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4t4j4")
+}],
+"loop": false,
+"name": &"in",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_5un87")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_6h1rk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_4t4j4")
+}],
+"loop": false,
+"name": &"out",
+"speed": 10.0
+}]
+
+[node name="Cannon" type="RayCast2D"]
+script = ExtResource("1_rrmam")
+bulletScene = ExtResource("2_ipkrk")
+
+[node name="CannonSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_7sl61")
+offset = Vector2(-1, 2.08165e-12)
+
+[node name="CannonTip" type="Marker2D" parent="CannonSprite"]
+position = Vector2(16, 2.08165e-12)
+
+[node name="MuzzleFlashSprite" type="AnimatedSprite2D" parent="CannonSprite/CannonTip"]
+light_mask = 0
+position = Vector2(3, -2.08165e-12)
+scale = Vector2(1.5, 1)
+sprite_frames = SubResource("SpriteFrames_gfgj0")
+frame = 3
+frame_progress = 1.0
+
+[node name="MuzzleFlash" type="PointLight2D" parent="CannonSprite/CannonTip/MuzzleFlashSprite"]
+z_as_relative = false
+position = Vector2(-3.3, -4.16329e-12)
+scale = Vector2(2.01562, 2)
+color = Color(1, 0.490196, 0, 1)
+energy = 11.28
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("4_5nv3e")
+texture_scale = 0.05
+
+[node name="CrosshairSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+top_level = true
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_tpkt7")
+animation = &"in"
+frame = 4
+frame_progress = 1.0

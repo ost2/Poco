@@ -1,0 +1,200 @@
+[gd_scene load_steps=24 format=3 uid="uid://cp1a8y1u4vdk3"]
+
+[ext_resource type="Script" path="res://player.cs" id="1_kd50i"]
+[ext_resource type="PackedScene" uid="uid://bahh8oigi6gvi" path="res://trail_2d.tscn" id="2_qa8j0"]
+[ext_resource type="Texture2D" uid="uid://bc01wffrd4han" path="res://Sprites/PlayerSprites/Plane1-1.png.png" id="3_vhphr"]
+[ext_resource type="Texture2D" uid="uid://b3s2vsvywmvh0" path="res://Sprites/PlayerSprites/Plane2.png-1.png.png" id="4_7uiqj"]
+[ext_resource type="Texture2D" uid="uid://hxwfhmmk75le" path="res://Sprites/PlayerSprites/Plane3.png-1.png.png" id="5_jv4gr"]
+[ext_resource type="Texture2D" uid="uid://5l8wgsm0jt8s" path="res://Sprites/PlayerSprites/Plane1 damagepng-1.png.png" id="6_ly3ng"]
+[ext_resource type="Texture2D" uid="uid://dhxuuh15acfv4" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller1.png" id="7_8mtmt"]
+[ext_resource type="Texture2D" uid="uid://b2im838shcaf3" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller2.png" id="8_1pds6"]
+[ext_resource type="Texture2D" uid="uid://603bq0vtw8d3" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller3.png" id="9_iu2gy"]
+[ext_resource type="Texture2D" uid="uid://cl5bpn3abmukx" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller4.png" id="10_qu7iv"]
+[ext_resource type="PackedScene" uid="uid://cfdrfli6rl2on" path="res://cannon.tscn" id="10_us1t4"]
+[ext_resource type="Texture2D" uid="uid://dasq7vw3w1i8b" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller5.png" id="11_8ai8o"]
+[ext_resource type="AudioStream" uid="uid://bfjts5f461lrn" path="res://Audio/PropellerSounds/PropellerAmbiance.mp3" id="11_qt7xk"]
+[ext_resource type="Texture2D" uid="uid://u6kvd0f8bsom" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller6.png" id="12_otdvx"]
+[ext_resource type="AudioStream" uid="uid://db3lk60qe5dwa" path="res://Audio/DamageSounds/PlayerDamageSlap.mp3" id="13_yj0ea"]
+[ext_resource type="PackedScene" uid="uid://dk71a247yi31c" path="res://point_to.tscn" id="16_hs76l"]
+[ext_resource type="AudioStream" uid="uid://cjr21dwql6078" path="res://Audio/PowerUpSounds/LevelUpSound.mp3" id="17_ut4vf"]
+
+[sub_resource type="Curve" id="Curve_ir3g7"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.177072), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ssw1t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vhphr")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_7uiqj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_jv4gr")
+}],
+"loop": false,
+"name": &"lean",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_vhphr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ly3ng")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_vhphr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ly3ng")
+}],
+"loop": false,
+"name": &"take_damage",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2rdel"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_8mtmt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_1pds6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iu2gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_qu7iv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8ai8o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_otdvx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 25.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dk3i5"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rhhs6"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_5haow"]
+radius = 17.0
+height = 34.0
+
+[node name="Player" type="CharacterBody2D"]
+z_index = 3
+motion_mode = 1
+script = ExtResource("1_kd50i")
+
+[node name="WingTips" type="Node2D" parent="."]
+
+[node name="RightWingTip" type="Node2D" parent="WingTips"]
+show_behind_parent = true
+position = Vector2(4, 20)
+
+[node name="Trail2D" parent="WingTips/RightWingTip" instance=ExtResource("2_qa8j0")]
+show_behind_parent = true
+width_curve = SubResource("Curve_ir3g7")
+default_color = Color(1, 1, 1, 0.294118)
+
+[node name="LeftWingTip" type="Node2D" parent="WingTips"]
+show_behind_parent = true
+position = Vector2(4, -20)
+
+[node name="Trail2D" parent="WingTips/LeftWingTip" instance=ExtResource("2_qa8j0")]
+show_behind_parent = true
+width_curve = SubResource("Curve_ir3g7")
+default_color = Color(1, 1, 1, 0.294118)
+
+[node name="Cannon" parent="." instance=ExtResource("10_us1t4")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="MainSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(-5, 0)
+scale = Vector2(1.5, 1.5)
+sprite_frames = SubResource("SpriteFrames_ssw1t")
+animation = &"take_damage"
+offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="PropellerSprite" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.819608, 0.819608, 0.819608, 1)
+position = Vector2(12.6, 2.08165e-12)
+scale = Vector2(0.3, 0.5)
+sprite_frames = SubResource("SpriteFrames_2rdel")
+frame_progress = 0.344251
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.2)
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_qt7xk")
+volume_db = -4.457
+autoplay = true
+
+[node name="TakeDamageHitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TakeDamageHitBox"]
+position = Vector2(-4, 1.67972e-12)
+rotation = 1.5708
+scale = Vector2(1.5, 1.2)
+shape = SubResource("CapsuleShape2D_dk3i5")
+
+[node name="DamageParticles" type="GPUParticles2D" parent="."]
+process_material = SubResource("ShaderMaterial_rhhs6")
+lifetime = 35.29
+
+[node name="TakeDamageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_yj0ea")
+volume_db = -2.89
+pitch_scale = 1.41
+max_polyphony = 10
+
+[node name="CrashHitBox" type="Area2D" parent="."]
+collision_layer = 8
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CrashHitBox"]
+visible = false
+position = Vector2(2, 0)
+scale = Vector2(1.7, 1.5)
+shape = SubResource("CapsuleShape2D_5haow")
+
+[node name="CollectHitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollectHitBox"]
+visible = false
+position = Vector2(2, 0)
+scale = Vector2(1.7, 1.5)
+shape = SubResource("CapsuleShape2D_5haow")
+
+[node name="RegenTimer" type="Timer" parent="."]
+
+[node name="PointTo" parent="." instance=ExtResource("16_hs76l")]
+visible = false
+self_modulate = Color(0.537255, 0.537255, 0.537255, 0.960784)
+
+[node name="LevelUpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_ut4vf")
+
+[connection signal="animation_finished" from="MainSprite" to="." method="_on_main_sprite_animation_finished"]
+[connection signal="area_entered" from="TakeDamageHitBox" to="." method="_on_take_damage_hit_box_area_entered"]
+[connection signal="area_entered" from="CollectHitBox" to="." method="_on_collect_hit_box_area_entered"]
+[connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]

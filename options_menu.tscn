@@ -1,0 +1,159 @@
+[gd_scene load_steps=6 format=3 uid="uid://onowb76mg8gc"]
+
+[ext_resource type="Script" path="res://options_menu.cs" id="1_efsuq"]
+[ext_resource type="PackedScene" uid="uid://dmhpbcuggjc0f" path="res://menu_button.tscn" id="2_bp8hc"]
+[ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="3_ffotp"]
+[ext_resource type="Texture2D" uid="uid://ejhtyjdx8ret" path="res://Sprites/UISprites/HealthBarSprites/HealthBar3.png" id="4_2j1m4"]
+[ext_resource type="PackedScene" uid="uid://fc5f0iqscenh" path="res://fancy_slider.tscn" id="5_ylb21"]
+
+[node name="OptionsMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_efsuq")
+
+[node name="DifficultyText" type="Label" parent="."]
+offset_left = 16.0
+offset_top = 180.0
+offset_right = 110.0
+offset_bottom = 201.0
+scale = Vector2(4, 4)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_ffotp")
+text = "DIFFICULTY:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DifficultyButton" parent="." instance=ExtResource("2_bp8hc")]
+offset_top = 547.88
+offset_bottom = -65.88
+scale = Vector2(2, 2)
+text = "DIFFICULTY"
+
+[node name="BackButton" parent="." instance=ExtResource("2_bp8hc")]
+offset_top = 1071.88
+offset_bottom = 456.12
+text = "BACK"
+
+[node name="Text" type="Label" parent="."]
+offset_left = 316.0
+offset_top = -262.0
+offset_right = 410.0
+offset_bottom = -241.0
+scale = Vector2(18, 18)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_ffotp")
+text = "OPTIONS"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LDecoration" type="Sprite2D" parent="."]
+position = Vector2(-572, -584)
+scale = Vector2(16, 16)
+texture = ExtResource("4_2j1m4")
+
+[node name="RDecoration" type="Sprite2D" parent="."]
+position = Vector2(548, -584)
+scale = Vector2(16, 16)
+texture = ExtResource("4_2j1m4")
+flip_h = true
+
+[node name="ResolutionText" type="Label" parent="."]
+visible = false
+offset_left = 24.0
+offset_top = 180.0
+offset_right = 118.0
+offset_bottom = 201.0
+scale = Vector2(4, 4)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_ffotp")
+text = "RESOLUTION:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ResolutionButton" parent="." instance=ExtResource("2_bp8hc")]
+visible = false
+offset_top = 547.88
+offset_bottom = -67.88
+scale = Vector2(2, 2)
+text = "DIFFICULTY"
+
+[node name="AntiAliasingButton" parent="." instance=ExtResource("2_bp8hc")]
+visible = false
+offset_top = 795.88
+offset_bottom = 182.12
+scale = Vector2(2, 2)
+text = "DIFFICULTY"
+
+[node name="AntiAliasingText" type="Label" parent="."]
+visible = false
+offset_left = 24.0
+offset_top = 428.0
+offset_right = 118.0
+offset_bottom = 449.0
+scale = Vector2(4, 4)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_ffotp")
+text = "ANTI-ALIASING:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShakeText" type="Label" parent="."]
+offset_left = 16.0
+offset_top = -76.0
+offset_right = 110.0
+offset_bottom = -55.0
+scale = Vector2(4, 4)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_ffotp")
+text = "SCREEN SHAKE:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ShakeSlider" parent="." instance=ExtResource("5_ylb21")]
+offset_left = -243.0
+offset_top = -67.8
+offset_right = -267.32
+offset_bottom = -84.2
+scale = Vector2(9, 9)
+value = 50.0
+
+[node name="VSyncText" type="Label" parent="."]
+offset_left = 104.0
+offset_top = 412.0
+offset_right = 155.0
+offset_bottom = 433.0
+scale = Vector2(4, 4)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_ffotp")
+text = "VSYNC:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="VSyncButton" parent="." instance=ExtResource("2_bp8hc")]
+offset_top = 779.88
+offset_bottom = 164.12
+scale = Vector2(2, 2)
+text = "DIFFICULTY"

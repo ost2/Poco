@@ -1,0 +1,149 @@
+[gd_scene load_steps=23 format=3 uid="uid://bt6m2scg0skgw"]
+
+[ext_resource type="Script" path="res://power_up.cs" id="1_tb7fb"]
+[ext_resource type="Texture2D" uid="uid://br8vd61fi1gxl" path="res://Sprites/PowerUps/AgilitySprites/AgilityPack1.png" id="2_raiwk"]
+[ext_resource type="PackedScene" uid="uid://dk71a247yi31c" path="res://point_to.tscn" id="3_c26y0"]
+[ext_resource type="Texture2D" uid="uid://bvu3qdjxvqxlw" path="res://Sprites/PowerUps/AgilitySprites/AgilityPack2.png" id="3_grfj4"]
+[ext_resource type="Texture2D" uid="uid://c3481r7giogim" path="res://Sprites/PowerUps/DamAccSprites/DamagePack1.png" id="4_f23qt"]
+[ext_resource type="Texture2D" uid="uid://6rpving8y1ie" path="res://Sprites/PowerUps/FireSpeedSprites/FireSpeedPack1.png" id="4_klt17"]
+[ext_resource type="Texture2D" uid="uid://bdgg85motcw0p" path="res://Sprites/PowerUps/HealthPackSprites/HealthPack2.png" id="5_digd1"]
+[ext_resource type="Texture2D" uid="uid://b4ojpjhwu7wix" path="res://Sprites/PowerUps/DamAccSprites/DamagePack2.png" id="5_j70ov"]
+[ext_resource type="Texture2D" uid="uid://ntrgrdutw4g6" path="res://Sprites/PowerUps/HealthPackSprites/HealthPack1.png" id="5_p3jyp"]
+[ext_resource type="Texture2D" uid="uid://c0fl357clr6fp" path="res://Sprites/PowerUps/FireSpeedSprites/FireSpeedPack2.png" id="5_s71df"]
+[ext_resource type="Texture2D" uid="uid://b7bgy0nf3tfaa" path="res://Sprites/PowerUps/SpeedSprites/SpeedPack1.png" id="6_jqg77"]
+[ext_resource type="Texture2D" uid="uid://br6qw2gin0eir" path="res://Sprites/PowerUps/SpeedSprites/SpeedPack2.png" id="7_wdllm"]
+[ext_resource type="Texture2D" uid="uid://barggolt0advv" path="res://Sprites/PowerUps/RegenSprites/Regen1.png" id="10_5lrju"]
+[ext_resource type="Texture2D" uid="uid://dswjcb2jqp8uv" path="res://Sprites/PowerUps/RegenSprites/Regen2.png" id="11_gqwio"]
+[ext_resource type="AudioStream" uid="uid://ccisgqhertyn0" path="res://Audio/PowerUpSounds/PowerUpSound.mp3" id="15_t4x2i"]
+[ext_resource type="Texture2D" uid="uid://dhswm2a7xqieo" path="res://Sprites/PowerUps/Watch/Watch1.png" id="16_8ou7i"]
+[ext_resource type="Texture2D" uid="uid://cyuqvi0d6eyy6" path="res://Sprites/PowerUps/Watch/Watch5.png" id="16_gl2uc"]
+[ext_resource type="Texture2D" uid="uid://yr1nuh7ij5no" path="res://Sprites/PowerUps/Watch/Watch2.png" id="17_00xn8"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtdnd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_oabov"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_raiwk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_grfj4")
+}],
+"loop": true,
+"name": &"agility_pack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_f23qt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_j70ov")
+}],
+"loop": true,
+"name": &"dam_acc_pack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_klt17")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_s71df")
+}],
+"loop": true,
+"name": &"fire_speed_pack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_p3jyp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_digd1")
+}],
+"loop": true,
+"name": &"health_pack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_5lrju")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_gqwio")
+}],
+"loop": true,
+"name": &"regen_pack",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_jqg77")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_wdllm")
+}],
+"loop": true,
+"name": &"speed_pack",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1rl83"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_8ou7i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_00xn8")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_acn2r"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_gl2uc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="PowerUp" type="Area2D"]
+scale = Vector2(3, 3)
+collision_layer = 16
+collision_mask = 0
+script = ExtResource("1_tb7fb")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(1.5, 1.5)
+shape = SubResource("CircleShape2D_vtdnd")
+
+[node name="PowerUpSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_oabov")
+animation = &"speed_pack"
+
+[node name="TempSprite" type="AnimatedSprite2D" parent="PowerUpSprite"]
+position = Vector2(-7.66667, -12)
+scale = Vector2(0.276639, 0.276639)
+sprite_frames = SubResource("SpriteFrames_1rl83")
+
+[node name="Shadow" type="AnimatedSprite2D" parent="PowerUpSprite/TempSprite"]
+self_modulate = Color(0, 0, 0, 0.560784)
+show_behind_parent = true
+position = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_acn2r")
+
+[node name="PointTo" parent="." instance=ExtResource("3_c26y0")]
+visible = false
+
+[node name="PickUpSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_t4x2i")
+volume_db = 7.726
+max_polyphony = 30

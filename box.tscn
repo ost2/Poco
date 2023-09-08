@@ -1,0 +1,129 @@
+[gd_scene load_steps=20 format=3 uid="uid://eld3wqjt6gl3"]
+
+[ext_resource type="Script" path="res://box.cs" id="1_f0jrq"]
+[ext_resource type="Texture2D" uid="uid://bocrgbiewd1js" path="res://Sprites/BoxSprites/Box1.png" id="1_vh6si"]
+[ext_resource type="Texture2D" uid="uid://bd2ae23113rj" path="res://Sprites/BoxSprites/Box2.png" id="2_6hf0i"]
+[ext_resource type="Texture2D" uid="uid://cgn8hpj1cqr8w" path="res://Sprites/BoxSprites/Box3.png" id="3_v51c6"]
+[ext_resource type="Texture2D" uid="uid://bh5w5g16pg1o5" path="res://Sprites/BoxSprites/Box4.png" id="4_0at86"]
+[ext_resource type="Texture2D" uid="uid://dqvv74x0h50mr" path="res://Sprites/BoxSprites/Box5.png" id="5_dhn62"]
+[ext_resource type="Texture2D" uid="uid://81tem3qg0q4h" path="res://Sprites/BoxSprites/Parachute1.png" id="6_3bwbr"]
+[ext_resource type="Texture2D" uid="uid://c0lelsrhtxnoc" path="res://Sprites/BoxSprites/Parachute2.png" id="7_555du"]
+[ext_resource type="Texture2D" uid="uid://cajhljm5bb2me" path="res://Sprites/BoxSprites/Parachute3.png" id="8_fvvgf"]
+[ext_resource type="Texture2D" uid="uid://d3mdoheybm6bl" path="res://Sprites/BoxSprites/Parachute4.png" id="9_s7r5a"]
+[ext_resource type="Texture2D" uid="uid://ew2cvqhp35ni" path="res://Sprites/BoxSprites/Box6.png" id="10_tiob0"]
+[ext_resource type="Texture2D" uid="uid://bsmfh32cp6j3a" path="res://Sprites/BoxSprites/Box7.png" id="12_8dh2e"]
+[ext_resource type="Texture2D" uid="uid://buekhynw2c7pq" path="res://Sprites/BoxSprites/Box8.png" id="13_ej5f4"]
+[ext_resource type="AudioStream" uid="uid://woecmxopksp4" path="res://Audio/BoxSounds/BoxDamageSound.mp3" id="14_3g3i8"]
+[ext_resource type="AudioStream" uid="uid://bmyg70jxcbbw1" path="res://Audio/BoxSounds/BoxBreakSound.mp3" id="15_s2yd3"]
+[ext_resource type="PackedScene" uid="uid://dk71a247yi31c" path="res://point_to.tscn" id="16_kbdti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sf7iq"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sveco"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_3bwbr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_555du")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_fvvgf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s7r5a")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2wfc2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_6hf0i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_v51c6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_0at86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_dhn62")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_tiob0")
+}],
+"loop": false,
+"name": &"break",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_vh6si")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_8dh2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ej5f4")
+}],
+"loop": false,
+"name": &"despawn",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_8dh2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ej5f4")
+}],
+"loop": false,
+"name": &"take_damage",
+"speed": 12.0
+}]
+
+[node name="Box" type="Area2D" groups=["Boxes"]]
+scale = Vector2(3, 3)
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_f0jrq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." groups=["Boxes"]]
+shape = SubResource("RectangleShape2D_sf7iq")
+
+[node name="ChuteSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(6, 0)
+scale = Vector2(1.59756, 1.54118)
+sprite_frames = SubResource("SpriteFrames_sveco")
+frame_progress = 0.0745919
+offset = Vector2(11, -0.5)
+flip_h = true
+
+[node name="BoxSprite" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_2wfc2")
+animation = &"despawn"
+
+[node name="DamageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("14_3g3i8")
+volume_db = -7.027
+max_polyphony = 10
+
+[node name="BreakSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_s2yd3")
+volume_db = -7.027
+max_polyphony = 10
+
+[node name="PointTo" parent="." instance=ExtResource("16_kbdti")]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="animation_finished" from="BoxSprite" to="." method="_on_box_sprite_animation_finished"]

@@ -1,0 +1,221 @@
+[gd_scene load_steps=29 format=3 uid="uid://dvum3p6fo3pmf"]
+
+[ext_resource type="Script" path="res://enemy_plane.cs" id="1_nwq1a"]
+[ext_resource type="Texture2D" uid="uid://ocw2fh6vy0vl" path="res://Sprites/TwinPlaneSprites/TwinPlane1.png" id="4_fpwg3"]
+[ext_resource type="SpriteFrames" uid="uid://wdphgtk8todd" path="res://enemy_plane.tres" id="4_h7p0d"]
+[ext_resource type="Texture2D" uid="uid://et83havsa763" path="res://Sprites/TwinPlaneSprites/TwinPlane2.png" id="5_ejl0k"]
+[ext_resource type="Texture2D" uid="uid://en0pfa276hrn" path="res://Sprites/TwinPlaneSprites/TwinPlane3.png" id="6_jjfap"]
+[ext_resource type="Texture2D" uid="uid://dhxuuh15acfv4" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller1.png" id="7_mp1pg"]
+[ext_resource type="Texture2D" uid="uid://p5uq2kj1q87o" path="res://Sprites/TwinPlaneSprites/TwinPlane4.png" id="7_pb5xs"]
+[ext_resource type="Texture2D" uid="uid://b8eekvnpsxwcr" path="res://Sprites/TwinPlaneSprites/TwinPlane5.png" id="8_i7ixl"]
+[ext_resource type="AudioStream" uid="uid://bfjts5f461lrn" path="res://Audio/PropellerSounds/PropellerAmbiance.mp3" id="8_p3ixs"]
+[ext_resource type="Texture2D" uid="uid://b2im838shcaf3" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller2.png" id="8_qqi6a"]
+[ext_resource type="Texture2D" uid="uid://603bq0vtw8d3" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller3.png" id="9_5el4d"]
+[ext_resource type="PackedScene" uid="uid://bahh8oigi6gvi" path="res://trail_2d.tscn" id="9_gmn2f"]
+[ext_resource type="Texture2D" uid="uid://q0f58lu6iju7" path="res://Sprites/TwinPlaneSprites/TwinPlane6.png" id="9_ihlsl"]
+[ext_resource type="Texture2D" uid="uid://cl5bpn3abmukx" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller4.png" id="10_3nvj8"]
+[ext_resource type="PackedScene" uid="uid://cfdrfli6rl2on" path="res://cannon.tscn" id="10_53kkn"]
+[ext_resource type="Texture2D" uid="uid://cqhekssar65gw" path="res://Sprites/TwinPlaneSprites/TwinPlane7.png" id="10_icqdb"]
+[ext_resource type="AudioStream" uid="uid://clqpin3mb4178" path="res://Audio/DamageSounds/EnemyDamageSlap.mp3" id="11_5s8br"]
+[ext_resource type="Texture2D" uid="uid://dasq7vw3w1i8b" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller5.png" id="11_7wp4a"]
+[ext_resource type="Texture2D" uid="uid://cveru6ws6qx1e" path="res://Sprites/TwinPlaneSprites/TwinPlane8.png" id="11_fer07"]
+[ext_resource type="Texture2D" uid="uid://rx67rkqbyiie" path="res://Sprites/TwinPlaneSprites/TwinPlane9.png" id="12_avexs"]
+[ext_resource type="Texture2D" uid="uid://u6kvd0f8bsom" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller6.png" id="12_olvi7"]
+[ext_resource type="Texture2D" uid="uid://bgvoi0a24xqdf" path="res://Sprites/TwinPlaneSprites/TwinPlane10.png" id="13_gsqkt"]
+[ext_resource type="PackedScene" uid="uid://dk71a247yi31c" path="res://point_to.tscn" id="16_23eim"]
+
+[sub_resource type="Curve" id="Curve_uafbq"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.177072), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_isi1w"]
+radius = 16.0
+height = 36.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wa2yw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_fpwg3")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_ejl0k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_jjfap")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_pb5xs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_i7ixl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_ihlsl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_icqdb")
+}],
+"loop": false,
+"name": &"explode",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11_fer07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_avexs")
+}],
+"loop": false,
+"name": &"lean",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_gsqkt")
+}],
+"loop": false,
+"name": &"take_damage",
+"speed": 8.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xfqhi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_mp1pg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_qqi6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_5el4d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_3nvj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_7wp4a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_olvi7")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8yqk5"]
+
+[node name="EnemyPlane" type="CharacterBody2D" groups=["Enemies"]]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_nwq1a")
+
+[node name="WingTips" type="Node2D" parent="."]
+
+[node name="RightWingTip" type="Node2D" parent="WingTips"]
+show_behind_parent = true
+position = Vector2(5, 12)
+
+[node name="Trail2D" parent="WingTips/RightWingTip" instance=ExtResource("9_gmn2f")]
+show_behind_parent = true
+width_curve = SubResource("Curve_uafbq")
+default_color = Color(1, 1, 1, 0.294118)
+
+[node name="LeftWingTip" type="Node2D" parent="WingTips"]
+show_behind_parent = true
+position = Vector2(5, -12)
+
+[node name="Trail2D" parent="WingTips/LeftWingTip" instance=ExtResource("9_gmn2f")]
+show_behind_parent = true
+width_curve = SubResource("Curve_uafbq")
+default_color = Color(1, 1, 1, 0.294118)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.333333)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_isi1w")
+disabled = true
+
+[node name="Cannon" parent="." instance=ExtResource("10_53kkn")]
+position = Vector2(6, 2.08165e-12)
+scale = Vector2(0.7, 0.7)
+
+[node name="Cannon2" parent="." instance=ExtResource("10_53kkn")]
+position = Vector2(3, -4)
+scale = Vector2(0.5, 0.5)
+
+[node name="Cannon3" parent="." instance=ExtResource("10_53kkn")]
+position = Vector2(3, 4)
+scale = Vector2(0.5, 0.5)
+
+[node name="PlaneSprite" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(1, 0.768627, 0.47451, 1)
+scale = Vector2(0.55, 0.55)
+sprite_frames = ExtResource("4_h7p0d")
+
+[node name="StrongPlaneSprite" type="AnimatedSprite2D" parent="."]
+visible = false
+self_modulate = Color(1, 0.768627, 0.47451, 1)
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_wa2yw")
+
+[node name="PropellerSprite" type="AnimatedSprite2D" parent="."]
+position = Vector2(12.5, 2.08165e-12)
+scale = Vector2(0.35, 0.35)
+sprite_frames = SubResource("SpriteFrames_xfqhi")
+frame_progress = 0.123173
+
+[node name="PropellerSprite2" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(9, 4.2)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_xfqhi")
+frame_progress = 0.123173
+
+[node name="PropellerSprite3" type="AnimatedSprite2D" parent="."]
+visible = false
+position = Vector2(9, -4.2)
+scale = Vector2(0.2, 0.2)
+sprite_frames = SubResource("SpriteFrames_xfqhi")
+frame_progress = 0.123173
+
+[node name="DamageHitBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitBox"]
+position = Vector2(-8.90096e-06, -9.53674e-07)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_isi1w")
+
+[node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("8_p3ixs")
+volume_db = -4.457
+autoplay = true
+
+[node name="DamageParticles" type="GPUParticles2D" parent="."]
+position = Vector2(-4.66667, 4.66667)
+amount = 20
+process_material = SubResource("ShaderMaterial_8yqk5")
+lifetime = 3.86
+local_coords = true
+trail_enabled = true
+
+[node name="TakeDamageSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_5s8br")
+volume_db = -1.391
+max_polyphony = 10
+
+[node name="PointTo" parent="." instance=ExtResource("16_23eim")]
+visible = false
+
+[connection signal="animation_finished" from="PlaneSprite" to="." method="_on_plane_sprite_animation_finished"]
+[connection signal="animation_finished" from="StrongPlaneSprite" to="." method="_on_plane_sprite_animation_finished"]
+[connection signal="area_entered" from="DamageHitBox" to="." method="_on_damage_hit_box_area_entered"]

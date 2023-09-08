@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://drugloxjwongu"]
+
+[sub_resource type="Gradient" id="Gradient_gfk58"]
+colors = PackedColorArray(0, 0.781735, 0.845784, 1, 0.607843, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_7lkd2"]
+gradient = SubResource("Gradient_gfk58")
+
+[node name="Background" type="Node2D"]
+scale = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-1, -2)
+scale = Vector2(7.51953, 1081.75)
+texture = SubResource("GradientTexture1D_7lkd2")

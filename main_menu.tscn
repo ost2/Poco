@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://jeb0cllb4v47"]
+
+[ext_resource type="Script" path="res://main_menu.cs" id="1_jh4da"]
+[ext_resource type="PackedScene" uid="uid://dmhpbcuggjc0f" path="res://menu_button.tscn" id="1_sqleq"]
+[ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="3_y310l"]
+[ext_resource type="Texture2D" uid="uid://ejhtyjdx8ret" path="res://Sprites/UISprites/HealthBarSprites/HealthBar3.png" id="4_6fk23"]
+
+[node name="MainMenu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_jh4da")
+
+[node name="StartButton" parent="." instance=ExtResource("1_sqleq")]
+offset_top = 267.88
+offset_right = -751.0
+offset_bottom = -347.88
+text = "START"
+
+[node name="OptionsButton" parent="." instance=ExtResource("1_sqleq")]
+anchor_top = 0.089
+anchor_bottom = 0.711
+offset_left = 752.0
+offset_top = 107.88
+offset_right = -745.0
+offset_bottom = -507.88
+text = "OPTIONS
+"
+
+[node name="QuitButton" parent="." instance=ExtResource("1_sqleq")]
+offset_top = 1039.88
+offset_right = -751.0
+offset_bottom = 425.12
+text = "QUIT"
+
+[node name="Text" type="Label" parent="."]
+offset_left = 312.0
+offset_top = -246.0
+offset_right = 406.0
+offset_bottom = -225.0
+scale = Vector2(18, 18)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_y310l")
+text = "POCO"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Text2" type="Label" parent="."]
+visible = false
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 174.0
+offset_bottom = 101.0
+scale = Vector2(7, 7)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("3_y310l")
+text = "«                      »"
+horizontal_alignment = 3
+vertical_alignment = 1
+
+[node name="LDecoration" type="Sprite2D" parent="."]
+position = Vector2(-376, -568)
+scale = Vector2(16, 16)
+texture = ExtResource("4_6fk23")
+
+[node name="RDecoration" type="Sprite2D" parent="."]
+position = Vector2(360, -568)
+scale = Vector2(16, 16)
+texture = ExtResource("4_6fk23")
+flip_h = true

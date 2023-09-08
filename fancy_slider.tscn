@@ -1,0 +1,81 @@
+[gd_scene load_steps=10 format=3 uid="uid://fc5f0iqscenh"]
+
+[ext_resource type="Script" path="res://fancy_slider.cs" id="1_ebh2i"]
+[ext_resource type="Texture2D" uid="uid://brn2tbhv7b8nq" path="res://Sprites/UISprites/SliderSprites/Slider2.png" id="1_oxnxg"]
+[ext_resource type="Texture2D" uid="uid://db34ew37h2t5b" path="res://Sprites/UISprites/SliderSprites/Slider3.png" id="2_gtyvs"]
+[ext_resource type="Texture2D" uid="uid://du1igk0aeoqm0" path="res://Sprites/UISprites/SliderSprites/Slider1.png" id="4_xvhh4"]
+[ext_resource type="AudioStream" uid="uid://3xj11yu24qku" path="res://Audio/UISounds/ClickSound1.mp3" id="5_g3n2g"]
+[ext_resource type="AudioStream" uid="uid://cn06hcqgk6hs" path="res://Audio/UISounds/ClickSound2.mp3" id="6_4amer"]
+[ext_resource type="AudioStream" uid="uid://bc8bnh3ojscvq" path="res://Audio/UISounds/HoverSound.mp3" id="6_6oj7t"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4k2rj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xvhh4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0gqb0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_oxnxg")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_gtyvs")
+}],
+"loop": true,
+"name": &"grab",
+"speed": 5.0
+}]
+
+[node name="FancySlider" type="HSlider"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = -0.025
+anchor_top = -0.015
+anchor_right = 0.021
+anchor_bottom = 0.015
+offset_left = 16.0
+offset_top = 8.2
+offset_right = -8.32
+offset_bottom = -8.2
+script = ExtResource("1_ebh2i")
+
+[node name="BarSprite" type="AnimatedSprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(32.35, 8.49999)
+scale = Vector2(1.3, 1)
+sprite_frames = SubResource("SpriteFrames_4k2rj")
+
+[node name="GrabSprite" type="AnimatedSprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(32.35, 8.5)
+scale = Vector2(0.7, 0.7)
+sprite_frames = SubResource("SpriteFrames_0gqb0")
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_g3n2g")
+volume_db = -9.369
+
+[node name="ReleaseSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_4amer")
+volume_db = -9.369
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_6oj7t")
+volume_db = 2.811
+
+[connection signal="drag_ended" from="." to="." method="_on_drag_ended"]
+[connection signal="drag_started" from="." to="." method="_on_drag_started"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

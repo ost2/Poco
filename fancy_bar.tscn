@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cjnb7xohlu07g"]
+
+[ext_resource type="Texture2D" uid="uid://53wvjw8l3675" path="res://Sprites/UISprites/HealthBarSprites/HealthBar1.png" id="1_2f1v7"]
+[ext_resource type="Texture2D" uid="uid://byreb7476fco0" path="res://Sprites/UISprites/HealthBarSprites/HealthBar2.png" id="2_8kw2c"]
+[ext_resource type="Script" path="res://fancy_bar.cs" id="3_2xij6"]
+[ext_resource type="PackedScene" uid="uid://cw4emyg3mdwuj" path="res://value_changed_label.tscn" id="4_jj01c"]
+
+[node name="FancyBar" type="TextureProgressBar"]
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_left = 808.0
+offset_top = 16.0
+offset_right = 825.0
+offset_bottom = 74.0
+rotation = 1.5708
+scale = Vector2(8, 8)
+value = 99.0
+fill_mode = 3
+texture_under = ExtResource("1_2f1v7")
+texture_progress = ExtResource("2_8kw2c")
+texture_progress_offset = Vector2(0, 2.08165e-12)
+tint_under = Color(0.858824, 0.815686, 0.792157, 1)
+tint_progress = Color(0.905882, 0, 0.329412, 1)
+script = ExtResource("3_2xij6")
+numberScene = ExtResource("4_jj01c")
+metadata/_edit_use_anchors_ = true
+
+[connection signal="value_changed" from="." to="." method="_on_value_changed"]

@@ -1,0 +1,61 @@
+[gd_scene load_steps=11 format=3 uid="uid://l6bqalrhpyi4"]
+
+[ext_resource type="Texture2D" uid="uid://d4mhkjsmpj41k" path="res://Sprites/ExplosionSprites/Explosion1.png" id="1_7gj3k"]
+[ext_resource type="Texture2D" uid="uid://sv7rm4t1sws7" path="res://Sprites/ExplosionSprites/Explosion2.png" id="2_6uvf0"]
+[ext_resource type="Texture2D" uid="uid://r7sipbwfl5pw" path="res://Sprites/ExplosionSprites/Explosion3.png" id="3_3ssmd"]
+[ext_resource type="Texture2D" uid="uid://cvni11rp1uko6" path="res://Sprites/ExplosionSprites/Explosion4.png" id="4_8fcd4"]
+[ext_resource type="Texture2D" uid="uid://d0cyokyput0w5" path="res://Sprites/ExplosionSprites/Explosion5.png" id="5_403il"]
+[ext_resource type="Texture2D" uid="uid://smfy0tglem2i" path="res://Sprites/ExplosionSprites/Explosion6.png" id="6_21r20"]
+[ext_resource type="Script" path="res://explosion.cs" id="7_qguse"]
+[ext_resource type="Texture2D" uid="uid://bxjsjra4m0ta1" path="res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp" id="8_hru8b"]
+[ext_resource type="AudioStream" uid="uid://cofj32tbtb5mn" path="res://Audio/ExplosionSounds/E.mp3" id="9_4yuq5"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_krmr4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_7gj3k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_6uvf0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_3ssmd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8fcd4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_403il")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_21r20")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="Explosion" type="AnimatedSprite2D"]
+top_level = true
+light_mask = 0
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(0.77, 0.77)
+sprite_frames = SubResource("SpriteFrames_krmr4")
+script = ExtResource("7_qguse")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1.2987, -2.5974)
+color = Color(0.905882, 0.760784, 0, 1)
+energy = 0.0
+texture = ExtResource("8_hru8b")
+texture_scale = 50.0
+
+[node name="ExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("9_4yuq5")
+volume_db = -10.003
+pitch_scale = 0.73
+max_polyphony = 10
+
+[connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
+[connection signal="finished" from="ExplosionSound" to="." method="_on_audio_stream_player_2d_finished"]

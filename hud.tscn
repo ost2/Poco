@@ -1,0 +1,292 @@
+[gd_scene load_steps=16 format=3 uid="uid://bqtqoew0owjhn"]
+
+[ext_resource type="Script" path="res://hud.cs" id="1_k233h"]
+[ext_resource type="PackedScene" uid="uid://bn3jakxbsf32q" path="res://wave_text.tscn" id="2_5asrq"]
+[ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="2_75i73"]
+[ext_resource type="PackedScene" uid="uid://7nq3rfr1nhe7" path="res://death_screen.tscn" id="2_ax22g"]
+[ext_resource type="PackedScene" uid="uid://cjnb7xohlu07g" path="res://fancy_bar.tscn" id="5_k1nw6"]
+[ext_resource type="Texture2D" uid="uid://bfjsxv68fl3te" path="res://Sprites/UISprites/EnemyIcon.png" id="5_lguqe"]
+[ext_resource type="Texture2D" uid="uid://ejhtyjdx8ret" path="res://Sprites/UISprites/HealthBarSprites/HealthBar3.png" id="8_kvxaj"]
+[ext_resource type="Texture2D" uid="uid://dnj760a7g311u" path="res://Sprites/UISprites/GreenArrow.png" id="11_f5svu"]
+[ext_resource type="PackedScene" uid="uid://doc5tw2coukue" path="res://clock.tscn" id="12_v1jfa"]
+[ext_resource type="PackedScene" uid="uid://chvl4in5cfsng" path="res://stat_ui.tscn" id="21_pko5t"]
+[ext_resource type="Texture2D" uid="uid://bocrgbiewd1js" path="res://Sprites/BoxSprites/Box1.png" id="22_1su0w"]
+[ext_resource type="Texture2D" uid="uid://bsmfh32cp6j3a" path="res://Sprites/BoxSprites/Box7.png" id="23_6t1wt"]
+[ext_resource type="Texture2D" uid="uid://buekhynw2c7pq" path="res://Sprites/BoxSprites/Box8.png" id="24_206h4"]
+[ext_resource type="AudioStream" uid="uid://cosmkpp5x55pi" path="res://Audio/PowerUpSounds/StatUpSound.mp3" id="25_kc4pi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_4he4x"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_1su0w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_6t1wt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_206h4")
+}],
+"loop": true,
+"name": &"box_wave",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_lguqe")
+}],
+"loop": true,
+"name": &"enemy_wave",
+"speed": 5.0
+}]
+
+[node name="HUD" type="CanvasLayer"]
+script = ExtResource("1_k233h")
+
+[node name="WaveText" parent="." instance=ExtResource("2_5asrq")]
+visible = false
+offset = Vector2(2.08165e-12, -60)
+transform = Transform2D(1, 0, 0, 1, 2.08165e-12, -60)
+
+[node name="TimerLabel" type="Label" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_left = 944.0
+offset_top = 24.0
+offset_right = 980.0
+offset_bottom = 45.0
+scale = Vector2(6, 6)
+pivot_offset = Vector2(17.5, 2.08165e-12)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_75i73")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="TempBoostLabel" type="Label" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_left = 1608.0
+offset_top = 920.0
+offset_right = 1676.0
+offset_bottom = 941.0
+scale = Vector2(4, 4)
+pivot_offset = Vector2(17.5, 2.08165e-12)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_75i73")
+text = "0, 0, 0, 0, 0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="FPSLabel" type="Label" parent="."]
+offset_left = 80.0
+offset_top = 912.0
+offset_right = 160.0
+offset_bottom = 937.0
+rotation = 0.000242133
+scale = Vector2(5, 5)
+theme_override_colors/font_color = Color(0.996078, 0.992157, 0.988235, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_75i73")
+theme_override_font_sizes/font_size = 20
+text = "FPS: 000"
+metadata/_edit_use_anchors_ = true
+
+[node name="CloudValueLabel" type="Label" parent="."]
+visible = false
+offset_left = 56.0
+offset_top = 640.0
+offset_right = 136.0
+offset_bottom = 665.0
+rotation = 0.000242133
+scale = Vector2(5, 5)
+theme_override_colors/font_color = Color(0.996078, 0.992157, 0.988235, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_75i73")
+theme_override_font_sizes/font_size = 20
+text = "CLOUD: 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="HealthBar" parent="." instance=ExtResource("5_k1nw6")]
+self_modulate = Color(1, 1, 1, 1)
+
+[node name="OverHealBar" parent="." instance=ExtResource("5_k1nw6")]
+self_modulate = Color(1, 1, 1, 1)
+texture_under = null
+
+[node name="XpBar" parent="." instance=ExtResource("5_k1nw6")]
+self_modulate = Color(1, 1, 1, 1)
+offset_left = 1576.0
+offset_right = 1593.0
+
+[node name="KillsElement" type="Node2D" parent="."]
+position = Vector2(96, 88)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="KillsSprite" type="Sprite2D" parent="KillsElement"]
+position = Vector2(0, -2.5)
+texture = ExtResource("5_lguqe")
+
+[node name="KillsLabel" type="Label" parent="KillsElement"]
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_left = 16.75
+offset_top = -12.25
+offset_right = 56.75
+offset_bottom = 10.75
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_75i73")
+text = "00/00"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LvlElement" type="Node2D" parent="."]
+position = Vector2(1640, 88)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="LvlSprite" type="Sprite2D" parent="LvlElement"]
+position = Vector2(0, -2.5)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("11_f5svu")
+
+[node name="LvlLabel" type="Label" parent="LvlElement"]
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_left = 16.75
+offset_top = -12.25
+offset_right = 56.75
+offset_bottom = 10.75
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_75i73")
+text = "0 + 3"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="XpElement" type="Node2D" parent="."]
+position = Vector2(960, 968)
+scale = Vector2(3, 3)
+
+[node name="LeftDecorationSprite" type="Sprite2D" parent="XpElement"]
+position = Vector2(-170, -7)
+scale = Vector2(3, 3)
+texture = ExtResource("8_kvxaj")
+
+[node name="RightDecorationSprites" type="Sprite2D" parent="XpElement"]
+position = Vector2(170, -7)
+scale = Vector2(3, 3)
+texture = ExtResource("8_kvxaj")
+flip_h = true
+
+[node name="AgilityUI" parent="XpElement" instance=ExtResource("21_pko5t")]
+position = Vector2(-120, 0)
+animation = &"agility"
+
+[node name="SpeedUI" parent="XpElement" instance=ExtResource("21_pko5t")]
+position = Vector2(-61.3333, 0)
+curStat = 1
+
+[node name="RegenUI" parent="XpElement" instance=ExtResource("21_pko5t")]
+position = Vector2(0, 0)
+animation = &"regen"
+curStat = 2
+
+[node name="FireSpeedUI" parent="XpElement" instance=ExtResource("21_pko5t")]
+position = Vector2(61.3333, 0)
+curStat = 3
+
+[node name="DamAccUI" parent="XpElement" instance=ExtResource("21_pko5t")]
+position = Vector2(120, 0)
+curStat = 4
+
+[node name="StatUpLabel" type="Label" parent="XpElement"]
+self_modulate = Color(1, 1, 1, 0.847059)
+anchors_preset = -1
+anchor_right = 0.0557292
+offset_left = -100.0
+offset_top = -101.333
+offset_right = 99.9997
+offset_bottom = -80.333
+scale = Vector2(1.5, 1.5)
+pivot_offset = Vector2(100, 10)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_75i73")
+text = "+ HANDLING UP +"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelUpLabel" type="Label" parent="XpElement"]
+self_modulate = Color(1, 1, 1, 0.847059)
+anchors_preset = -1
+anchor_right = 0.0557292
+offset_left = -224.0
+offset_top = -117.333
+offset_right = -24.0003
+offset_bottom = -96.3333
+scale = Vector2(2.5, 2.5)
+pivot_offset = Vector2(17.5, 2.08165e-12)
+theme_override_colors/font_color = Color(0.407843, 0.933333, 0, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 3
+theme_override_constants/shadow_outline_size = 3
+theme_override_fonts/font = ExtResource("2_75i73")
+text = "±  LEVEL UP 	±"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="BoxClock" parent="." instance=ExtResource("12_v1jfa")]
+visible = false
+position = Vector2(960, 192)
+scale = Vector2(3, 3)
+
+[node name="WaveNumberElement" type="Node2D" parent="."]
+position = Vector2(960, 80)
+scale = Vector2(0.8, 0.8)
+metadata/_edit_group_ = true
+
+[node name="WaveNumberSprite" type="AnimatedSprite2D" parent="WaveNumberElement"]
+scale = Vector2(10, 10)
+sprite_frames = SubResource("SpriteFrames_4he4x")
+animation = &"enemy_wave"
+
+[node name="WaveNumberLabel" type="Label" parent="WaveNumberElement"]
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_right = 8.0
+offset_bottom = 21.0
+scale = Vector2(8, 8)
+pivot_offset = Vector2(4, 10.5)
+theme_override_colors/font_outline_color = Color(0.188235, 0.188235, 0.188235, 1)
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = ExtResource("2_75i73")
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="StatUpSound" type="AudioStreamPlayer2D" parent="."]
+scale = Vector2(1.00117, 1)
+stream = ExtResource("25_kc4pi")
+pitch_scale = 2.0
+max_polyphony = 10
+
+[node name="DeathScreen" parent="." instance=ExtResource("2_ax22g")]
+visible = false
+offset = Vector2(2.08165e-12, 80)
+transform = Transform2D(1, 0, 0, 1, 2.08165e-12, 80)
+
+[connection signal="value_changed" from="HealthBar" to="." method="_on_health_bar_value_changed"]
+[connection signal="value_changed" from="OverHealBar" to="." method="_on_over_heal_bar_value_changed"]
+[connection signal="value_changed" from="XpBar" to="." method="_on_xp_bar_value_changed"]

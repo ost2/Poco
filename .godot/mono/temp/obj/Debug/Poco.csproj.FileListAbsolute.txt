@@ -1,0 +1,17 @@
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/bin/Debug/Poco.deps.json
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/bin/Debug/Poco.runtimeconfig.json
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/bin/Debug/Poco.dll
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/bin/Debug/Poco.pdb
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/bin/Debug/GodotSharp.dll
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/bin/Debug/GodotSharpEditor.dll
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/Poco.csproj.AssemblyReference.cache
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/Poco.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/Poco.AssemblyInfoInputs.cache
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/Poco.AssemblyInfo.cs
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/Poco.csproj.CoreCompileInputs.cache
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/Poco.csproj.CopyComplete
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/Poco.dll
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/refint/Poco.dll
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/Poco.pdb
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/Poco.genruntimeconfig.cache
+/Users/sigurdsevaldrud/GodotProjects/Poco/.godot/mono/temp/obj/Debug/ref/Poco.dll

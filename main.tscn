@@ -1,0 +1,178 @@
+[gd_scene load_steps=23 format=3 uid="uid://wei60vyv43c6"]
+
+[ext_resource type="PackedScene" path="res://background.tscn" id="1_fy8cw"]
+[ext_resource type="PackedScene" path="res://player.tscn" id="1_r1ibf"]
+[ext_resource type="Script" path="res://main.cs" id="1_tnpdv"]
+[ext_resource type="Texture2D" path="res://Sprites/BackgroundSprites/Unknown.jpg" id="2_g0c7x"]
+[ext_resource type="PackedScene" path="res://boss_plane.tscn" id="3_cyali"]
+[ext_resource type="PackedScene" path="res://explosion.tscn" id="3_hnffk"]
+[ext_resource type="PackedScene" path="res://clouds.tscn" id="4_4i1pm"]
+[ext_resource type="PackedScene" path="res://box.tscn" id="4_38njs"]
+[ext_resource type="Texture2D" path="res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp" id="4_bwih3"]
+[ext_resource type="PackedScene" path="res://power_up.tscn" id="5_f0rea"]
+[ext_resource type="PackedScene" path="res://enemy_plane.tscn" id="7_idsnj"]
+[ext_resource type="PackedScene" uid="uid://bqtqoew0owjhn" path="res://hud.tscn" id="8_abmcm"]
+[ext_resource type="AudioStream" path="res://Audio/Music/BossMusic.mp3" id="13_88p64"]
+[ext_resource type="PackedScene" path="res://main_menu.tscn" id="13_sir3v"]
+[ext_resource type="PackedScene" path="res://pause_menu.tscn" id="14_yu72n"]
+[ext_resource type="PackedScene" path="res://options_menu.tscn" id="15_on6sh"]
+
+[sub_resource type="Curve2D" id="Curve2D_vhu5k"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -1342.5, -837, 0, 0, 0, 0, 1316.5, -897.5, 0, 0, 0, 0, 1256, 915, 0, 0, 0, 0, -1356.5, 929.5, 0, 0, 0, 0, -1342.5, -837)
+}
+point_count = 5
+
+[sub_resource type="Curve2D" id="Curve2D_1vptg"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 2183.5, 1259, 0, 0, 0, 0, 2488.5, 560.5, 0, 0, 0, 0, 2488.5, -1283, 0, 0, 0, 0, -1523, -1366.5, 0, 0, 0, 0, -1366.5, 1249, 0, 0, 0, 0, 2196, 1255)
+}
+point_count = 6
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_lu06w"]
+noise_type = 3
+frequency = 0.0001
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_aw01t"]
+noise = SubResource("FastNoiseLite_lu06w")
+
+[sub_resource type="Sky" id="Sky_s2hyn"]
+
+[sub_resource type="Environment" id="Environment_v4myy"]
+background_mode = 3
+background_color = Color(1, 1, 1, 1)
+background_energy_multiplier = 1.34
+sky = SubResource("Sky_s2hyn")
+ambient_light_source = 2
+ambient_light_color = Color(0.960784, 0.764706, 0.0196078, 1)
+ambient_light_energy = 4.62
+tonemap_mode = 2
+ssao_enabled = true
+ssao_light_affect = 1.0
+ssil_radius = 6.77
+ssil_intensity = 5.21
+glow_enabled = true
+glow_normalized = true
+glow_strength = 1.12
+glow_bloom = 0.02
+glow_blend_mode = 0
+fog_light_color = Color(0.8, 0.52549, 0, 1)
+fog_light_energy = 5.63
+fog_sun_scatter = 0.17
+fog_density = 0.4679
+volumetric_fog_density = 0.4552
+adjustment_enabled = true
+adjustment_contrast = 0.87
+adjustment_saturation = 0.83
+
+[node name="Main" type="Node"]
+script = ExtResource("1_tnpdv")
+enemyPlaneScene = ExtResource("7_idsnj")
+bossPlaneScene = ExtResource("3_cyali")
+explosionScene = ExtResource("3_hnffk")
+boxScene = ExtResource("4_38njs")
+powerUpScene = ExtResource("5_f0rea")
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(0.2, 0.2)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
+texture_filter = 6
+position = Vector2(13697, 15218)
+scale = Vector2(400, 400)
+texture = ExtResource("2_g0c7x")
+
+[node name="Background" parent="." instance=ExtResource("1_fy8cw")]
+
+[node name="LowerClouds" parent="." instance=ExtResource("4_4i1pm")]
+modulate = Color(1, 1, 1, 0.501961)
+self_modulate = Color(1, 1, 1, 0.501961)
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(2.1, 2.1)
+
+[node name="Player" parent="." instance=ExtResource("1_r1ibf")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="PlayerCamera" type="Camera2D" parent="."]
+scale = Vector2(2, 2)
+zoom = Vector2(1.2, 1.2)
+
+[node name="Sun" type="PointLight2D" parent="PlayerCamera"]
+position = Vector2(1732.43, -1361.45)
+rotation = -2.53945
+scale = Vector2(1, 1.13108)
+color = Color(1, 1, 0.560784, 1)
+energy = 1.55
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 1)
+texture = ExtResource("4_bwih3")
+texture_scale = 18.65
+
+[node name="EnemySpawnPath" type="Path2D" parent="PlayerCamera"]
+curve = SubResource("Curve2D_vhu5k")
+
+[node name="EnemySpawnPoint" type="PathFollow2D" parent="PlayerCamera/EnemySpawnPath"]
+position = Vector2(-1342.5, -837)
+rotation = -0.022749
+
+[node name="BoxSpawnPath" type="Path2D" parent="PlayerCamera"]
+position = Vector2(-480, 3.5)
+curve = SubResource("Curve2D_1vptg")
+
+[node name="BoxSpawnPoint" type="PathFollow2D" parent="PlayerCamera/BoxSpawnPath"]
+position = Vector2(2183.5, 1259)
+rotation = -1.1591
+
+[node name="Clouds" parent="." instance=ExtResource("4_4i1pm")]
+z_index = 5
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(2.1, 2.1)
+
+[node name="CloudsMap" type="Sprite2D" parent="."]
+visible = false
+texture = SubResource("NoiseTexture2D_aw01t")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_v4myy")
+
+[node name="HUD" parent="." instance=ExtResource("8_abmcm")]
+visible = false
+
+[node name="MainMenu" parent="." instance=ExtResource("13_sir3v")]
+visible = false
+offset = Vector2(960, 510)
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 960, 510)
+
+[node name="PauseMenu" parent="." instance=ExtResource("14_yu72n")]
+offset = Vector2(960, 500)
+scale = Vector2(0.4, 0.4)
+transform = Transform2D(0.4, 0, 0, 0.4, 960, 500)
+
+[node name="OptionsMenu" parent="." instance=ExtResource("15_on6sh")]
+visible = false
+offset = Vector2(960, 510)
+scale = Vector2(0.6, 0.6)
+transform = Transform2D(0.6, 0, 0, 0.6, 960, 510)
+
+[node name="ShowDeathScreenTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="WaveTimer" type="Timer" parent="."]
+wait_time = 20.0
+one_shot = true
+
+[node name="BossMusic" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("13_88p64")
+attenuation = 1.07177e-05
+
+[node name="IShitTimer" type="Timer" parent="."]
+wait_time = 0.01
+one_shot = true
+
+[connection signal="timeout" from="ShowDeathScreenTimer" to="." method="_on_show_death_screen_timer_timeout"]
+[connection signal="timeout" from="WaveTimer" to="." method="_on_wave_timer_timeout"]
+[connection signal="timeout" from="IShitTimer" to="." method="_on_i_shit_timer_timeout"]

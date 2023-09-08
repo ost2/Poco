@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://q5jf8pm00e3c"
+path="res://.godot/imported/Clocksound - 03:09:2023, 04.15.mp3-3b21d5d3247bc7e848bde92ab0cedf4d.mp3str"
+
+[deps]
+
+source_file="res://Audio/PowerUpSounds/Clocksound - 03:09:2023, 04.15.mp3"
+dest_files=["res://.godot/imported/Clocksound - 03:09:2023, 04.15.mp3-3b21d5d3247bc7e848bde92ab0cedf4d.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

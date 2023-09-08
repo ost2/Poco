@@ -1,0 +1,167 @@
+[gd_scene load_steps=24 format=3 uid="uid://chvl4in5cfsng"]
+
+[ext_resource type="Texture2D" uid="uid://bvu3qdjxvqxlw" path="res://Sprites/PowerUps/AgilitySprites/AgilityPack2.png" id="1_a3ilp"]
+[ext_resource type="Texture2D" uid="uid://br8vd61fi1gxl" path="res://Sprites/PowerUps/AgilitySprites/AgilityPack1.png" id="2_pp2bp"]
+[ext_resource type="Script" path="res://stat_ui.cs" id="3_3jj1y"]
+[ext_resource type="Texture2D" uid="uid://c3481r7giogim" path="res://Sprites/PowerUps/DamAccSprites/DamagePack1.png" id="3_she1e"]
+[ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="3_tx8oj"]
+[ext_resource type="Texture2D" uid="uid://eqh273fbq3m3" path="res://Sprites/UISprites/GreenArrow1.png" id="4_ip5ci"]
+[ext_resource type="Texture2D" uid="uid://b4ojpjhwu7wix" path="res://Sprites/PowerUps/DamAccSprites/DamagePack2.png" id="4_jg5gn"]
+[ext_resource type="Texture2D" uid="uid://dqcxiy8qx2f20" path="res://Sprites/PowerUps/FireSpeedSprites/FireSpeedPackBetter1.png" id="5_2dger"]
+[ext_resource type="Texture2D" uid="uid://b3tihfirwc3md" path="res://Sprites/UISprites/GreenArrow2.png" id="5_6thd2"]
+[ext_resource type="PackedScene" uid="uid://doc5tw2coukue" path="res://clock.tscn" id="6_1umrk"]
+[ext_resource type="Texture2D" uid="uid://bkaiy6jl21jfl" path="res://Sprites/PowerUps/FireSpeedSprites/FireSpeedPackBetter2.png" id="6_kcqtk"]
+[ext_resource type="Texture2D" uid="uid://barggolt0advv" path="res://Sprites/PowerUps/RegenSprites/Regen1.png" id="7_e17hb"]
+[ext_resource type="Texture2D" uid="uid://dswjcb2jqp8uv" path="res://Sprites/PowerUps/RegenSprites/Regen2.png" id="8_25itf"]
+[ext_resource type="Texture2D" uid="uid://b7bgy0nf3tfaa" path="res://Sprites/PowerUps/SpeedSprites/SpeedPack1.png" id="9_wjuq4"]
+[ext_resource type="Texture2D" uid="uid://br6qw2gin0eir" path="res://Sprites/PowerUps/SpeedSprites/SpeedPack2.png" id="10_o0qyc"]
+[ext_resource type="AudioStream" uid="uid://cmdve3uxbsqbw" path="res://Audio/PowerUpSounds/HoverSoundUI.mp3" id="16_bp2sy"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tylcx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_a3ilp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_pp2bp")
+}],
+"loop": false,
+"name": &"agility",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_jg5gn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_she1e")
+}],
+"loop": false,
+"name": &"dam_acc",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_kcqtk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_2dger")
+}],
+"loop": false,
+"name": &"fire_speed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_25itf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_e17hb")
+}],
+"loop": false,
+"name": &"regen",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_o0qyc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_wjuq4")
+}],
+"loop": false,
+"name": &"speed",
+"speed": 5.0
+}]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qgqaj"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wxn30"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k3cj0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nlhno"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0t3kf"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qau2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_ip5ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6thd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ip5ci")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_6thd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_ip5ci")
+}],
+"loop": false,
+"name": &"default",
+"speed": 7.0
+}]
+
+[node name="StatUI" type="AnimatedSprite2D"]
+self_modulate = Color(1, 1, 1, 0.847059)
+position = Vector2(0, 16)
+sprite_frames = SubResource("SpriteFrames_tylcx")
+animation = &"speed"
+script = ExtResource("3_3jj1y")
+
+[node name="Label" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_left = -20.0
+offset_top = -37.333
+offset_right = 20.0
+offset_bottom = -14.333
+pivot_offset = Vector2(20, 2.08165e-12)
+theme_override_colors/font_color = Color(0.988235, 0.988235, 0.988235, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_tx8oj")
+text = "X 1"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Button" type="Button" parent="."]
+anchors_preset = -1
+anchor_top = -0.212121
+anchor_bottom = -0.212121
+offset_left = -15.0
+offset_top = -70.0
+offset_right = 16.0
+offset_bottom = -44.0
+scale = Vector2(1.6, 4)
+pivot_offset = Vector2(15, 2.08165e-12)
+theme_override_styles/normal = SubResource("StyleBoxEmpty_qgqaj")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_wxn30")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_k3cj0")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_nlhno")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_0t3kf")
+flat = true
+metadata/_edit_use_anchors_ = true
+
+[node name="Arrow" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -53.3333)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_1qau2")
+
+[node name="Clock" parent="." instance=ExtResource("6_1umrk")]
+position = Vector2(-9, -12)
+scale = Vector2(0.4, 0.4)
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_bp2sy")
+volume_db = -17.0
+pitch_scale = 3.0
+
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

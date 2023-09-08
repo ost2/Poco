@@ -1,0 +1,216 @@
+[gd_scene load_steps=40 format=3 uid="uid://dmhpbcuggjc0f"]
+
+[ext_resource type="Texture2D" uid="uid://30c81c4w4lk1" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton1.png" id="1_qqa53"]
+[ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="1_s3vph"]
+[ext_resource type="Script" path="res://menu_button.cs" id="2_5fa88"]
+[ext_resource type="Texture2D" uid="uid://c3fqskwboh4q3" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton2.png" id="2_fppnx"]
+[ext_resource type="Texture2D" uid="uid://bc8jj7ovecnyu" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton3.png" id="3_srv00"]
+[ext_resource type="Texture2D" uid="uid://cxywyb5lidd4t" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton4.png" id="4_fb6sf"]
+[ext_resource type="Texture2D" uid="uid://bsns2npmngdjp" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton28.png" id="4_m3rps"]
+[ext_resource type="Texture2D" uid="uid://duwb660ot6p4t" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton5.png" id="5_3t7t2"]
+[ext_resource type="Texture2D" uid="uid://kmgeb3kwqo8q" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton6.png" id="6_ip0jx"]
+[ext_resource type="Texture2D" uid="uid://c3ul8u8yol2jf" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton7.png" id="7_1ij7b"]
+[ext_resource type="Texture2D" uid="uid://lnd1e4ctqutl" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton8.png" id="8_kmj0q"]
+[ext_resource type="Texture2D" uid="uid://bjk2jlkn0iibq" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton9.png" id="9_u8c2q"]
+[ext_resource type="Texture2D" uid="uid://ixk0ofkfveg6" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton10.png" id="10_bjkct"]
+[ext_resource type="Texture2D" uid="uid://bgpuyrsuierqf" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton11.png" id="11_8bd86"]
+[ext_resource type="Texture2D" uid="uid://by2hl48xpgoca" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton12.png" id="12_bbdn1"]
+[ext_resource type="Texture2D" uid="uid://b265hai34vyee" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton13.png" id="13_r5phi"]
+[ext_resource type="Texture2D" uid="uid://bpswmf2a3d4yp" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton14.png" id="14_ak2ei"]
+[ext_resource type="Texture2D" uid="uid://cw6j8t5rpcls8" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton15.png" id="15_sd7yc"]
+[ext_resource type="Texture2D" uid="uid://b44rvetln7vgc" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton16.png" id="16_ofaxo"]
+[ext_resource type="Texture2D" uid="uid://roc16exbdmma" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton17.png" id="17_jkdc7"]
+[ext_resource type="Texture2D" uid="uid://dmv0wiwc11rp7" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton18.png" id="18_gfnr5"]
+[ext_resource type="Texture2D" uid="uid://doipy6pp5wkp4" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton19.png" id="19_4mg7l"]
+[ext_resource type="Texture2D" uid="uid://jw66etvyxmot" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton20.png" id="20_swuye"]
+[ext_resource type="Texture2D" uid="uid://b6jbbu14c4q80" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton21.png" id="21_nrf2u"]
+[ext_resource type="Texture2D" uid="uid://cvu1kqj3lbetv" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton22.png" id="22_0qlnb"]
+[ext_resource type="Texture2D" uid="uid://bn0d44viaq5ky" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton23.png" id="23_73ux5"]
+[ext_resource type="Texture2D" uid="uid://e2xtulqak6fa" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton24.png" id="24_mw3tu"]
+[ext_resource type="Texture2D" uid="uid://bedvo8r4icc76" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton25.png" id="25_ui4it"]
+[ext_resource type="Texture2D" uid="uid://dtw4bdin7p2q4" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton26.png" id="26_x74kr"]
+[ext_resource type="Texture2D" uid="uid://b44cvinytl1mn" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton27.png" id="27_6idvi"]
+[ext_resource type="AudioStream" uid="uid://3xj11yu24qku" path="res://Audio/UISounds/ClickSound1.mp3" id="31_hpjfu"]
+[ext_resource type="AudioStream" uid="uid://cn06hcqgk6hs" path="res://Audio/UISounds/ClickSound2.mp3" id="32_et8ab"]
+[ext_resource type="AudioStream" uid="uid://bc8bnh3ojscvq" path="res://Audio/UISounds/HoverSound.mp3" id="33_jdadt"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0elar"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_makqg"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tb1bo"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3bpfh"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_521by"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fflgs"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_qqa53")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_m3rps")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_fppnx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_srv00")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_fb6sf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_3t7t2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ip0jx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_1ij7b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kmj0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_u8c2q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_bjkct")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_8bd86")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_bbdn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_r5phi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_ak2ei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_sd7yc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_ofaxo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_jkdc7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_gfnr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_4mg7l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_swuye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_nrf2u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_0qlnb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_73ux5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_mw3tu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ui4it")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_x74kr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_6idvi")
+}],
+"loop": true,
+"name": &"shine",
+"speed": 40.0
+}]
+
+[node name="MenuButton" type="Button"]
+self_modulate = Color(1, 1, 1, 0)
+anchors_preset = -1
+anchor_left = -0.425
+anchor_top = -0.311
+anchor_right = 0.425
+anchor_bottom = 0.311
+offset_left = 744.0
+offset_top = 319.88
+offset_right = -752.0
+offset_bottom = -295.88
+scale = Vector2(4, 4)
+pivot_offset = Vector2(68, 28)
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("1_s3vph")
+theme_override_styles/normal = SubResource("StyleBoxEmpty_0elar")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_makqg")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_tb1bo")
+theme_override_styles/disabled = SubResource("StyleBoxEmpty_3bpfh")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_521by")
+flat = true
+script = ExtResource("2_5fa88")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+show_behind_parent = true
+position = Vector2(68, 28)
+scale = Vector2(3, 3)
+sprite_frames = SubResource("SpriteFrames_fflgs")
+animation = &"shine"
+
+[node name="Text" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.003
+anchor_right = 1.003
+anchor_bottom = 1.0
+offset_left = 47.592
+offset_top = 20.0
+offset_right = -8.40802
+offset_bottom = -3.0
+scale = Vector2(1.7, 1.7)
+pivot_offset = Vector2(68, 28)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0.458824)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_constants/shadow_outline_size = 6
+theme_override_fonts/font = ExtResource("1_s3vph")
+text = "LORUM"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="ClickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("31_hpjfu")
+volume_db = -10.0
+
+[node name="BackSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_et8ab")
+volume_db = -10.0
+
+[node name="HoverSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_jdadt")
+volume_db = 4.0
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="animation_looped" from="Sprite" to="." method="_on_sprite_animation_looped"]

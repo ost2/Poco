@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://doc5tw2coukue"]
+
+[ext_resource type="Texture2D" uid="uid://c5f2owxmcx6my" path="res://Sprites/PowerUps/Watch/Watch3.png" id="1_0mua7"]
+[ext_resource type="Script" path="res://clock.cs" id="2_2b5pu"]
+[ext_resource type="Texture2D" uid="uid://cyuqvi0d6eyy6" path="res://Sprites/PowerUps/Watch/Watch5.png" id="2_86adp"]
+[ext_resource type="Texture2D" uid="uid://bncr2kwj05qlm" path="res://Sprites/PowerUps/Watch/Watch4.png" id="2_pdaed"]
+[ext_resource type="AudioStream" uid="uid://q5jf8pm00e3c" path="res://Audio/PowerUpSounds/Clocksound - 03:09:2023, 04.15.mp3" id="5_31nux"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mb5ji"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_0mua7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_86adp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 7.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_40tme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_pdaed")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_js6nc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_86adp")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Clock" type="AnimatedSprite2D"]
+position = Vector2(2.08165e-12, -9)
+sprite_frames = SubResource("SpriteFrames_mb5ji")
+frame_progress = 0.562176
+script = ExtResource("2_2b5pu")
+
+[node name="Hand" type="AnimatedSprite2D" parent="."]
+position = Vector2(-2.08165e-12, 9)
+scale = Vector2(0.33, 0.25)
+sprite_frames = SubResource("SpriteFrames_40tme")
+offset = Vector2(2.08165e-12, -14)
+
+[node name="Shadow" type="AnimatedSprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 0.560784)
+show_behind_parent = true
+position = Vector2(4, 4)
+sprite_frames = SubResource("SpriteFrames_js6nc")
+
+[node name="TickSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_31nux")
+volume_db = -24.0

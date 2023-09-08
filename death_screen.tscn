@@ -1,0 +1,98 @@
+[gd_scene load_steps=6 format=3 uid="uid://7nq3rfr1nhe7"]
+
+[ext_resource type="Script" path="res://death_screen.cs" id="1_3xbpv"]
+[ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="1_s8ryv"]
+[ext_resource type="Texture2D" uid="uid://bfjsxv68fl3te" path="res://Sprites/UISprites/EnemyIcon.png" id="2_i5lj0"]
+[ext_resource type="PackedScene" uid="uid://dmhpbcuggjc0f" path="res://menu_button.tscn" id="2_ixq0a"]
+[ext_resource type="Texture2D" uid="uid://dnj760a7g311u" path="res://Sprites/UISprites/GreenArrow.png" id="3_vbcqe"]
+
+[node name="DeathScreen" type="CanvasLayer"]
+script = ExtResource("1_3xbpv")
+
+[node name="RestartButton" parent="." instance=ExtResource("2_ixq0a")]
+offset_left = 1712.0
+offset_top = 991.88
+offset_right = 215.0
+offset_bottom = 376.12
+scale = Vector2(2.5, 2.5)
+text = "RESTART"
+
+[node name="YouDiedLabel" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.847059)
+anchors_preset = -1
+anchor_top = 0.0601852
+anchor_bottom = 0.0601852
+offset_left = 936.0
+offset_top = -124.0
+offset_right = 989.0
+offset_bottom = -94.0
+scale = Vector2(12, 12)
+pivot_offset = Vector2(26.5, 2.08165e-12)
+theme_override_colors/font_color = Color(1, 0.203922, 0.152941, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_s8ryv")
+text = "YOU DIED"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="KillsDisplay" type="Node2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.847059)
+position = Vector2(846, 392)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="KillsSprite" type="Sprite2D" parent="KillsDisplay"]
+self_modulate = Color(1, 1, 1, 0.847059)
+position = Vector2(0, -2.5)
+texture = ExtResource("2_i5lj0")
+
+[node name="KillsLabel" type="Label" parent="KillsDisplay"]
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_left = 16.75
+offset_top = -12.25
+offset_right = 56.75
+offset_bottom = 10.75
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_s8ryv")
+text = "Kills: 0"
+vertical_alignment = 1
+
+[node name="LevelDisplay" type="Node2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.847059)
+position = Vector2(840, 522)
+scale = Vector2(4, 4)
+metadata/_edit_group_ = true
+
+[node name="LevellSprite" type="Sprite2D" parent="LevelDisplay"]
+self_modulate = Color(1, 1, 1, 0.847059)
+position = Vector2(0, -2.5)
+scale = Vector2(1.7, 1.7)
+texture = ExtResource("3_vbcqe")
+
+[node name="LevelLabel" type="Label" parent="LevelDisplay"]
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_left = 16.75
+offset_top = -12.25
+offset_right = 56.75
+offset_bottom = 10.75
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_s8ryv")
+text = "LEVEL: 0"
+vertical_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="."]
+self_modulate = Color(1, 1, 1, 0.847059)
+offset_left = 944.0
+offset_top = 200.0
+offset_right = 980.0
+offset_bottom = 221.0
+scale = Vector2(6, 6)
+pivot_offset = Vector2(17.5, 2.08165e-12)
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("1_s8ryv")
+text = "00:00"
+horizontal_alignment = 1
+vertical_alignment = 1

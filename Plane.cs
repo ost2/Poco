@@ -18,6 +18,7 @@ public partial class Plane : CharacterBody2D
 	
 	public float MinSpeed { get { return baseSpeed - maxSlowDown; } }
 	public float MaxSpeed { get { return baseSpeed + maxBoost; } }
+	public float TurnSpeedLimit { get { return maxTurn / (1 + Mathf.InverseLerp(0, MaxSpeed, curSpeed)); } }
 
 	public bool isPlayer = false;
 
@@ -35,6 +36,8 @@ public partial class Plane : CharacterBody2D
 	public float fireRange = 900.0f;
 	public float aimSkill = 0.4f;
 
+	public bool isDead = false;
+
 	// §READY
 	public override void _Ready()
 	{
@@ -47,33 +50,33 @@ public partial class Plane : CharacterBody2D
 	}
 	public void handleTiltAnim(AnimatedSprite2D mainSprite)
 	{
-		if (turnVal < -maxTurn * 0.5f)
+		if (turnVal < -TurnSpeedLimit * 0.5f)
 		{
 			mainSprite.Animation = "lean";
 			mainSprite.Frame = 1;
 			mainSprite.FlipV = true;
 			Skew = turnVal * 0.1f;
 		}
-		else if (turnVal < -maxTurn * 0.15f)
+		else if (turnVal < -TurnSpeedLimit * 0.15f)
 		{
 			mainSprite.Animation = "lean";
 			mainSprite.Frame = 0;
 			mainSprite.FlipV = true;
 			Skew = turnVal * 0.2f;
 		}
-		else if (turnVal < maxTurn * 0.15f)
+		else if (turnVal <= TurnSpeedLimit * 0.15f)
 		{
 			mainSprite.Animation = "default";
 			mainSprite.Frame = 0;
 		}
-		else if (turnVal < maxTurn * 0.5f)
+		else if (turnVal <= TurnSpeedLimit * 0.5f)
 		{
 			mainSprite.Animation = "lean";
 			mainSprite.Frame = 0;
 			mainSprite.FlipV = false;
 			Skew = turnVal * 0.2f;
 		}
-		else if (turnVal < maxTurn * 1.0f)
+		else if (turnVal <= TurnSpeedLimit * 1.0f)
 		{
 			mainSprite.Animation = "lean";
 			mainSprite.Frame = 1;

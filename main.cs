@@ -127,6 +127,8 @@ public partial class main : Node
 			}
 		}
 	}
+
+
 	public float enemyTimerMult { get { return (waveNumber * 0.17f) + 1; } }
 	public float enemyRange = 700.0f;
 
@@ -381,6 +383,8 @@ public partial class main : Node
 
 		shakeTimer += delta;
 	}
+
+	float camSpeed = 8;
 	void moveCamera(float delta)
 	{
 		mainCam.Zoom = baseZoom * mainMenu.getScaleFactor();
@@ -390,21 +394,19 @@ public partial class main : Node
 			if (!GameOver && !doMainMenu)
 			{
 				var dist = 0; //camDistance - player.curSpeed / 3;
-				mainCam.Position = player.Position + (player.frontVector * dist) + MouseVector * 0.3f;
+				//mainCam.Position 
+
+				var camPoint = player.Position + (player.frontVector * dist) + MouseVector * 0.3f;
+
+				var dirVec = (camPoint - mainCam.Position).Normalized();
+				var length = (camPoint - mainCam.Position).Length();
+
+				mainCam.Position += dirVec * length * delta * camSpeed;
 			}
 			else if (doMainMenu)
 			{
 				mainCam.Position = player.Position - new Vector2(x: 0, y: -165);
 			}
-		}
-
-		if (Input.IsActionPressed("zoom_in") && mainCam.Zoom.X <= maxZoom)
-		{
-			mainCam.Zoom += new Vector2(x: zoomIncrement, y: zoomIncrement);
-		}
-		if (Input.IsActionPressed("zoom_in") && mainCam.Zoom.X >= minZoom)
-		{
-			mainCam.Zoom -= new Vector2(x: zoomIncrement, y: zoomIncrement);
 		}
 
 		if (shakeTimer < maxShakeTime)
@@ -416,7 +418,7 @@ public partial class main : Node
 			mainCam.Offset = Vector2.Zero;
 		}
 
-		var paraLayer = GetNode<ParallaxBackground>("ParallaxBackground").GetNode<ParallaxLayer>("ParallaxLayer");
+		//var paraLayer = GetNode<ParallaxBackground>("ParallaxBackground").GetNode<ParallaxLayer>("ParallaxLayer");
 		//paraLayer.MotionOffset = -(player.frontVector * camDistance);
 	}
 
@@ -525,7 +527,7 @@ public partial class main : Node
 		AddChild(box);
 	}
 
-	public void spawnExplosion(Plane plane = null, float scale = 1, float volume = -10, bullet bullet = null, float speed = 1, float randomPos = 0)
+	public void spawnExplosion(CharacterBody2D plane = null, float scale = 1, float volume = -10, bullet bullet = null, float speed = 1, float randomPos = 0, float damage = 0, float pitch = 0.7f)
 	{
 		explosion explo = explosionScene.Instantiate<explosion>();
 		if (plane != null)
@@ -535,15 +537,31 @@ public partial class main : Node
 			explo.pos = plane.Position + new Vector2(x: rand.RandfRange(-randomPos, randomPos), y: rand.RandfRange(-randomPos, randomPos));
 			explo.size = new Vector2(x: scale, y: scale);
 			explo.volume = volume;
+			explo.pitch = pitch;
+			explo.damage = damage;
 
 			if (bullet != null)
 			{
 				explo.pos = bullet.Position;
 			}
 		}
-		AddChild(explo);
+		CallDeferred("add_child", explo);
 
 		startScreenShake(scale * 3, scale);
+	}
+
+
+	public bool maybeSpawnPower(float P, Vector2 pos, bool tempOverride)
+	{
+		var rnd = new RandomNumberGenerator();
+
+		var move = curDifficulty == difficulty.hard ? false : true;
+		if (rnd.RandfRange(0, 100) <= P)
+		{
+			spawnPowerUp(pos, move, getRandomPowerID(true), tempOverride);
+			return true;
+		}
+		else return false;
 	}
 	// BOXES
 	void incrementOtherTimers(float delta)
@@ -558,7 +576,7 @@ public partial class main : Node
 		}
 	}
 	int tempChance = 3;
-	public void spawnPowerUp(Vector2 pos, bool moveToPlayer = false, string powID = null)
+	public void spawnPowerUp(Vector2 pos, bool moveToPlayer = false, string powID = null, bool tempOverride = false)
 	{
 		power_up power = powerUpScene.Instantiate<power_up>();
 		power.powerID = powID != null ? powID : getRandomPowerID();
@@ -566,16 +584,28 @@ public partial class main : Node
 		power.moveToPlayer = moveToPlayer;
 
 		var rand = new Random();
-		if (power.powerID != "HealthPack" && rand.Next(0, tempChance) == 0)
+		if (power.powerID != "HealthPack" && (rand.Next(0, tempChance) == 0 || tempOverride))
 		{
 			power.isTemporary = true;
 		}
 
 		CallDeferred("add_child", power);
 	}
-	string getRandomPowerID()
+	string getRandomPowerID(bool noHealth = false)
 	{
 		var rand = new Random();
+		if (noHealth)
+		{
+			return rand.Next(0, 5) switch
+			{
+				0 => "AgilityPack",
+				1 => "SpeedPack",
+				2 => "FireSpeedPack",
+				3 => "DamAccPack",
+				4 => "RegenPack",
+				_ => "Null",
+			};
+		}
         return rand.Next(0, 12) switch
         {
 			0 => "AgilityPack",

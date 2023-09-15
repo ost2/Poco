@@ -8,7 +8,13 @@ public partial class explosion : AnimatedSprite2D
 	public Vector2 vel;
 	public Vector2 pos;
 
+	Area2D hitBox;
+	CollisionShape2D circle;
+
+	public float pitch;
+
 	public bool playSound = true;
+	public float damage = 0;
 	public Vector2 size = new Vector2(x: 1, y: 1);
 	public float speed = 1;
 
@@ -21,7 +27,13 @@ public partial class explosion : AnimatedSprite2D
 	{
 		var sound = GetNode<AudioStreamPlayer2D>("ExplosionSound");
 		sound.VolumeDb = volume;
+		sound.PitchScale = pitch;
 		sound.Play();
+
+		hitBox = GetNode<Area2D>("HitBox");
+		circle = hitBox.GetNode<CollisionShape2D>("Circle");
+
+		hitBox.Name = "Explosion";
 
 		Scale = size;
 		var rand = new Random();
@@ -38,6 +50,17 @@ public partial class explosion : AnimatedSprite2D
 	{
 		vel *= 0.995f;
 		time += (float)delta;
+
+		if (time < 0.2f)
+		{
+			var c = circle.Shape as CircleShape2D;
+			c.Radius = Mathf.Clamp(time * 140 * speed * 8, 0, 110) * size.X;
+		}
+		else
+		{
+			hitBox.Monitorable = false;
+		}
+
 
 		if (size == new Vector2(x: 1, y: 1))
 		{

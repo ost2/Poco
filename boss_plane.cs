@@ -62,6 +62,8 @@ public partial class boss_plane : Plane
 		distance = rand.Next(60, 180);
 		Rotation = getPlayerDirVector().Angle();
 
+		GetNode<Area2D>("DamageHitBox").Name = "Enemy";
+
 		assignStats();
 	}
 
@@ -241,7 +243,6 @@ public partial class boss_plane : Plane
 			planeSprite.Play();
 		}
 	}
-	bool isDead;
 	void bossDie()
 	{
 		main.lastEnemyKilledPos = GlobalPosition;
@@ -260,13 +261,25 @@ public partial class boss_plane : Plane
 	// SIGNAL METHODS
 	void _on_damage_hit_box_area_entered(Area2D area)
 	{
-		var bullet = area as bullet;
-
-		if (bullet.firedId != "Enemy" && !isDead)
+		if (!isDead)
 		{
-			//main.spawnExplosion(this, 0.15f, false, bullet, 3.5f);
-			takeDamage(bullet.damage);
-			bullet.QueueFree();
+			if (area is bullet)
+			{
+				var bullet = area as bullet;
+				if (bullet.firedId != "Enemy")
+				{
+					//main.spawnExplosion(this, 0.15f, false, bullet, 3.5f);
+					takeDamage(bullet.damage);
+					bullet.QueueFree();
+				}
+			}
+
+			else if (area.Name == "Explosion")
+			{
+				var explo = area.GetParent<explosion>();
+				
+				takeDamage(explo.damage);
+			}
 		}
 	}
 

@@ -1,0 +1,56 @@
+[gd_scene load_steps=7 format=3 uid="uid://deadovo08tkbw"]
+
+[ext_resource type="Script" path="res://rocket.cs" id="1_dcx5i"]
+[ext_resource type="Texture2D" uid="uid://58y65nnxf3dh" path="res://Sprites/RocketSprites/Rocket1.png" id="1_hbaib"]
+[ext_resource type="Texture2D" uid="uid://b4x1hksglhkvp" path="res://Sprites/RocketSprites/Rocket2.png" id="2_1d0v1"]
+[ext_resource type="PackedScene" uid="uid://yjn4vp0wcdk8" path="res://rocket_trail.tscn" id="4_6a0nv"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0yg66"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_hbaib")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_1d0v1")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gvbxh"]
+size = Vector2(56, 32)
+
+[node name="Rocket" type="CharacterBody2D"]
+top_level = true
+scale = Vector2(0.7, 0.7)
+collision_layer = 0
+script = ExtResource("1_dcx5i")
+
+[node name="Sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.4, 1.4)
+sprite_frames = SubResource("SpriteFrames_0yg66")
+frame = 1
+frame_progress = 1.0
+
+[node name="HitBox" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_gvbxh")
+
+[node name="TrailOrigin" type="Node2D" parent="."]
+show_behind_parent = true
+position = Vector2(-20, 2.08165e-12)
+
+[node name="RocketTrail" parent="TrailOrigin" instance=ExtResource("4_6a0nv")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="HitBox" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_gvbxh")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

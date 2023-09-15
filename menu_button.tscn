@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://dmhpbcuggjc0f"]
+[gd_scene load_steps=40 format=3 uid="uid://cqnmbimsmym2"]
 
 [ext_resource type="Texture2D" uid="uid://30c81c4w4lk1" path="res://Sprites/UISprites/MenuButtonSprites/MenuButton1.png" id="1_qqa53"]
 [ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="1_s3vph"]

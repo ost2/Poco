@@ -139,7 +139,6 @@ public partial class cannon : RayCast2D
 			fireCannon();
 		}
 
-
 		void fireCannon()
 		{
 			lastFired = 0.0f;
@@ -153,10 +152,22 @@ public partial class cannon : RayCast2D
 			bul.speed = bulletSpeed;
 			bul.velocity = plane.Velocity;
 			bul.damage = damage;
+			bul.volume = loudness;
+			bul.pitch = pitch;
 
 			bul.firedId = plane.isPlayer ? "Player" : "Enemy";
 
 			AddChild(bul);
 		}
+	}
+
+	[Export]
+	float loudness = 0;
+	[Export]
+	float pitch = 1;
+	
+	public void setLoudness(float db)
+	{
+		loudness = db;
 	}
 }

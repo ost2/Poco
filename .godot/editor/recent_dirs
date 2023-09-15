@@ -1,6 +1,8 @@
+res://Sprites/RocketSprites
+res://
+res://Sprites/UISprites/HealthBarSprites
 /Users/sigurdsevaldrud/GodotProjects/Poco/Output
 res://Sprites/TwinPlaneSprites
-res://
 res://Sprites/PowerUps/SpeedSprites
 res://Sprites/PowerUps/RegenSprites
 res://Sprites/PowerUps/FireSpeedSprites
@@ -16,8 +18,5 @@ res://Sprites/BigPlaneSprites
 res://Sprites/MediumPlane
 res://Sprites/UISprites
 res://Sprites/BoxSprites
-res://Sprites/UISprites/HealthBarSprites
 res://Sprites/PowerUps/AgilitySprites
 res://Sprites/BigPlaneSprites/Propeller
-res://Sprites/PowerUps/HealthPackSprites
-res://Sprites/PowerUps

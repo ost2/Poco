@@ -1,13 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "HSrciz+Gjs/KJF+xqRDrF782tqK8Eu1gaK4VqIaAXzjldR0ZsgvKZIJYYcjXjr1/J9yMHmrwabClMN70lcMOeQ==",
+  "dgSpecHash": "DkZfW3atcE98JvpXRtYnHiiG54X54cFf1Y1bZOgwfPoJeBV9zQDg4O34zjjAsSZYatBwoSzJQwETeAHtQFZ9qA==",
   "success": true,
   "projectFilePath": "/Users/sigurdsevaldrud/GodotProjects/Poco/Poco.csproj",
   "expectedPackageFiles": [
     "/Users/sigurdsevaldrud/.nuget/packages/godot.sourcegenerators/4.1.0/godot.sourcegenerators.4.1.0.nupkg.sha512",
     "/Users/sigurdsevaldrud/.nuget/packages/godotsharp/4.1.0/godotsharp.4.1.0.nupkg.sha512",
-    "/Users/sigurdsevaldrud/.nuget/packages/microsoft.netcore.app.runtime.osx-arm64/6.0.18/microsoft.netcore.app.runtime.osx-arm64.6.0.18.nupkg.sha512",
-    "/Users/sigurdsevaldrud/.nuget/packages/microsoft.aspnetcore.app.runtime.osx-arm64/6.0.18/microsoft.aspnetcore.app.runtime.osx-arm64.6.0.18.nupkg.sha512"
+    "/Users/sigurdsevaldrud/.nuget/packages/godotsharpeditor/4.1.0/godotsharpeditor.4.1.0.nupkg.sha512"
   ],
   "logs": []
 }

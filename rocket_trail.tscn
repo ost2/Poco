@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://yjn4vp0wcdk8"]
+
+[ext_resource type="Script" path="res://rocket_trail.cs" id="1_xfvrg"]
+
+[sub_resource type="Curve" id="Curve_s3qkx"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.779144, 0.722344), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[node name="RocketTrail" type="Line2D"]
+width_curve = SubResource("Curve_s3qkx")
+script = ExtResource("1_xfvrg")

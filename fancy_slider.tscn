@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://fc5f0iqscenh"]
+[gd_scene load_steps=10 format=3 uid="uid://mjgg74fmjqvp"]
 
 [ext_resource type="Script" path="res://fancy_slider.cs" id="1_ebh2i"]
 [ext_resource type="Texture2D" uid="uid://brn2tbhv7b8nq" path="res://Sprites/UISprites/SliderSprites/Slider2.png" id="1_oxnxg"]

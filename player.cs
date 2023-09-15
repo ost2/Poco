@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class player : Plane
 {	
@@ -7,7 +8,6 @@ public partial class player : Plane
 	public float xpToLevel = 60;
 
 	public bool cantMove = false;
-	public bool isDead = false;
 
 	public int level;
 
@@ -28,13 +28,21 @@ public partial class player : Plane
 	float pMaxTurn = 3.0f;
 	float pHeatUp = 0.0003f;
 	float pCoolDown = 0.05f;
+	
+	float rocketDamage = 100;
+	float rocketExploScale = 0.8f;
 
 	public float overHeal;
 	public float maxOverHeal;
 
+	float rocketCount;
 	Timer regenTimer;
 
+	Node2D rocketCannonNode;
+	rocket_cannon[] rocketCannons;
+	rocket_cannon rocketC1;
 
+	rocket_target rTarget;
 
 	public float agilityTempBonus = 1;
 	public float speedTempBonus = 1;
@@ -76,6 +84,14 @@ public partial class player : Plane
 		regenTimer.Start();
 
 		cannon = GetNode<cannon>("Cannon");
+
+		rocketCannonNode = GetNode<Node2D>("RocketCannons");
+		rocketC1 = rocketCannonNode.GetNode<rocket_cannon>("RocketCannon1");
+		rocketC1.main = main;
+
+		rTarget = GetNode<rocket_target>("RocketTarget");
+
+		rocketCannons = new rocket_cannon[] { rocketC1 };
 
 		levelUpSound = GetNode<AudioStreamPlayer2D>("LevelUpSound");
 
@@ -213,6 +229,8 @@ public partial class player : Plane
 			doInputs(delta);
 		}
 
+		handleRocketCannons();
+
 		if (curSpeed > MaxSpeed)
 		{
 			curSpeed -= slowDownAccel;
@@ -262,43 +280,132 @@ public partial class player : Plane
 
 		handlePowerTimers((float)delta);
 	}
-	public float TurnSpeedLimit { get { return maxTurn / (1 + Mathf.InverseLerp(0, MaxSpeed, curSpeed)); } }
+
+	float rocketSpeedMult = 0.7f;
+	Plane curRocketTarget;
+	Plane prevRocketTarget;
+	void handleRocketCannons()
+	{	
+		// if (rocketTargets.Count > 0)
+		// {
+		// 	curRocketTarget = getRocketTarget();
+		// 	rTarget.target = curRocketTarget;
+		// }
+		curRocketTarget = getRocketTarget();
+
+		if (curRocketTarget != prevRocketTarget)
+		{
+			if (curRocketTarget == null)
+			{
+				rTarget.loseTarget();
+			}
+			else
+			{
+				rTarget.getNewTarget();
+			}
+		}
+		prevRocketTarget = curRocketTarget;
+
+		rTarget.target = curRocketTarget;
+
+		foreach (var rc in rocketCannons)
+		{
+			rc.startSpeed = curSpeed;
+			rc.speedMult = rocketSpeedMult;
+			rc.damage = rocketDamage;
+			rc.explosionScale = rocketExploScale;
+			rc.TargetPosition = frontVector; //cannon.CrosshairPos - rc.GlobalPosition;
+		}
+	}
+
+	float rocketLockRad = 1000;
+	Plane getRocketTarget()
+	{
+		// float furthest = 0;
+		// var target = rocketTargets[0];
+
+		// foreach (var plane in rocketTargets)
+		// {
+		// 	var dist = (plane.GlobalPosition - GlobalPosition).Length();
+		// 	if (dist > furthest)
+		// 	{
+		// 		furthest = dist;
+		// 		target = plane;
+		// 	}
+		// }
+		
+		float closest = 1000;
+		Plane target = null;
+
+		var list = GetTree().GetNodesInGroup("Enemies");
+		foreach (var thing in list)
+		{	
+			if (thing.IsInsideTree())
+			{
+				var enemy = thing as Plane;
+
+				var dist = Mathf.Abs((enemy.GlobalPosition - cannon.CrosshairPos).Length());
+				if (dist < closest)
+				{
+					closest = dist;
+					target = enemy;
+				}
+			}
+		}
+
+		return target;
+	}
 
 	void doInputs(double delta)
 	{
 		if (Input.IsActionPressed("move_forward") && curSpeed <= MaxSpeed)
 		{
-			curSpeed += boostAccel * (float)delta;
+			var increase = Mathf.Clamp(boostAccel * (float)delta, 0, MaxSpeed - curSpeed);
+			curSpeed += increase;
 		}
 		if (Input.IsActionPressed("move_backward") && curSpeed >= MinSpeed)
 		{
 			curSpeed -= slowDownAccel * (float)delta;
 		}
-		if (Input.IsActionPressed("turn_right") && turnVal <= TurnSpeedLimit)
+		if (Input.IsActionPressed("turn_right") && turnVal < TurnSpeedLimit)
 		{
-			var turn = turnAccel;
+			var turn = turnAccel * (float)delta;
 			if (turnVal < 0)
 			{
 				turn *= 1.3f;
 			}
-			turnVal += turn * (float)delta;
+			turn = Mathf.Clamp(turn, 0, TurnSpeedLimit - turnVal);
+			turnVal += turn;
 		}
-		if (Input.IsActionPressed("turn_left") && turnVal >= -TurnSpeedLimit)
+		if (Input.IsActionPressed("turn_left") && turnVal > -TurnSpeedLimit)
 		{
-			var turn = turnAccel;
+			var turn = turnAccel * (float)delta;
 			if (turnVal > 0)
 			{
 				turn *= 1.3f;
 			}
-			turnVal -= turn * (float)delta;
+			turn = Mathf.Clamp(turn, 0, TurnSpeedLimit - turnVal);
+			turnVal -= turn;
 		}
 
 		if (Input.IsActionJustPressed("toggle_aim"))
 		{
 			canAim = !canAim;
 		}
+
+		if (Input.IsActionJustPressed("fire_rocket"))
+		{
+			fireRocket(rocketC1);
+		}
 	}
 
+	void fireRocket(rocket_cannon rc)
+	{
+		if (rocketCount > 0)
+		{
+			rc.shootRocket(curRocketTarget);
+		}
+	}
 
 	void spinPropeller()
 	{
@@ -371,7 +478,29 @@ public partial class player : Plane
 		main.pDie();
 	}
 
+	List<Plane> rocketTargets = new List<Plane>();
+
 	// SIGNAL METHODS
+
+	void _on_target_area_body_entered(Node2D body)
+	{
+		if (body is Plane)
+		{
+			var target = body as Plane;
+			rocketTargets.Add(target);
+		}
+	}
+	void _on_target_area_body_exited(Node2D body)
+	{
+		if (body is Plane)
+		{
+			var target = body as Plane;
+			if (rocketTargets.Contains(target))
+			{
+				rocketTargets.Remove(target);
+			}
+		}
+	}
 
 	void _on_take_damage_hit_box_area_entered(Area2D area)
 	{

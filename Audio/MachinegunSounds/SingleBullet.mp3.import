@@ -13,7 +13,7 @@ dest_files=["res://.godot/imported/SingleBullet.mp3-575472ee7f8231001315d79ba4f9
 [params]
 
 loop=false
-loop_offset=0
-bpm=0
+loop_offset=0.0
+bpm=0.0
 beat_count=0
 bar_beats=4

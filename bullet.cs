@@ -10,6 +10,9 @@ public partial class bullet : Area2D
 
 	public string firedId;
 
+	public float volume;
+	public float pitch;
+
 	Sprite2D trail;
 	float trailLength;
 	float trailAlpha = 0;
@@ -18,20 +21,16 @@ public partial class bullet : Area2D
 
 	AudioStreamPlayer2D fireSound;
 
+	const float bulletVolumeConstant = -10;
+
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
 		var main = GetParent<cannon>().main;
 
 		fireSound = GetNode<AudioStreamPlayer2D>("BulletFiredSound");
-		if (firedId == "Enemy")
-		{
-			fireSound.VolumeDb -= 8.0f;
-		}
-		else if (firedId == "Player")
-		{
-			//main.startScreenShake(0.3f, 0.2f);
-		}
+		fireSound.VolumeDb = volume + bulletVolumeConstant;
+		fireSound.PitchScale = pitch;
 
 		trail = GetNode<Sprite2D>("TrailSprite");
 		trail.SelfModulate = new Color(1, 1, 1, trailAlpha);

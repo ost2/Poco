@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://cw4emyg3mdwuj"]
+[gd_scene load_steps=3 format=3 uid="uid://d3ed3cbfb6udt"]
 
 [ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="1_dpxux"]
 [ext_resource type="Script" path="res://value_changed_label.cs" id="1_nfbgw"]

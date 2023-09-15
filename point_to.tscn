@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dk71a247yi31c"]
+[gd_scene load_steps=32 format=3 uid="uid://c5g26addaeitr"]
 
 [ext_resource type="Script" path="res://point_to.cs" id="1_bdgji"]
 [ext_resource type="Texture2D" uid="uid://bbw8u8mu1i606" path="res://Sprites/PointerSprites/SmallPoint.png" id="2_er3tx"]
@@ -23,6 +23,12 @@
 [ext_resource type="Texture2D" uid="uid://barggolt0advv" path="res://Sprites/PowerUps/RegenSprites/Regen1.png" id="14_jdq38"]
 [ext_resource type="Texture2D" uid="uid://dswjcb2jqp8uv" path="res://Sprites/PowerUps/RegenSprites/Regen2.png" id="15_gwcv5"]
 [ext_resource type="Texture2D" uid="uid://bgvoi0a24xqdf" path="res://Sprites/TwinPlaneSprites/TwinPlane10.png" id="15_qtoub"]
+[ext_resource type="Texture2D" uid="uid://dc5f168rc5e7e" path="res://Sprites/RocketSprites/Rocket3.png" id="22_x2v5i"]
+[ext_resource type="Texture2D" uid="uid://crduqy6l42maq" path="res://Sprites/RocketSprites/Rocket6.png" id="23_e7641"]
+[ext_resource type="Texture2D" uid="uid://ddn6gex8n4mfs" path="res://Sprites/RocketSprites/Rocket5.png" id="24_uxhdr"]
+[ext_resource type="Texture2D" uid="uid://cp3vnt7b22oga" path="res://Sprites/RocketSprites/Rocket4.png" id="24_xw6nv"]
+[ext_resource type="Texture2D" uid="uid://k2i86sb6vm3c" path="res://Sprites/RocketSprites/Rocket8.png" id="25_4608t"]
+[ext_resource type="Texture2D" uid="uid://c78c40dspovqg" path="res://Sprites/RocketSprites/Rocket7.png" id="25_ryr28"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1cmvs"]
 animations = [{
@@ -138,6 +144,39 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("22_x2v5i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_e7641")
+}],
+"loop": true,
+"name": &"rocket_one",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_uxhdr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_4608t")
+}],
+"loop": true,
+"name": &"rocket_three",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("24_xw6nv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_ryr28")
+}],
+"loop": true,
+"name": &"rocket_two",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("10_lnwxa")
 }, {
 "duration": 1.0,
@@ -174,4 +213,4 @@ sprite_frames = SubResource("SpriteFrames_1cmvs")
 show_behind_parent = true
 scale = Vector2(0.5, 0.5)
 sprite_frames = SubResource("SpriteFrames_e0moa")
-animation = &"enemy_plane_big"
+animation = &"rocket_one"

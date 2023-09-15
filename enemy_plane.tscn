@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dvum3p6fo3pmf"]
+[gd_scene load_steps=29 format=3 uid="uid://bo66m56a2ikla"]
 
 [ext_resource type="Script" path="res://enemy_plane.cs" id="1_nwq1a"]
 [ext_resource type="Texture2D" uid="uid://ocw2fh6vy0vl" path="res://Sprites/TwinPlaneSprites/TwinPlane1.png" id="4_fpwg3"]
@@ -11,10 +11,10 @@
 [ext_resource type="AudioStream" uid="uid://bfjts5f461lrn" path="res://Audio/PropellerSounds/PropellerAmbiance.mp3" id="8_p3ixs"]
 [ext_resource type="Texture2D" uid="uid://b2im838shcaf3" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller2.png" id="8_qqi6a"]
 [ext_resource type="Texture2D" uid="uid://603bq0vtw8d3" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller3.png" id="9_5el4d"]
-[ext_resource type="PackedScene" uid="uid://bahh8oigi6gvi" path="res://trail_2d.tscn" id="9_gmn2f"]
+[ext_resource type="PackedScene" uid="uid://ke2acehuhlwl" path="res://trail_2d.tscn" id="9_gmn2f"]
 [ext_resource type="Texture2D" uid="uid://q0f58lu6iju7" path="res://Sprites/TwinPlaneSprites/TwinPlane6.png" id="9_ihlsl"]
 [ext_resource type="Texture2D" uid="uid://cl5bpn3abmukx" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller4.png" id="10_3nvj8"]
-[ext_resource type="PackedScene" uid="uid://cfdrfli6rl2on" path="res://cannon.tscn" id="10_53kkn"]
+[ext_resource type="PackedScene" uid="uid://bp3cqaaypo8mw" path="res://cannon.tscn" id="10_53kkn"]
 [ext_resource type="Texture2D" uid="uid://cqhekssar65gw" path="res://Sprites/TwinPlaneSprites/TwinPlane7.png" id="10_icqdb"]
 [ext_resource type="AudioStream" uid="uid://clqpin3mb4178" path="res://Audio/DamageSounds/EnemyDamageSlap.mp3" id="11_5s8br"]
 [ext_resource type="Texture2D" uid="uid://dasq7vw3w1i8b" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller5.png" id="11_7wp4a"]
@@ -22,7 +22,7 @@
 [ext_resource type="Texture2D" uid="uid://rx67rkqbyiie" path="res://Sprites/TwinPlaneSprites/TwinPlane9.png" id="12_avexs"]
 [ext_resource type="Texture2D" uid="uid://u6kvd0f8bsom" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller6.png" id="12_olvi7"]
 [ext_resource type="Texture2D" uid="uid://bgvoi0a24xqdf" path="res://Sprites/TwinPlaneSprites/TwinPlane10.png" id="13_gsqkt"]
-[ext_resource type="PackedScene" uid="uid://dk71a247yi31c" path="res://point_to.tscn" id="16_23eim"]
+[ext_resource type="PackedScene" uid="uid://c5g26addaeitr" path="res://point_to.tscn" id="16_23eim"]
 
 [sub_resource type="Curve" id="Curve_uafbq"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.177072), 0.0, 0.0, 0, 0]
@@ -115,6 +115,7 @@ animations = [{
 
 [node name="EnemyPlane" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(1.5, 1.5)
+collision_layer = 256
 script = ExtResource("1_nwq1a")
 
 [node name="WingTips" type="Node2D" parent="."]
@@ -146,14 +147,20 @@ disabled = true
 [node name="Cannon" parent="." instance=ExtResource("10_53kkn")]
 position = Vector2(6, 2.08165e-12)
 scale = Vector2(0.7, 0.7)
+loudness = -10.0
+pitch = 1.2
 
 [node name="Cannon2" parent="." instance=ExtResource("10_53kkn")]
 position = Vector2(3, -4)
 scale = Vector2(0.5, 0.5)
+loudness = -10.0
+pitch = 0.9
 
 [node name="Cannon3" parent="." instance=ExtResource("10_53kkn")]
 position = Vector2(3, 4)
 scale = Vector2(0.5, 0.5)
+loudness = -10.0
+pitch = 1.1
 
 [node name="PlaneSprite" type="AnimatedSprite2D" parent="."]
 self_modulate = Color(1, 0.768627, 0.47451, 1)
@@ -187,7 +194,7 @@ sprite_frames = SubResource("SpriteFrames_xfqhi")
 frame_progress = 0.123173
 
 [node name="DamageHitBox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitBox"]

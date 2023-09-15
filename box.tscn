@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://eld3wqjt6gl3"]
+[gd_scene load_steps=20 format=3 uid="uid://bgbk3rbflio4p"]
 
 [ext_resource type="Script" path="res://box.cs" id="1_f0jrq"]
 [ext_resource type="Texture2D" uid="uid://bocrgbiewd1js" path="res://Sprites/BoxSprites/Box1.png" id="1_vh6si"]
@@ -15,7 +15,7 @@
 [ext_resource type="Texture2D" uid="uid://buekhynw2c7pq" path="res://Sprites/BoxSprites/Box8.png" id="13_ej5f4"]
 [ext_resource type="AudioStream" uid="uid://woecmxopksp4" path="res://Audio/BoxSounds/BoxDamageSound.mp3" id="14_3g3i8"]
 [ext_resource type="AudioStream" uid="uid://bmyg70jxcbbw1" path="res://Audio/BoxSounds/BoxBreakSound.mp3" id="15_s2yd3"]
-[ext_resource type="PackedScene" uid="uid://dk71a247yi31c" path="res://point_to.tscn" id="16_kbdti"]
+[ext_resource type="PackedScene" uid="uid://c5g26addaeitr" path="res://point_to.tscn" id="16_kbdti"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sf7iq"]
 

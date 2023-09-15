@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://ddxgllyi8uqh8"]
+[gd_scene load_steps=5 format=3 uid="uid://bul02td2xsoyq"]
 
 [ext_resource type="Script" path="res://pause_menu.cs" id="1_s0yu8"]
-[ext_resource type="PackedScene" uid="uid://dmhpbcuggjc0f" path="res://menu_button.tscn" id="2_sy6c2"]
+[ext_resource type="PackedScene" uid="uid://cqnmbimsmym2" path="res://menu_button.tscn" id="2_sy6c2"]
 [ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="3_rjcvq"]
 [ext_resource type="Texture2D" uid="uid://ejhtyjdx8ret" path="res://Sprites/UISprites/HealthBarSprites/HealthBar3.png" id="4_q1hkd"]
 

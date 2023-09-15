@@ -92,6 +92,24 @@ public partial class power_up : Area2D
 					pointer.previewSprite.Animation = "regen_pack";
 					break;
 				}
+				case "OneRocket":
+				{
+					sprite.Animation = "rocket_one";
+					pointer.previewSprite.Animation = "rocket_one";
+					break;
+				}
+				case "TwoRocket":
+				{
+					sprite.Animation = "rocket_two";
+					pointer.previewSprite.Animation = "rocket_two";
+					break;
+				}
+				case "ThreeRocket":
+				{
+					sprite.Animation = "rocket_three";
+					pointer.previewSprite.Animation = "rocket_three";
+					break;
+				}
 			}
 			Show();
 			sprite.Play();

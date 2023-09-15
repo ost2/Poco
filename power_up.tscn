@@ -1,8 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://bt6m2scg0skgw"]
+[gd_scene load_steps=29 format=3 uid="uid://41b2tbrmutew"]
 
 [ext_resource type="Script" path="res://power_up.cs" id="1_tb7fb"]
 [ext_resource type="Texture2D" uid="uid://br8vd61fi1gxl" path="res://Sprites/PowerUps/AgilitySprites/AgilityPack1.png" id="2_raiwk"]
-[ext_resource type="PackedScene" uid="uid://dk71a247yi31c" path="res://point_to.tscn" id="3_c26y0"]
+[ext_resource type="PackedScene" uid="uid://c5g26addaeitr" path="res://point_to.tscn" id="3_c26y0"]
 [ext_resource type="Texture2D" uid="uid://bvu3qdjxvqxlw" path="res://Sprites/PowerUps/AgilitySprites/AgilityPack2.png" id="3_grfj4"]
 [ext_resource type="Texture2D" uid="uid://c3481r7giogim" path="res://Sprites/PowerUps/DamAccSprites/DamagePack1.png" id="4_f23qt"]
 [ext_resource type="Texture2D" uid="uid://6rpving8y1ie" path="res://Sprites/PowerUps/FireSpeedSprites/FireSpeedPack1.png" id="4_klt17"]
@@ -14,10 +14,16 @@
 [ext_resource type="Texture2D" uid="uid://br6qw2gin0eir" path="res://Sprites/PowerUps/SpeedSprites/SpeedPack2.png" id="7_wdllm"]
 [ext_resource type="Texture2D" uid="uid://barggolt0advv" path="res://Sprites/PowerUps/RegenSprites/Regen1.png" id="10_5lrju"]
 [ext_resource type="Texture2D" uid="uid://dswjcb2jqp8uv" path="res://Sprites/PowerUps/RegenSprites/Regen2.png" id="11_gqwio"]
+[ext_resource type="Texture2D" uid="uid://dc5f168rc5e7e" path="res://Sprites/RocketSprites/Rocket3.png" id="12_3tj5n"]
+[ext_resource type="Texture2D" uid="uid://crduqy6l42maq" path="res://Sprites/RocketSprites/Rocket6.png" id="13_aprug"]
+[ext_resource type="Texture2D" uid="uid://ddn6gex8n4mfs" path="res://Sprites/RocketSprites/Rocket5.png" id="14_xf8xu"]
+[ext_resource type="Texture2D" uid="uid://k2i86sb6vm3c" path="res://Sprites/RocketSprites/Rocket8.png" id="15_5hdcr"]
 [ext_resource type="AudioStream" uid="uid://ccisgqhertyn0" path="res://Audio/PowerUpSounds/PowerUpSound.mp3" id="15_t4x2i"]
 [ext_resource type="Texture2D" uid="uid://dhswm2a7xqieo" path="res://Sprites/PowerUps/Watch/Watch1.png" id="16_8ou7i"]
 [ext_resource type="Texture2D" uid="uid://cyuqvi0d6eyy6" path="res://Sprites/PowerUps/Watch/Watch5.png" id="16_gl2uc"]
+[ext_resource type="Texture2D" uid="uid://cp3vnt7b22oga" path="res://Sprites/RocketSprites/Rocket4.png" id="16_vpsgq"]
 [ext_resource type="Texture2D" uid="uid://yr1nuh7ij5no" path="res://Sprites/PowerUps/Watch/Watch2.png" id="17_00xn8"]
+[ext_resource type="Texture2D" uid="uid://c78c40dspovqg" path="res://Sprites/RocketSprites/Rocket7.png" id="17_eokc5"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtdnd"]
 
@@ -80,6 +86,39 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("12_3tj5n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_aprug")
+}],
+"loop": true,
+"name": &"rocket_one",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_xf8xu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_5hdcr")
+}],
+"loop": true,
+"name": &"rocket_three",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_vpsgq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_eokc5")
+}],
+"loop": true,
+"name": &"rocket_two",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": ExtResource("6_jqg77")
 }, {
 "duration": 1.0,
@@ -127,7 +166,7 @@ shape = SubResource("CircleShape2D_vtdnd")
 
 [node name="PowerUpSprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_oabov")
-animation = &"speed_pack"
+animation = &"rocket_one"
 
 [node name="TempSprite" type="AnimatedSprite2D" parent="PowerUpSprite"]
 position = Vector2(-7.66667, -12)

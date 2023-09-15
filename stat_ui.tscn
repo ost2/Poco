@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://chvl4in5cfsng"]
+[gd_scene load_steps=24 format=3 uid="uid://d0unvfyl6mecw"]
 
 [ext_resource type="Texture2D" uid="uid://bvu3qdjxvqxlw" path="res://Sprites/PowerUps/AgilitySprites/AgilityPack2.png" id="1_a3ilp"]
 [ext_resource type="Texture2D" uid="uid://br8vd61fi1gxl" path="res://Sprites/PowerUps/AgilitySprites/AgilityPack1.png" id="2_pp2bp"]
@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b4ojpjhwu7wix" path="res://Sprites/PowerUps/DamAccSprites/DamagePack2.png" id="4_jg5gn"]
 [ext_resource type="Texture2D" uid="uid://dqcxiy8qx2f20" path="res://Sprites/PowerUps/FireSpeedSprites/FireSpeedPackBetter1.png" id="5_2dger"]
 [ext_resource type="Texture2D" uid="uid://b3tihfirwc3md" path="res://Sprites/UISprites/GreenArrow2.png" id="5_6thd2"]
-[ext_resource type="PackedScene" uid="uid://doc5tw2coukue" path="res://clock.tscn" id="6_1umrk"]
+[ext_resource type="PackedScene" uid="uid://dqaxi5gumi7co" path="res://clock.tscn" id="6_1umrk"]
 [ext_resource type="Texture2D" uid="uid://bkaiy6jl21jfl" path="res://Sprites/PowerUps/FireSpeedSprites/FireSpeedPackBetter2.png" id="6_kcqtk"]
 [ext_resource type="Texture2D" uid="uid://barggolt0advv" path="res://Sprites/PowerUps/RegenSprites/Regen1.png" id="7_e17hb"]
 [ext_resource type="Texture2D" uid="uid://dswjcb2jqp8uv" path="res://Sprites/PowerUps/RegenSprites/Regen2.png" id="8_25itf"]

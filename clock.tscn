@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://doc5tw2coukue"]
+[gd_scene load_steps=9 format=3 uid="uid://dqaxi5gumi7co"]
 
 [ext_resource type="Texture2D" uid="uid://c5f2owxmcx6my" path="res://Sprites/PowerUps/Watch/Watch3.png" id="1_0mua7"]
 [ext_resource type="Script" path="res://clock.cs" id="2_2b5pu"]

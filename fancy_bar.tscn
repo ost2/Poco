@@ -1,9 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cjnb7xohlu07g"]
+[gd_scene load_steps=5 format=3 uid="uid://dvjcoqt6kgn4k"]
 
 [ext_resource type="Texture2D" uid="uid://53wvjw8l3675" path="res://Sprites/UISprites/HealthBarSprites/HealthBar1.png" id="1_2f1v7"]
 [ext_resource type="Texture2D" uid="uid://byreb7476fco0" path="res://Sprites/UISprites/HealthBarSprites/HealthBar2.png" id="2_8kw2c"]
 [ext_resource type="Script" path="res://fancy_bar.cs" id="3_2xij6"]
-[ext_resource type="PackedScene" uid="uid://cw4emyg3mdwuj" path="res://value_changed_label.tscn" id="4_jj01c"]
+[ext_resource type="PackedScene" uid="uid://d3ed3cbfb6udt" path="res://value_changed_label.tscn" id="4_jj01c"]
 
 [node name="FancyBar" type="TextureProgressBar"]
 self_modulate = Color(1, 1, 1, 0.847059)

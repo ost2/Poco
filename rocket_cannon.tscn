@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://cynyln1wg2fu7"]
+
+[ext_resource type="Script" path="res://rocket_cannon.cs" id="1_ei7nb"]
+[ext_resource type="PackedScene" uid="uid://deadovo08tkbw" path="res://rocket.tscn" id="2_penjp"]
+
+[node name="RocketCannon" type="RayCast2D"]
+script = ExtResource("1_ei7nb")
+rocketScene = ExtResource("2_penjp")

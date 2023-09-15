@@ -1,7 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://j63l6tuo8xf1"]
+[gd_scene load_steps=29 format=3 uid="uid://dxa01to7rcrfv"]
 
 [ext_resource type="Script" path="res://boss_plane.cs" id="1_ahgk5"]
-[ext_resource type="PackedScene" uid="uid://cfdrfli6rl2on" path="res://cannon.tscn" id="2_1glhu"]
+[ext_resource type="PackedScene" uid="uid://bp3cqaaypo8mw" path="res://cannon.tscn" id="2_1glhu"]
 [ext_resource type="Texture2D" uid="uid://clibm76yr2ykw" path="res://Sprites/BigPlaneSprites/BigPlane1.png" id="3_8m38w"]
 [ext_resource type="Texture2D" uid="uid://cfs2nmd3tqbut" path="res://Sprites/BigPlaneSprites/BigPlane2.png" id="4_efqc6"]
 [ext_resource type="Texture2D" uid="uid://cy5hnxtjm7ve1" path="res://Sprites/BigPlaneSprites/BigPlane4.png" id="4_qaj0k"]
@@ -17,11 +17,11 @@
 [ext_resource type="Texture2D" uid="uid://u6kvd0f8bsom" path="res://Sprites/BigPlaneSprites/Propeller/BigPropeller6.png" id="11_t11nt"]
 [ext_resource type="AudioStream" uid="uid://bfjts5f461lrn" path="res://Audio/PropellerSounds/PropellerAmbiance.mp3" id="12_7u7rp"]
 [ext_resource type="Texture2D" uid="uid://b2xb4bm424nhg" path="res://Sprites/BigPlaneSprites/BigPlane5.png" id="12_ujthj"]
-[ext_resource type="PackedScene" uid="uid://bahh8oigi6gvi" path="res://trail_2d.tscn" id="13_cuglh"]
+[ext_resource type="PackedScene" uid="uid://ke2acehuhlwl" path="res://trail_2d.tscn" id="13_cuglh"]
 [ext_resource type="Texture2D" uid="uid://c0y3yw5lmcq5o" path="res://Sprites/BigPlaneSprites/BigPlane6.png" id="13_ngvm6"]
 [ext_resource type="Texture2D" uid="uid://b5fe7cy2k6sg6" path="res://Sprites/BigPlaneSprites/BigPlane7.png" id="14_04my1"]
 [ext_resource type="AudioStream" uid="uid://clqpin3mb4178" path="res://Audio/DamageSounds/EnemyDamageSlap.mp3" id="14_y2ndp"]
-[ext_resource type="PackedScene" uid="uid://dk71a247yi31c" path="res://point_to.tscn" id="16_t3ojc"]
+[ext_resource type="PackedScene" uid="uid://c5g26addaeitr" path="res://point_to.tscn" id="16_t3ojc"]
 
 [sub_resource type="Curve" id="Curve_uafbq"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.177072), 0.0, 0.0, 0, 0]
@@ -118,6 +118,7 @@ height = 46.6667
 
 [node name="BossPlane" type="CharacterBody2D" groups=["Enemies"]]
 scale = Vector2(4, 4)
+collision_layer = 256
 script = ExtResource("1_ahgk5")
 
 [node name="WingTips" type="Node2D" parent="."]
@@ -141,7 +142,6 @@ width_curve = SubResource("Curve_uafbq")
 default_color = Color(1, 1, 1, 0.294118)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -0.333333)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_isi1w")
@@ -175,9 +175,11 @@ frame_progress = 0.418667
 [node name="Cannon" parent="." instance=ExtResource("2_1glhu")]
 position = Vector2(-7, 2.08165e-12)
 scale = Vector2(0.4, 0.4)
+loudness = -1.0
+pitch = 0.7
 
 [node name="DamageHitBox" type="Area2D" parent="."]
-collision_layer = 0
+collision_layer = 4
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DamageHitBox"]
@@ -191,7 +193,7 @@ shape = SubResource("CapsuleShape2D_reumv")
 
 [node name="EngineSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("12_7u7rp")
-volume_db = -4.457
+volume_db = 5.0
 autoplay = true
 
 [node name="DamageParticles" type="GPUParticles2D" parent="."]
@@ -204,7 +206,7 @@ trail_enabled = true
 
 [node name="TakeDamageSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("14_y2ndp")
-volume_db = -1.391
+volume_db = 2.0
 max_polyphony = 10
 
 [node name="PointTo" parent="." instance=ExtResource("16_t3ojc")]

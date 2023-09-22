@@ -14,6 +14,10 @@ public partial class power_up : Area2D
 	public bool isTemporary = false;
 	public bool moveToPlayer = false;
 
+	public bool hoverCollect = true;
+
+	public int rocketCount;
+
 	point_to pointer;
 
 	AudioStreamPlayer2D pickUpSound;
@@ -21,11 +25,17 @@ public partial class power_up : Area2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		if (hoverCollect)
+		{
+			moveToPlayer = false;
+		}
+
 		Hide();
 		pickUpSound = GetNode<AudioStreamPlayer2D>("PickUpSound");
 	}
 	float time;
 	float collectedTime;
+	float hoveredTime = 100;
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	bool firstCall = true;
 	public override void _PhysicsProcess(double delta)
@@ -141,15 +151,32 @@ public partial class power_up : Area2D
 			sprite.Scale = new Vector2(x: scaleVal, y: scaleVal);
 		}
 
+		if (hoveredTime < 100)
+		{
+			hoveredTime += (float)delta;
+		}
+
 		if (moveToPlayer && !isCollected)
 		{
-			Position += (main.PlayerPos - Position).Normalized() * time * 250 * (float)delta;
+			Position += (main.PlayerPos - Position).Normalized() * hoveredTime * 25;
 		}
+	}
+
+	public void despawn()
+	{
+		QueueFree();
 	}
 
 	public void collect()
 	{
 		isCollected = true;
 		pickUpSound.Play();
+	}
+
+	void _on_mouse_entered()
+	{
+		hoveredTime = 0;
+		moveToPlayer = true;
+		GetNode<AudioStreamPlayer2D>("HoverSound").Play();
 	}
 }

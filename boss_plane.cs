@@ -225,7 +225,7 @@ public partial class boss_plane : Plane
 	}
 
 	// COMBAT
-	void takeDamage(float damage)
+	void takeDamage(float damage, bullet bull = null)
 	{
 		health -= damage;
 		var damageSound = GetNode<AudioStreamPlayer2D>("TakeDamageSound");
@@ -238,6 +238,11 @@ public partial class boss_plane : Plane
 		}
 		else 
 		{
+			if (bull != null)
+			{
+				var particles = getHitParticles(bull.angle, hitParticlesScene);
+				CallDeferred("add_child", particles);
+			}
 			planeSprite.Animation = "take_damage";
 			planeSprite.SelfModulate = new Color(1, 1, 1, 1);
 			planeSprite.Play();
@@ -269,7 +274,7 @@ public partial class boss_plane : Plane
 				if (bullet.firedId != "Enemy")
 				{
 					//main.spawnExplosion(this, 0.15f, false, bullet, 3.5f);
-					takeDamage(bullet.damage);
+					takeDamage(bullet.damage, bullet);
 					bullet.QueueFree();
 				}
 			}

@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ke2acehuhlwl"]
+[gd_scene load_steps=3 format=3 uid="uid://ke2acehuhlwl"]
 
 [ext_resource type="Script" path="res://Trail2D.cs" id="1_h5s0q"]
 
+[sub_resource type="Curve" id="Curve_mn1xx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.0023731), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Trail2D" type="Line2D"]
+width_curve = SubResource("Curve_mn1xx")
+antialiased = true
 script = ExtResource("1_h5s0q")

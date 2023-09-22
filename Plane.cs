@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Collections.Generic;
 
 public partial class Plane : CharacterBody2D
 {
@@ -16,9 +17,9 @@ public partial class Plane : CharacterBody2D
 	public float maxTurn = 3.0f;
 	public Vector2 frontVector;
 	
-	public float MinSpeed { get { return baseSpeed - maxSlowDown; } }
+	public float MinSpeed { get { return Mathf.Clamp(baseSpeed - maxSlowDown, 0, baseSpeed); } }
 	public float MaxSpeed { get { return baseSpeed + maxBoost; } }
-	public float TurnSpeedLimit { get { return maxTurn / (1 + Mathf.InverseLerp(0, MaxSpeed, curSpeed)); } }
+	public float TurnSpeedLimit { get { return maxTurn / (1 + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0.01f, 1)); } }
 
 	public bool isPlayer = false;
 
@@ -38,6 +39,10 @@ public partial class Plane : CharacterBody2D
 
 	public bool isDead = false;
 
+	[Export]
+	public PackedScene hitParticlesScene;
+	public List<hit_particles> hitParticlesArr = new List<hit_particles>();
+
 	// §READY
 	public override void _Ready()
 	{
@@ -48,42 +53,43 @@ public partial class Plane : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 	}
-	public void handleTiltAnim(AnimatedSprite2D mainSprite)
+	public int handleTiltAnim(AnimatedSprite2D mainSprite)
 	{
 		if (turnVal < -TurnSpeedLimit * 0.5f)
 		{
 			mainSprite.Animation = "lean";
 			mainSprite.Frame = 1;
 			mainSprite.FlipV = true;
-			Skew = turnVal * 0.1f;
+			return -2;
 		}
 		else if (turnVal < -TurnSpeedLimit * 0.15f)
 		{
 			mainSprite.Animation = "lean";
 			mainSprite.Frame = 0;
 			mainSprite.FlipV = true;
-			Skew = turnVal * 0.2f;
+			return -1;
 		}
 		else if (turnVal <= TurnSpeedLimit * 0.15f)
 		{
 			mainSprite.Animation = "default";
 			mainSprite.Frame = 0;
+			return 0;
 		}
 		else if (turnVal <= TurnSpeedLimit * 0.5f)
 		{
 			mainSprite.Animation = "lean";
 			mainSprite.Frame = 0;
 			mainSprite.FlipV = false;
-			Skew = turnVal * 0.2f;
+			return 1;
 		}
 		else if (turnVal <= TurnSpeedLimit * 1.0f)
 		{
 			mainSprite.Animation = "lean";
 			mainSprite.Frame = 1;
 			mainSprite.FlipV = false;
-			Skew = turnVal * 0.1f;
+			return 2;
 		}
-		Skew = Mathf.Abs(Skew) * 0;
+		return 0;
 	}
 	public void hideStuff(cannon cannon, AnimatedSprite2D propeller, AnimatedSprite2D propeller2 = null, AnimatedSprite2D propeller3 = null, Node2D node = null)
 	{
@@ -95,9 +101,31 @@ public partial class Plane : CharacterBody2D
 
 		node?.Hide();
 	}
+	public hit_particles getHitParticles(Vector2 angle, PackedScene particlesScene)
+	{
+		var rnd = new RandomNumberGenerator();
+
+		var hitParticles = particlesScene.Instantiate<hit_particles>();
+
+		var x = rnd.RandfRange(0, 8 * Scale.X * 0.5f);
+		var y = rnd.RandfRange(0, 8 * Scale.Y * 0.8f - x);
+
+		hitParticles.Scale /= Scale * 0.8f;
+		hitParticles.Position = new Vector2(x: x, y: y);
+		hitParticles.Direction = Vector2.FromAngle(angle.Angle() - frontVector.Angle());
+
+		hitParticlesArr.Add(hitParticles);
+		return hitParticles;
+	}
+
+	// public void doHitParticles(hit_particles)
+	// {
+	// 	hitP
+	// }
+
 	public void spinPropeller(AnimatedSprite2D propellerSprite, AudioStreamPlayer2D engineSound = null)
 	{
-		var playSpeed = 1 + Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed);
+		var playSpeed = 1 + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0, 1);
 		propellerSprite.SpeedScale = 1 + playSpeed;
 		if (!propellerSprite.IsPlaying())
 		{
@@ -106,8 +134,8 @@ public partial class Plane : CharacterBody2D
 
 		if (engineSound != null)
 		{
-			engineSound.PitchScale = 0.75f + Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed) * 0.4f;
-			engineSound.VolumeDb = -5 + Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed);
+			engineSound.PitchScale = 0.75f + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0, 1) * 0.4f;
+			engineSound.VolumeDb = -5 + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0, 1);
 			if (!engineSound.Playing)
 			{
 				engineSound.Play();

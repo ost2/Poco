@@ -8,6 +8,9 @@ public partial class enemy_plane : Plane
 	public int enemyLevel = 1;
 	public bool bigMode = false;
 
+	[Export]
+	public PackedScene hitParticlesScene;
+
 	// MOVEMENT
 	float distance;
 
@@ -297,7 +300,8 @@ public partial class enemy_plane : Plane
 
 
 	// COMBAT
-	void takeDamage(float damage)
+	
+	void takeDamage(float damage, bullet bull = null)
 	{
 		if (damage > 0)
 		{
@@ -308,10 +312,20 @@ public partial class enemy_plane : Plane
 
 			if (health <= 0.0f)
 			{
+				foreach (var part in hitParticlesArr)
+				{
+					part.QueueFree();
+				}
 				enemyDie();
 			}
 			else 
 			{
+				if (bull != null)
+				{
+					var particles = getHitParticles(bull.angle, hitParticlesScene);
+					CallDeferred("add_child", particles);
+				}
+				
 				planeSprite.SelfModulate = new Color(255, 255, 255, 1);
 				planeSprite.Animation = "take_damage";
 				planeSprite.Play();
@@ -320,6 +334,8 @@ public partial class enemy_plane : Plane
 	}
 	void enemyDie()
 	{
+		pointer.Modulate = new Color(0, 0, 0, 0);
+
 		main.lastEnemyKilledPos = GlobalPosition;
 		main.player.curXp += xpValue + (xpValue * (xpWaveBonus * (main.waveNumber - 1)));
 		main.playerKills++;
@@ -344,13 +360,20 @@ public partial class enemy_plane : Plane
 			cannon.Hide();
 		}
 		main.spawnExplosion(this);
-	
-		var spawnTempChance = xpValue / 20;
-		var spawned = main.maybeSpawnPower(spawnTempChance, GlobalPosition, true);
+
+		var spawnRocketChance = xpValue / 5;
+		var rocketCountProb = xpValue * 1.5f;
+		var spawned = main.maybeSpawnRockets(spawnRocketChance, GlobalPosition, rocketCountProb);
 
 		if (!spawned)
 		{
-			var spawnPermChance = xpValue / 80;
+			var spawnTempChance = xpValue / 10;
+			spawned = main.maybeSpawnPower(spawnTempChance, GlobalPosition, true);
+		}
+
+		if (!spawned)
+		{
+			var spawnPermChance = xpValue / 50;
 			main.maybeSpawnPower(spawnPermChance, GlobalPosition, false);
 		}
 	}
@@ -358,23 +381,25 @@ public partial class enemy_plane : Plane
 	// SIGNAL METHODS
 	void _on_damage_hit_box_area_entered(Area2D area)
 	{
-		if (area is bullet)
+		if (!isDead)
 		{
-			var bullet = area as bullet;
-
-			if (bullet.firedId != "Enemy" && !isDead)
+			if (area is bullet)
 			{
-				//main.spawnExplosion(this, 0.15f, false, bullet, 3.5f);
-				takeDamage(bullet.damage);
-				bullet.QueueFree();
+				var bull = area as bullet;
+				if (bull.firedId != "Enemy")
+				{
+					//main.spawnExplosion(this, 0.15f, false, bullet, 3.5f);
+					takeDamage(bull.damage, bull);
+					bull.QueueFree();
+				}
 			}
-		}
 
-		else if (area.Name == "Explosion")
-		{
-			var explo = area.GetParent<explosion>();
-			
-			takeDamage(explo.damage);
+			else if (area.Name == "Explosion")
+			{
+				var explo = area.GetParent<explosion>();
+				
+				takeDamage(explo.damage);
+			}
 		}
 	}
 

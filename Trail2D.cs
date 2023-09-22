@@ -15,6 +15,8 @@ public partial class Trail2D : Line2D
 		GlobalPosition = Vector2.Zero;
 		GlobalRotation = 0;
 
+		
+
 		point = GetParent<Node2D>().GlobalPosition / plane.Scale;
 
 		var color = new Color(255, 255, 255, Mathf.Lerp(plane.MinSpeed, plane.MaxSpeed, plane.curSpeed) * 0.000005f);
@@ -26,6 +28,5 @@ public partial class Trail2D : Line2D
 		{
 			RemovePoint(0);
 		}
-		//Skew = GetParent<plane>().Skew;
 	}
 }

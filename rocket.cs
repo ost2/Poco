@@ -13,7 +13,7 @@ public partial class rocket : CharacterBody2D
 	public float curSpeed;
 
 	public Plane target;
-	public float tracking = 5;
+	public float tracking = 7.5f;
 
 	public float damage;
 	public float explosionScale;
@@ -21,8 +21,8 @@ public partial class rocket : CharacterBody2D
 	public main main;
 
 	float time = 1;
-	float freq = 3;
-	float maxTime = 3;
+	float freq = 1;
+	float maxTime = 4.0f;
 
 	bool exploded = false;
 	

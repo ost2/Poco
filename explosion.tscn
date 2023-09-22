@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bqdynpxlxq48"]
+[gd_scene load_steps=15 format=3 uid="uid://bqdynpxlxq48"]
 
 [ext_resource type="Texture2D" uid="uid://d4mhkjsmpj41k" path="res://Sprites/ExplosionSprites/Explosion1.png" id="1_7gj3k"]
 [ext_resource type="Texture2D" uid="uid://sv7rm4t1sws7" path="res://Sprites/ExplosionSprites/Explosion2.png" id="2_6uvf0"]
@@ -33,18 +33,33 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 7.0
+"speed": 12.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggtqa"]
 radius = 0.01
 
+[sub_resource type="Curve" id="Curve_lqryl"]
+_data = [Vector2(0, 0.0923694), 0.0, 0.0, 0, 0, Vector2(0.287818, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.457649), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_lfe36"]
+offsets = PackedFloat32Array(0.119205, 0.423841, 0.741722, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.964706, 0.792157, 0.317647, 1, 0.819608, 0.282353, 0.14902, 1, 0.513726, 0.513726, 0.513726, 0.631373)
+
+[sub_resource type="Curve" id="Curve_56q73"]
+min_value = -1.0
+_data = [Vector2(0, 0.349398), 0.0, 0.0, 0, 0, Vector2(0.31813, 0.158817), 0.0, 0.0, 0, 0, Vector2(0.968453, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
 [node name="Explosion" type="AnimatedSprite2D"]
 top_level = true
 light_mask = 0
 position = Vector2(2.08165e-12, 2.08165e-12)
-scale = Vector2(0.77, 0.77)
+scale = Vector2(0.77, 0.767017)
 sprite_frames = SubResource("SpriteFrames_krmr4")
+frame = 5
+frame_progress = 1.0
 script = ExtResource("7_qguse")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
@@ -67,6 +82,34 @@ collision_mask = 0
 [node name="Circle" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_ggtqa")
 debug_color = Color(1, 1, 1, 1)
+
+[node name="Particles" type="CPUParticles2D" parent="."]
+show_behind_parent = true
+top_level = true
+light_mask = 0
+emitting = false
+amount = 120
+lifetime = 10.0
+one_shot = true
+speed_scale = 14.0
+explosiveness = 0.7
+randomness = 1.0
+lifetime_randomness = 1.0
+local_coords = true
+emission_shape = 1
+emission_sphere_radius = 30.0
+direction = Vector2(2.08165e-12, 2.08165e-12)
+spread = 180.0
+gravity = Vector2(2.08165e-12, 2.08165e-12)
+initial_velocity_min = 10.0
+initial_velocity_max = 50.0
+angular_velocity_min = 20.0
+angular_velocity_max = 50.0
+scale_amount_min = 6.0
+scale_amount_max = 15.0
+scale_amount_curve = SubResource("Curve_lqryl")
+color_ramp = SubResource("Gradient_lfe36")
+hue_variation_curve = SubResource("Curve_56q73")
 
 [connection signal="animation_finished" from="." to="." method="_on_animation_finished"]
 [connection signal="finished" from="ExplosionSound" to="." method="_on_audio_stream_player_2d_finished"]

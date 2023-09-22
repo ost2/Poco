@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://41b2tbrmutew"]
+[gd_scene load_steps=30 format=3 uid="uid://41b2tbrmutew"]
 
 [ext_resource type="Script" path="res://power_up.cs" id="1_tb7fb"]
 [ext_resource type="Texture2D" uid="uid://br8vd61fi1gxl" path="res://Sprites/PowerUps/AgilitySprites/AgilityPack1.png" id="2_raiwk"]
@@ -24,8 +24,10 @@
 [ext_resource type="Texture2D" uid="uid://cp3vnt7b22oga" path="res://Sprites/RocketSprites/Rocket4.png" id="16_vpsgq"]
 [ext_resource type="Texture2D" uid="uid://yr1nuh7ij5no" path="res://Sprites/PowerUps/Watch/Watch2.png" id="17_00xn8"]
 [ext_resource type="Texture2D" uid="uid://c78c40dspovqg" path="res://Sprites/RocketSprites/Rocket7.png" id="17_eokc5"]
+[ext_resource type="AudioStream" uid="uid://bc8bnh3ojscvq" path="res://Audio/UISounds/HoverSound.mp3" id="25_e2ssu"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtdnd"]
+radius = 11.3355
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_oabov"]
 animations = [{
@@ -154,7 +156,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="PowerUp" type="Area2D"]
+[node name="PowerUp" type="Area2D" groups=["PowerUps"]]
 scale = Vector2(3, 3)
 collision_layer = 16
 collision_mask = 0
@@ -186,3 +188,8 @@ visible = false
 stream = ExtResource("15_t4x2i")
 volume_db = 7.726
 max_polyphony = 30
+
+[node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("25_e2ssu")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://byxqjgma4stld"]
+[gd_scene load_steps=3 format=3 uid="uid://byxqjgma4stld"]
 
 [ext_resource type="Script" path="res://Plane.cs" id="1_bd1oh"]
+[ext_resource type="PackedScene" uid="uid://ckgjtrbn8jume" path="res://hit_particles.tscn" id="2_4yv6w"]
 
 [node name="Plane" type="CharacterBody2D"]
 script = ExtResource("1_bd1oh")
+hitParticlesScene = ExtResource("2_4yv6w")

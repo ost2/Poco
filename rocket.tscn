@@ -1,9 +1,12 @@
-[gd_scene load_steps=7 format=3 uid="uid://deadovo08tkbw"]
+[gd_scene load_steps=11 format=3 uid="uid://deadovo08tkbw"]
 
 [ext_resource type="Script" path="res://rocket.cs" id="1_dcx5i"]
 [ext_resource type="Texture2D" uid="uid://58y65nnxf3dh" path="res://Sprites/RocketSprites/Rocket1.png" id="1_hbaib"]
 [ext_resource type="Texture2D" uid="uid://b4x1hksglhkvp" path="res://Sprites/RocketSprites/Rocket2.png" id="2_1d0v1"]
 [ext_resource type="PackedScene" uid="uid://yjn4vp0wcdk8" path="res://rocket_trail.tscn" id="4_6a0nv"]
+[ext_resource type="Texture2D" uid="uid://bn6avlsypy3b8" path="res://Sprites/RocketSprites/Rocket9.png" id="5_p5bjq"]
+[ext_resource type="Texture2D" uid="uid://iyfyh8t63rdm" path="res://Sprites/RocketSprites/Rocket10.png" id="6_ijh04"]
+[ext_resource type="AudioStream" uid="uid://bjjspcbyl0pxv" path="res://Audio/RocketSounds/RocketSound.mp3" id="7_j8fmv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0yg66"]
 animations = [{
@@ -22,6 +25,20 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gvbxh"]
 size = Vector2(56, 32)
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_0w624"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_p5bjq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_ijh04")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
 [node name="Rocket" type="CharacterBody2D"]
 top_level = true
 scale = Vector2(0.7, 0.7)
@@ -35,6 +52,7 @@ frame = 1
 frame_progress = 1.0
 
 [node name="HitBox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_gvbxh")
 
@@ -44,13 +62,26 @@ position = Vector2(-20, 2.08165e-12)
 
 [node name="RocketTrail" parent="TrailOrigin" instance=ExtResource("4_6a0nv")]
 position = Vector2(2.08165e-12, 2.08165e-12)
+default_color = Color(0.72549, 0.72549, 0.72549, 0.662745)
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 4
 
 [node name="HitBox" type="CollisionShape2D" parent="Area2D"]
+visible = false
 position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_gvbxh")
+
+[node name="Flame" type="AnimatedSprite2D" parent="."]
+position = Vector2(-29.4, 2.08165e-12)
+scale = Vector2(1.4, 1)
+sprite_frames = SubResource("SpriteFrames_0w624")
+frame_progress = 1.33202e-05
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_j8fmv")
+volume_db = -5.0
+autoplay = true
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

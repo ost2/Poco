@@ -1,7 +1,8 @@
-[gd_scene load_steps=29 format=3 uid="uid://dxa01to7rcrfv"]
+[gd_scene load_steps=30 format=3 uid="uid://dxa01to7rcrfv"]
 
 [ext_resource type="Script" path="res://boss_plane.cs" id="1_ahgk5"]
 [ext_resource type="PackedScene" uid="uid://bp3cqaaypo8mw" path="res://cannon.tscn" id="2_1glhu"]
+[ext_resource type="PackedScene" uid="uid://ckgjtrbn8jume" path="res://hit_particles.tscn" id="2_x8kxs"]
 [ext_resource type="Texture2D" uid="uid://clibm76yr2ykw" path="res://Sprites/BigPlaneSprites/BigPlane1.png" id="3_8m38w"]
 [ext_resource type="Texture2D" uid="uid://cfs2nmd3tqbut" path="res://Sprites/BigPlaneSprites/BigPlane2.png" id="4_efqc6"]
 [ext_resource type="Texture2D" uid="uid://cy5hnxtjm7ve1" path="res://Sprites/BigPlaneSprites/BigPlane4.png" id="4_qaj0k"]
@@ -120,6 +121,7 @@ height = 46.6667
 scale = Vector2(4, 4)
 collision_layer = 256
 script = ExtResource("1_ahgk5")
+hitParticlesScene = ExtResource("2_x8kxs")
 
 [node name="WingTips" type="Node2D" parent="."]
 

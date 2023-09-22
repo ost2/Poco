@@ -44,9 +44,8 @@ animations = [{
 script = ExtResource("1_k233h")
 
 [node name="WaveText" parent="." instance=ExtResource("2_5asrq")]
-visible = false
-offset = Vector2(2.08165e-12, -60)
-transform = Transform2D(1, 0, 0, 1, 2.08165e-12, -60)
+offset = Vector2(2.08165e-12, -45)
+transform = Transform2D(1, 0, 0, 1, 2.08165e-12, -45)
 
 [node name="TimerLabel" type="Label" parent="."]
 visible = false

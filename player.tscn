@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://cj6gir6s4argx"]
+[gd_scene load_steps=26 format=3 uid="uid://cj6gir6s4argx"]
 
 [ext_resource type="Script" path="res://player.cs" id="1_kd50i"]
 [ext_resource type="PackedScene" uid="uid://ke2acehuhlwl" path="res://trail_2d.tscn" id="2_qa8j0"]
@@ -97,19 +97,29 @@ animations = [{
 radius = 17.0
 height = 34.0
 
-[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_tt14m"]
-points = PackedVector2Array(2.08165e-12, 2.08165e-12, 200, -100, 300, 2.08165e-12, 200, 100)
-
 [node name="Player" type="CharacterBody2D"]
 z_index = 3
 motion_mode = 1
 script = ExtResource("1_kd50i")
 
+[node name="Cannon" parent="." instance=ExtResource("10_us1t4")]
+position = Vector2(2.08165e-12, 2.08165e-12)
+loudness = -3.0
+
+[node name="RocketCannons" type="Node2D" parent="."]
+position = Vector2(2, 2.08165e-12)
+
+[node name="RocketCannon1" parent="RocketCannons" instance=ExtResource("18_v0jti")]
+position = Vector2(2.08165e-12, -11)
+
+[node name="RocketCannon2" parent="RocketCannons" instance=ExtResource("18_v0jti")]
+position = Vector2(2.08165e-12, 11)
+
 [node name="WingTips" type="Node2D" parent="."]
 
 [node name="RightWingTip" type="Node2D" parent="WingTips"]
 show_behind_parent = true
-position = Vector2(4, 20)
+position = Vector2(4, 18)
 
 [node name="Trail2D" parent="WingTips/RightWingTip" instance=ExtResource("2_qa8j0")]
 show_behind_parent = true
@@ -118,16 +128,12 @@ default_color = Color(1, 1, 1, 0.294118)
 
 [node name="LeftWingTip" type="Node2D" parent="WingTips"]
 show_behind_parent = true
-position = Vector2(4, -20)
+position = Vector2(4, -18)
 
 [node name="Trail2D" parent="WingTips/LeftWingTip" instance=ExtResource("2_qa8j0")]
 show_behind_parent = true
 width_curve = SubResource("Curve_ir3g7")
 default_color = Color(1, 1, 1, 0.294118)
-
-[node name="Cannon" parent="." instance=ExtResource("10_us1t4")]
-position = Vector2(2.08165e-12, 2.08165e-12)
-loudness = -3.0
 
 [node name="MainSprite" type="AnimatedSprite2D" parent="."]
 position = Vector2(-5, 0)
@@ -200,22 +206,9 @@ self_modulate = Color(0.537255, 0.537255, 0.537255, 0.960784)
 [node name="LevelUpSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("17_ut4vf")
 
-[node name="RocketCannons" type="Node2D" parent="."]
-
-[node name="RocketCannon1" parent="RocketCannons" instance=ExtResource("18_v0jti")]
-
-[node name="TargetArea" type="Area2D" parent="RocketCannons"]
-collision_layer = 0
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="RocketCannons/TargetArea"]
-shape = SubResource("ConvexPolygonShape2D_tt14m")
-
 [node name="RocketTarget" parent="." instance=ExtResource("19_3jklp")]
 
 [connection signal="animation_finished" from="MainSprite" to="." method="_on_main_sprite_animation_finished"]
 [connection signal="area_entered" from="TakeDamageHitBox" to="." method="_on_take_damage_hit_box_area_entered"]
 [connection signal="area_entered" from="CollectHitBox" to="." method="_on_collect_hit_box_area_entered"]
 [connection signal="timeout" from="RegenTimer" to="." method="_on_regen_timer_timeout"]
-[connection signal="body_entered" from="RocketCannons/TargetArea" to="." method="_on_target_area_body_entered"]
-[connection signal="body_exited" from="RocketCannons/TargetArea" to="." method="_on_target_area_body_exited"]

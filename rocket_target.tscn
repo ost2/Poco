@@ -1,13 +1,27 @@
-[gd_scene load_steps=4 format=3 uid="uid://bheo2lax350dc"]
+[gd_scene load_steps=8 format=3 uid="uid://bheo2lax350dc"]
 
 [ext_resource type="Script" path="res://rocket_target.cs" id="1_tcc77"]
 [ext_resource type="Texture2D" uid="uid://ejhtyjdx8ret" path="res://Sprites/UISprites/HealthBarSprites/HealthBar3.png" id="2_njl28"]
+[ext_resource type="Texture2D" uid="uid://dc5f168rc5e7e" path="res://Sprites/RocketSprites/Rocket3.png" id="3_xjjq2"]
+[ext_resource type="FontFile" uid="uid://d104wrtyun42s" path="res://Fonts/Evil Empire.otf" id="4_7mqxj"]
+[ext_resource type="AudioStream" uid="uid://ccisgqhertyn0" path="res://Audio/PowerUpSounds/PowerUpSound.mp3" id="5_fq5v4"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_2q0vf"]
 animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("2_njl28")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fjmbq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xjjq2")
 }],
 "loop": true,
 "name": &"default",
@@ -37,3 +51,27 @@ offset = Vector2(2.08165e-12, -0.5)
 rotation = 1.5708
 sprite_frames = SubResource("SpriteFrames_2q0vf")
 offset = Vector2(2.08165e-12, -0.5)
+
+[node name="RocketSprite" type="AnimatedSprite2D" parent="."]
+top_level = true
+position = Vector2(16, -16.6)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_fjmbq")
+
+[node name="CountLabel" type="Label" parent="RocketSprite"]
+offset_left = 8.88889
+offset_top = -7.88889
+offset_right = 48.8889
+offset_bottom = 15.1111
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("4_7mqxj")
+text = "X 0"
+metadata/_edit_use_anchors_ = true
+
+[node name="TargetSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_fq5v4")
+volume_db = -7.0
+pitch_scale = 10.0
+max_polyphony = 10

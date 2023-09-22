@@ -9,6 +9,12 @@ public partial class rocket_cannon : RayCast2D
     public float damage;
     public float explosionScale;
 
+    public bool loaded = false;
+
+    AnimatedSprite2D sprite;
+    public float spriteScale;
+    public float baseScale;
+
     [Export]
     public PackedScene rocketScene;
 
@@ -16,7 +22,22 @@ public partial class rocket_cannon : RayCast2D
 
     public override void _Ready()
     {
-        
+        sprite = GetNode<AnimatedSprite2D>("Sprite");
+        spriteScale = sprite.Scale.X;
+        baseScale = spriteScale;
+    }
+
+    public override void _Process(double delta)
+    {
+        sprite.Scale = new Vector2(x: spriteScale, y: spriteScale);
+        if (loaded)
+        {
+            sprite.Show();
+        }
+        else
+        {
+            sprite.Hide();
+        }
     }
     public void shootRocket(Plane target = null)
     {

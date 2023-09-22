@@ -10,6 +10,7 @@ public partial class explosion : AnimatedSprite2D
 
 	Area2D hitBox;
 	CollisionShape2D circle;
+	CpuParticles2D particles;
 
 	public float pitch;
 
@@ -20,6 +21,9 @@ public partial class explosion : AnimatedSprite2D
 
 	public float volume;
 	
+	bool animOver = false;
+	bool soundOver = false;
+	bool particlesStarted = false;
 
 	float time;
 	// Called when the node enters the scene tree for the first time.
@@ -29,6 +33,8 @@ public partial class explosion : AnimatedSprite2D
 		sound.VolumeDb = volume;
 		sound.PitchScale = pitch;
 		sound.Play();
+
+		particles = GetNode<CpuParticles2D>("Particles");
 
 		hitBox = GetNode<Area2D>("HitBox");
 		circle = hitBox.GetNode<CollisionShape2D>("Circle");
@@ -46,13 +52,29 @@ public partial class explosion : AnimatedSprite2D
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
-	public override void _Process(double delta)
+	public override void _PhysicsProcess(double delta)
 	{
+		if (soundOver && animOver && time > 1.0f)
+		{
+			QueueFree();
+		}
+
 		vel *= 0.995f;
 		time += (float)delta;
 
+		particles.GlobalPosition = GlobalPosition;
+
+		//RotationDegrees = Mathf.Sin(time * 200) * 360;
+
+		if (!particlesStarted && time > 0.0f)
+		{
+			particlesStarted = true;
+			particles.Emitting = true;
+		}
+
 		if (time < 0.2f)
 		{
+
 			var c = circle.Shape as CircleShape2D;
 			c.Radius = Mathf.Clamp(time * 140 * speed * 8, 0, 110) * size.X;
 		}
@@ -64,11 +86,14 @@ public partial class explosion : AnimatedSprite2D
 
 		if (size == new Vector2(x: 1, y: 1))
 		{
-			Scale += new Vector2(x: (float)delta, y: (float)delta) * 2.0f;
+			Scale += new Vector2(x: (float)delta, y: (float)delta) * 2.75f;
 		}
 		Position += vel * (float)delta;
 		
-		light.Energy = 0.5f + Mathf.Cos(time * 2) * 4; 
+		if (!animOver)
+		{
+			light.Energy = 0.5f + Mathf.Cos(time * 2) * 4; 
+		}
 		light.TextureScale += (float)delta * 5;
 
 		if (size.X != 1)
@@ -79,10 +104,12 @@ public partial class explosion : AnimatedSprite2D
 
 	void _on_animation_finished()
 	{
-		Hide();
+		SelfModulate = new Color(0, 0, 0, 0);
+		light.Hide();
+		animOver = true;
 	}
 	void _on_audio_stream_player_2d_finished()
 	{
-		QueueFree();
+		soundOver = true;
 	}
 }

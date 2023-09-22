@@ -31,6 +31,7 @@ public partial class player : Plane
 	
 	float rocketDamage = 100;
 	float rocketExploScale = 0.8f;
+	int leanLevel;
 
 	public float overHeal;
 	public float maxOverHeal;
@@ -41,6 +42,7 @@ public partial class player : Plane
 	Node2D rocketCannonNode;
 	rocket_cannon[] rocketCannons;
 	rocket_cannon rocketC1;
+	rocket_cannon rocketC2;
 
 	rocket_target rTarget;
 
@@ -88,10 +90,12 @@ public partial class player : Plane
 		rocketCannonNode = GetNode<Node2D>("RocketCannons");
 		rocketC1 = rocketCannonNode.GetNode<rocket_cannon>("RocketCannon1");
 		rocketC1.main = main;
+		rocketC2 = rocketCannonNode.GetNode<rocket_cannon>("RocketCannon2");
+		rocketC2.main = main;
 
 		rTarget = GetNode<rocket_target>("RocketTarget");
 
-		rocketCannons = new rocket_cannon[] { rocketC1 };
+		rocketCannons = new rocket_cannon[] { rocketC1, rocketC2 };
 
 		levelUpSound = GetNode<AudioStreamPlayer2D>("LevelUpSound");
 
@@ -142,7 +146,7 @@ public partial class player : Plane
 			{
 				timer.done = true;
 
-				if (main.curWaveType != main.waveType.boxWave)
+				if (main.curWaveType != main.waveType.boxWave || timer.time > 0)
 				{
 					timer.time += delta;
 					doTempBonus(timer.powID, false);
@@ -247,8 +251,6 @@ public partial class player : Plane
 			turnVal += turnDecay * (float)delta;
 		}
 
-		//Skew = turnVal * 0.4f;
-
 		velocity = frontVector * curSpeed;
 
 		Velocity = velocity;
@@ -257,7 +259,7 @@ public partial class player : Plane
 
 		if (mainSprite.Animation != "take_damage")
 		{
-			handleTiltAnim(mainSprite);
+			leanLevel = handleTiltAnim(mainSprite);
 			showStuff(cannon, propeller);
 		}
 		else
@@ -291,6 +293,27 @@ public partial class player : Plane
 		// 	curRocketTarget = getRocketTarget();
 		// 	rTarget.target = curRocketTarget;
 		// }
+		
+		rocketC1.spriteScale = rocketC1.baseScale + leanLevel * 0.1f * rocketC1.baseScale;
+		rocketC2.spriteScale = rocketC2.baseScale - leanLevel * 0.1f * rocketC2.baseScale;
+
+		if (rocketCount > 0)
+		{
+			rocketC1.loaded = true;
+		}
+		else
+		{
+			rocketC1.loaded = false;
+		}
+		if (rocketCount > 1)
+		{
+			rocketC2.loaded = true;
+		}
+		else
+		{
+			rocketC2.loaded = false;
+		}
+
 		curRocketTarget = getRocketTarget();
 
 		if (curRocketTarget != prevRocketTarget)
@@ -307,6 +330,7 @@ public partial class player : Plane
 		prevRocketTarget = curRocketTarget;
 
 		rTarget.target = curRocketTarget;
+		rTarget.rocketCount = rocketCount;
 
 		foreach (var rc in rocketCannons)
 		{
@@ -334,7 +358,7 @@ public partial class player : Plane
 		// 	}
 		// }
 		
-		float closest = 1000;
+		float closest = 300;
 		Plane target = null;
 
 		var list = GetTree().GetNodesInGroup("Enemies");
@@ -365,7 +389,8 @@ public partial class player : Plane
 		}
 		if (Input.IsActionPressed("move_backward") && curSpeed >= MinSpeed)
 		{
-			curSpeed -= slowDownAccel * (float)delta;
+			var decrease = Mathf.Clamp(slowDownAccel * (float)delta, 0, MinSpeed + curSpeed);
+			curSpeed -= decrease;
 		}
 		if (Input.IsActionPressed("turn_right") && turnVal < TurnSpeedLimit)
 		{
@@ -384,7 +409,7 @@ public partial class player : Plane
 			{
 				turn *= 1.3f;
 			}
-			turn = Mathf.Clamp(turn, 0, TurnSpeedLimit - turnVal);
+			turn = Mathf.Clamp(turn, 0, TurnSpeedLimit + turnVal);
 			turnVal -= turn;
 		}
 
@@ -395,14 +420,42 @@ public partial class player : Plane
 
 		if (Input.IsActionJustPressed("fire_rocket"))
 		{
-			fireRocket(rocketC1);
+			fireRocket(getRocketCannon());
 		}
+	}
+
+	public void getRockets(int count)
+	{
+		rocketCount += count;
+	}
+	int lastRocketIndex = 0;
+	rocket_cannon getRocketCannon()
+	{
+		if (rocketCount == 1)
+		{
+			return rocketC1;
+		}
+		else
+		{
+			if (lastRocketIndex == 0)
+			{
+				lastRocketIndex = 1;
+				return rocketC1;
+			}
+			else if (lastRocketIndex == 1)
+			{
+				lastRocketIndex = 0;
+				return rocketC2;
+			}
+		}
+		return null;
 	}
 
 	void fireRocket(rocket_cannon rc)
 	{
 		if (rocketCount > 0)
 		{
+			rocketCount -= 1;
 			rc.shootRocket(curRocketTarget);
 		}
 	}
@@ -534,6 +587,12 @@ public partial class player : Plane
 				if (powerUp.powerID != "HealthPack")
 				{
 					main.hud.doStatUpAnimation(powerUp.powerID, powerUp.isTemporary);
+
+					if (powerUp.rocketCount > 0)
+					{
+						getRockets(powerUp.rocketCount);
+						return;
+					}
 
 					if (powerUp.isTemporary)
 					{

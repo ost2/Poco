@@ -27,6 +27,12 @@ public class powerTimer
         first = true;
     }
 
+    public void finish()
+    {
+        time = maxTime;
+        stop();
+    }
+
     public static powerTimer agilityTemp = new powerTimer("AgilityPack");
 	public static powerTimer speedTemp = new powerTimer("SpeedPack");
 	public static powerTimer regenTemp = new powerTimer("RegenPack");

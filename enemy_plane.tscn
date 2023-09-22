@@ -1,6 +1,7 @@
-[gd_scene load_steps=29 format=3 uid="uid://bo66m56a2ikla"]
+[gd_scene load_steps=30 format=3 uid="uid://bo66m56a2ikla"]
 
 [ext_resource type="Script" path="res://enemy_plane.cs" id="1_nwq1a"]
+[ext_resource type="PackedScene" uid="uid://ckgjtrbn8jume" path="res://hit_particles.tscn" id="2_43lk0"]
 [ext_resource type="Texture2D" uid="uid://ocw2fh6vy0vl" path="res://Sprites/TwinPlaneSprites/TwinPlane1.png" id="4_fpwg3"]
 [ext_resource type="SpriteFrames" uid="uid://wdphgtk8todd" path="res://enemy_plane.tres" id="4_h7p0d"]
 [ext_resource type="Texture2D" uid="uid://et83havsa763" path="res://Sprites/TwinPlaneSprites/TwinPlane2.png" id="5_ejl0k"]
@@ -117,6 +118,8 @@ animations = [{
 scale = Vector2(1.5, 1.5)
 collision_layer = 256
 script = ExtResource("1_nwq1a")
+hitParticlesScene = ExtResource("2_43lk0")
+hitParticlesScene = ExtResource("2_43lk0")
 
 [node name="WingTips" type="Node2D" parent="."]
 

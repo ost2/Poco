@@ -280,6 +280,10 @@ public partial class stat_ui : AnimatedSprite2D
 		shouldStartClock = false;
 		clock.start(time);
 	}
+	public void stopClock()
+	{
+		clock.stop();
+	}
 
 	void surgeAnimation(Node2D node, float delta, float t, float time, float scaleMult, float xMove = 0, float yMove = 0, float limit = 2)
 	{

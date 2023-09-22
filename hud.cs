@@ -242,6 +242,11 @@ public partial class hud : menu
 	{
 		boxClock.start(t);
 	}
+	public void stopBoxClock()
+	{
+		boxClock.stop();
+		boxClock.Hide();
+	}
 
 	void doStatUpText(float delta)
 	{
@@ -293,6 +298,7 @@ public partial class hud : menu
 		healthBar.Hide();
 		overHealBar.Hide();
 		xpBar.Hide();
+		stopBoxClock();
 
 		// foreach (var statUI in statUIs)
 		// {
@@ -403,7 +409,7 @@ public partial class hud : menu
 
 	float statUpLabelTimer = 3.0f;
 
-	public void startClock(string powID, float time)
+	public void startClock(string powID, float time, bool stop = false)
 	{
 		var stat = new stat_ui();
 
@@ -436,13 +442,20 @@ public partial class hud : menu
 			}
 		}
 
-		if (main.curWaveType == main.waveType.boxWave)
+		if (!stop)
 		{
-			stat.shouldStartClock = true;
+			if (main.curWaveType == main.waveType.boxWave)
+			{
+				stat.shouldStartClock = true;
+			}
+			else
+			{
+				stat.startClock(powTime);
+			}
 		}
 		else
 		{
-			stat.startClock(powTime);
+			stat.stopClock();
 		}
 	}
 
@@ -497,6 +510,21 @@ public partial class hud : menu
 				statUpLabel.Text = "+ DAMAGE & ACCURACY " + tempStr + " +";
 				damAccUI.Play();
 				damAccUI.startSurge();
+				break;
+			}
+			case "OneRocket":
+			{
+				statUpLabel.Text = "+ 1X ROCKET +";
+				break;
+			}
+			case "TwoRocket":
+			{
+				statUpLabel.Text = "+ 2X ROCKET +";
+				break;
+			}
+			case "ThreeRocket":
+			{
+				statUpLabel.Text = "+ 3X ROCKET +";
 				break;
 			}
 		}

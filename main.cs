@@ -164,6 +164,8 @@ public partial class main : Node
 
 	void setStartingValues()
 	{
+		mainCam.Position = player.Position;
+
 		gameRunning = false;
 		pauseMenu.Hide();
 		optionsMenu.Hide();
@@ -194,17 +196,21 @@ public partial class main : Node
 		player.resetLevels();
 		player.Show();
 
+		hud.stopBoxClock();
+
 		player.Velocity = Vector2.Zero;
 		player.cannon.realFireTime = player.fireTime;
 
 		gameTimer = 0.0f;
 
 		curWaveType = waveType.nullWave;
+		waveTimer.Stop();
 	}
 	public void resetGame()
 	{
 		clearBoxes();
 		clearEnemies();
+		clearPowerUps();
 
 		setStartingValues();
 
@@ -212,6 +218,7 @@ public partial class main : Node
 		//doBossWave();
 
 		hud.showWaveText();
+		hud.stopBoxClock();
 	}
 
 	// MENUS
@@ -238,18 +245,31 @@ public partial class main : Node
 			showMainMenu();
 		}
 	}
+	void removeAllTemporary()
+	{
+		foreach (var timer in powerTimer.powerTimers)
+		{
+			timer.finish();
+			hud.startClock(timer.powID, 0, true);
+		}
+	}
+	
 	void showMainMenu()
 	{
 		curMenu = "MainMenu";
 
 		clearBoxes();
 		clearEnemies();
+		clearPowerUps();
 
 		gameRunning = false;
 		doMainMenu = true;
 
 		mainMenu.Show();
 		hud.Hide();
+		hud.stopBoxClock();	
+
+		removeAllTemporary();
 
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 	}
@@ -296,6 +316,10 @@ public partial class main : Node
 	{
 		GetTree().CallGroup("Boxes", "despawnBox");
 	}
+	public void clearPowerUps()
+	{
+		GetTree().CallGroup("PowerUps", "despawn");
+	}
 
 	public void clearEnemies()
 	{
@@ -333,7 +357,7 @@ public partial class main : Node
 
 			//updateCloudThickness();
 
-			if ((killsThisWave >= killsToProgress && curWaveType == waveType.enemyWave) || (bossDead && curWaveType == waveType.bossWave))
+			if (gameRunning && ((killsThisWave >= killsToProgress && curWaveType == waveType.enemyWave) || (bossDead && curWaveType == waveType.bossWave)))
 			{
 				doBoxWave();
 			}
@@ -427,7 +451,7 @@ public partial class main : Node
 	public void pDie()
 	{
 		Input.MouseMode = Input.MouseModeEnum.Visible;
-		
+	
 		var deathScreenTimer = GetNode<Timer>("ShowDeathScreenTimer");
 		deathScreenTimer.Start();
 	}
@@ -550,12 +574,24 @@ public partial class main : Node
 		startScreenShake(scale * 3, scale);
 	}
 
+	public bool maybeSpawnRockets(float P, Vector2 pos, float countP)
+	{
+		var rnd = new RandomNumberGenerator();
+
+		var move = curDifficulty == difficulty.hard ? true : true;
+		if (rnd.RandfRange(0, 100) <= P)
+		{
+			spawnPowerUp(pos, move, getRandomRocketID(countP));
+			return true;
+		}
+		else return false;
+	}
 
 	public bool maybeSpawnPower(float P, Vector2 pos, bool tempOverride)
 	{
 		var rnd = new RandomNumberGenerator();
 
-		var move = curDifficulty == difficulty.hard ? false : true;
+		var move = curDifficulty == difficulty.hard ? true : true;
 		if (rnd.RandfRange(0, 100) <= P)
 		{
 			spawnPowerUp(pos, move, getRandomPowerID(true), tempOverride);
@@ -583,8 +619,24 @@ public partial class main : Node
 		power.Position = pos;
 		power.moveToPlayer = moveToPlayer;
 
+		switch (power.powerID)
+		{
+			case "OneRocket":
+				power.rocketCount = 1;
+				break;
+			case "TwoRocket":
+				power.rocketCount = 2;
+				break;
+			case "ThreeRocket":
+				power.rocketCount = 3;
+				break;
+			default:
+				power.rocketCount = 0;
+				break;
+		}
+
 		var rand = new Random();
-		if (power.powerID != "HealthPack" && (rand.Next(0, tempChance) == 0 || tempOverride))
+		if (power.powerID != "HealthPack" && (rand.Next(0, tempChance) == 0 || tempOverride) && power.rocketCount == 0)
 		{
 			power.isTemporary = true;
 		}
@@ -616,6 +668,25 @@ public partial class main : Node
             _ => "HealthPack",
         };
     }
+	
+	string getRandomRocketID(float P)
+	{
+		var rnd = new RandomNumberGenerator();
+
+		var roll = rnd.RandfRange(0, 100);
+		if (roll < P * 0.3f)
+		{
+			return "ThreeRocket";
+		}
+		else if (roll < P * 0.6f)
+		{
+			return "TwoRocket";
+		}
+		else
+		{
+			return "OneRocket";
+		}
+	}
 
 	// CLOUDS
 	void moveClouds(float delta)
@@ -703,7 +774,7 @@ public partial class main : Node
 	void handleBossMusic(float delta)
 	{
 		bossMusic.Position = PlayerPos;
-		if (bossDead)
+		if (bossDead || GameOver)
 		{
 			bossMusic.VolumeDb -= delta * 3.5f;
 		}
@@ -731,7 +802,8 @@ public partial class main : Node
 		}
 		if (Input.IsActionJustPressed("spawn_health_pack"))
 		{
-			spawnPowerUp(MousePos, false, "HealthPack");
+			spawnPowerUp(MousePos, false, "OneRocket");
+			//spawnPowerUp(MousePos, false, "HealthPack");
 			//spawnPowerUp(MousePos, false, "AgilityPack");
 		}
 		if (Input.IsActionJustPressed("minigun"))
@@ -781,9 +853,9 @@ public partial class main : Node
 
 	void _on_wave_timer_timeout()
 	{
-		lvl1EnemyTimer = lvl1EnemySpawnTime * 0.75f;
-		lvl2EnemyTimer = lvl2EnemySpawnTime * 0.75f;
-		lvl3EnemyTimer = lvl2EnemySpawnTime * 0.75f;
+		lvl1EnemyTimer = lvl1EnemySpawnTime * 0.8f;
+		lvl2EnemyTimer = lvl2EnemySpawnTime * 0.8f;
+		lvl3EnemyTimer = lvl3EnemySpawnTime * 0.8f;
 
 		clearBoxes();
 		waveNumber++;

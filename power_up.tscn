@@ -191,5 +191,7 @@ max_polyphony = 30
 
 [node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("25_e2ssu")
+volume_db = 18.0
+pitch_scale = 3.0
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

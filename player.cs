@@ -52,8 +52,6 @@ public partial class player : Plane
 	public float fireSpeedTempBonus = 1;
 	public float damAccTempBonus = 1;
 
-	powerTimer[] powerTimers;
-
 	// CHILD NODES
 
 	AnimatedSprite2D mainSprite;
@@ -65,6 +63,14 @@ public partial class player : Plane
 	point_to pointer;
 
 
+	// [Export]
+	// public PackedScene trailScene;
+	// float trailTimer;
+	// float trailReplaceTime = 3;
+	// int lTrailNumber;
+	// int rTrailNumber;
+	// bool trailSet = false;
+	// bool delTrail1 = true;
 
 	// PARENT NODES
 	main main;
@@ -108,6 +114,12 @@ public partial class player : Plane
 		pointer.showLine = true;
 		pointer.showPreview = false;
 		pointer.inversePointScale = true;
+
+		// trailTimer = trailReplaceTime;
+		// lTrail1 = makeTrail(true);
+		// rTrail1 = makeTrail(false);
+		// lTrail2 = makeTrail(true);
+		// rTrail2 = makeTrail(false);
 	}
 	void assignStats()
 	{
@@ -280,8 +292,65 @@ public partial class player : Plane
 			pointer.isActive = true;
 		}
 
+		//handleTrail((float)delta);
 		handlePowerTimers((float)delta);
 	}
+
+	player_trail lTrail1 = null;
+	player_trail lTrail2 = null;
+	player_trail rTrail1 = null;
+	player_trail rTrail2 = null;
+	// void handleTrail(float delta)
+	// {
+	// 	trailTimer += delta;
+
+	// 	if (trailTimer >= trailReplaceTime)
+	// 	{
+	// 		trailTimer = 0;
+
+	// 		if (delTrail1)
+	// 		{
+	// 			lTrail1.QueueFree();
+	// 			rTrail1.QueueFree();
+	// 		}
+	// 		else
+	// 		{
+	// 			lTrail2.QueueFree();
+	// 			rTrail2.QueueFree();
+	// 		}
+
+	// 		trailSet = true;
+	// 		if (delTrail1)
+	// 		{
+	// 			delTrail1 = false;
+	// 			lTrail1 = makeTrail(true);
+	// 			rTrail1 = makeTrail(false);
+	// 		}
+	// 		else
+	// 		{
+	// 			delTrail1 = true;
+	// 			lTrail2 = makeTrail(true);
+	// 			rTrail2 = makeTrail(false);
+	// 		}
+	// 	}
+	// }
+	// player_trail makeTrail(bool left)
+	// {
+	// 	var trail = trailScene.Instantiate<player_trail>();
+	// 	var tips = GetNode<Node2D>("WingTips");
+	// 	var rTip = tips.GetNode<Node2D>("RightWingTip");
+	// 	var lTip = tips.GetNode<Node2D>("LeftWingTip");
+
+	// 	if (left)
+	// 	{
+	// 		lTip.AddChild(trail);
+	// 	}
+	// 	else
+	// 	{
+	// 		rTip.AddChild(trail);
+	// 	}
+	// 	return trail;
+	// }
 
 	float rocketSpeedMult = 0.7f;
 	Plane curRocketTarget;
@@ -462,11 +531,11 @@ public partial class player : Plane
 
 	void spinPropeller()
 	{
-		var playSpeed = 1 + Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed);
+		var playSpeed = 1 + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0.05f, 1);
 		propeller.SpeedScale = 1 + playSpeed;
 
-		engineSound.PitchScale = 0.75f + Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed) * 0.4f;
-		engineSound.VolumeDb = -5 + Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed) * 4;
+		engineSound.PitchScale = 0.75f + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0.05f, 1) * 0.4f;
+		engineSound.VolumeDb = -5 + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0.05f, 1) * 4;
 		if (!engineSound.Playing)
 		{
 			engineSound.Play();

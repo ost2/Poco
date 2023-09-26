@@ -6,6 +6,7 @@ public partial class hud : menu
 	clock boxClock;
 	Label fpsLabel;
 	Label noiseValLabel;
+	Label posLabel;
 	Label tempLabel;
 
 	Label timerLabel;
@@ -56,6 +57,7 @@ public partial class hud : menu
 		fpsLabel = GetNode<Label>("FPSLabel");
 		noiseValLabel = GetNode<Label>("CloudValueLabel");
 		tempLabel = GetNode<Label>("TempBoostLabel");
+		posLabel = GetNode<Label>("PosLabel");
 
 		timerLabel = GetNode<Label>("TimerLabel");
 
@@ -110,6 +112,8 @@ public partial class hud : menu
 		statUIs = new stat_ui[] { agilityUI, speedUI, regenUI, fireSpeedUI, damAccUI };
 
 		boxClock.showShadow = false;
+
+		hideDebug();
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -122,9 +126,16 @@ public partial class hud : menu
 	public override void _Process(double delta)
 	{
 		setOffset();
+
+		if (Input.IsActionJustPressed("toggle_debug"))
+		{
+			toggleDebug();
+		}
 		
 		fpsLabel.Text = "FPS: " + Engine.GetFramesPerSecond();
 		//noiseValLabel.Text = "CLOUD: " + main.cloudNoise.GetNoise2D(main.PlayerPos.X, main.PlayerPos.Y).ToString("N3");
+
+		posLabel.Text = "X: " + main.PlayerPos.X + System.Environment.NewLine + "Y: " + main.PlayerPos.Y;
 
 		tempLabel.Text = main.player.agilityTempBonus + ", " + main.player.speedTempBonus + ", " + main.player.regenTempBonus + ", " + main.player.fireSpeedTempBonus + ", " + main.player.damAccTempBonus;
 
@@ -152,6 +163,8 @@ public partial class hud : menu
 				break;
 			}
 		}
+
+
 
 		lvlLabel.Text = main.PHasLevels > 0 ? main.PTotalLevel + " + " + main.PHasLevels : "X  " + main.PTotalLevel;
 
@@ -225,6 +238,35 @@ public partial class hud : menu
 			dontDeathScreen();
 			doStatUpText((float)delta);
 			doLevelUpText((float)delta);
+		}
+	}
+
+	bool debugShowing;
+	void showDebug()
+	{
+		debugShowing = true;
+		timerLabel.Show();
+		tempLabel.Show();
+		fpsLabel.Show();
+		posLabel.Show();
+	}
+	void hideDebug()
+	{
+		debugShowing = false;
+		timerLabel.Hide();
+		tempLabel.Hide();
+		fpsLabel.Hide();
+		posLabel.Hide();
+	}
+	void toggleDebug()
+	{
+		if (debugShowing)
+		{
+			hideDebug();
+		}
+		else
+		{
+			showDebug();
 		}
 	}
 

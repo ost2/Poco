@@ -377,10 +377,6 @@ public partial class main : Node
 		moveClouds((float)delta);
 	}
 
-	readonly float camDistance = 250.0f;
-	readonly float maxZoom = 2.0f;
-	readonly float minZoom = 1.0f;
-	readonly float zoomIncrement = 0.1f;
 
 	Vector2 baseZoom;
 
@@ -451,6 +447,8 @@ public partial class main : Node
 	public void pDie()
 	{
 		Input.MouseMode = Input.MouseModeEnum.Visible;
+
+		player.hasLevels = 0;
 	
 		var deathScreenTimer = GetNode<Timer>("ShowDeathScreenTimer");
 		deathScreenTimer.Start();
@@ -543,11 +541,20 @@ public partial class main : Node
 	}
 	void spawnBox(bool onMouse = false)
 	{
+		var rand = new RandomNumberGenerator();
 		box box = boxScene.Instantiate<box>();
 
-		boxPoint.ProgressRatio = GD.Randf();
+		// boxPoint.ProgressRatio = GD.Randf();
 
-		box.Position = onMouse ? MousePos : boxPoint.Position + mainCam.Position;
+		var pos = new Vector2(x: rand.RandfRange(-1000, 1000), y: rand.RandfRange(-1000, 1000));
+		
+		var boxDistance = rand.RandfRange(1500, 2500);
+
+		var boxVec = pos - player.GlobalPosition.Normalized() * boxDistance;
+		var boxPos = player.GlobalPosition + boxVec;
+		
+		box.Position = onMouse ? MousePos : boxPos; //boxPoint.Position + mainCam.Position;
+
 		AddChild(box);
 	}
 

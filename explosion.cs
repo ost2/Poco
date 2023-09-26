@@ -11,6 +11,8 @@ public partial class explosion : AnimatedSprite2D
 	Area2D hitBox;
 	CollisionShape2D circle;
 	CpuParticles2D particles;
+	CpuParticles2D smoke;
+	Vector2 smokeBaseScale;
 
 	public float pitch;
 
@@ -35,6 +37,8 @@ public partial class explosion : AnimatedSprite2D
 		sound.Play();
 
 		particles = GetNode<CpuParticles2D>("Particles");
+		smoke = GetNode<CpuParticles2D>("Smoke");
+		smokeBaseScale = smoke.Scale;
 
 		hitBox = GetNode<Area2D>("HitBox");
 		circle = hitBox.GetNode<CollisionShape2D>("Circle");
@@ -54,7 +58,7 @@ public partial class explosion : AnimatedSprite2D
 	// Called every frame. 'delta' is the elapsed time since the previous frame.
 	public override void _PhysicsProcess(double delta)
 	{
-		if (soundOver && animOver && time > 1.0f)
+		if (soundOver && animOver && time > 1.5f)
 		{
 			QueueFree();
 		}
@@ -63,6 +67,7 @@ public partial class explosion : AnimatedSprite2D
 		time += (float)delta;
 
 		particles.GlobalPosition = GlobalPosition;
+		smoke.GlobalPosition = GlobalPosition;
 
 		//RotationDegrees = Mathf.Sin(time * 200) * 360;
 
@@ -70,6 +75,7 @@ public partial class explosion : AnimatedSprite2D
 		{
 			particlesStarted = true;
 			particles.Emitting = true;
+			smoke.Emitting = true;
 		}
 
 		if (time < 0.2f)
@@ -87,6 +93,7 @@ public partial class explosion : AnimatedSprite2D
 		if (size == new Vector2(x: 1, y: 1))
 		{
 			Scale += new Vector2(x: (float)delta, y: (float)delta) * 2.75f;
+			smoke.Scale = smokeBaseScale / Scale;
 		}
 		Position += vel * (float)delta;
 		

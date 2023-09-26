@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqgymekmblygr"]
+
+[ext_resource type="Script" path="res://player_trail.cs" id="1_85jl8"]
+
+[sub_resource type="Curve" id="Curve_psa53"]
+bake_resolution = 1000
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(1, 0.288244), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_fso72"]
+offsets = PackedFloat32Array(0, 0.509934, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.655629, 1, 1, 1, 1)
+
+[node name="PlayerTrail" type="Line2D"]
+show_behind_parent = true
+top_level = true
+width_curve = SubResource("Curve_psa53")
+default_color = Color(1, 1, 1, 0.933333)
+gradient = SubResource("Gradient_fso72")
+round_precision = 32
+antialiased = true
+script = ExtResource("1_85jl8")

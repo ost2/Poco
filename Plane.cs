@@ -125,7 +125,7 @@ public partial class Plane : CharacterBody2D
 
 	public void spinPropeller(AnimatedSprite2D propellerSprite, AudioStreamPlayer2D engineSound = null)
 	{
-		var playSpeed = 1 + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0, 1);
+		var playSpeed = 1 + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0.05f, 1);
 		propellerSprite.SpeedScale = 1 + playSpeed;
 		if (!propellerSprite.IsPlaying())
 		{
@@ -134,8 +134,8 @@ public partial class Plane : CharacterBody2D
 
 		if (engineSound != null)
 		{
-			engineSound.PitchScale = 0.75f + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0, 1) * 0.4f;
-			engineSound.VolumeDb = -5 + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0, 1);
+			engineSound.PitchScale = 0.75f + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0.05f, 1) * 0.4f;
+			engineSound.VolumeDb = -5 + Mathf.Clamp(Mathf.InverseLerp(MinSpeed, MaxSpeed, curSpeed), 0.05f, 1);
 			if (!engineSound.Playing)
 			{
 				engineSound.Play();

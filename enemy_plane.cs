@@ -8,9 +8,6 @@ public partial class enemy_plane : Plane
 	public int enemyLevel = 1;
 	public bool bigMode = false;
 
-	[Export]
-	public PackedScene hitParticlesScene;
-
 	// MOVEMENT
 	float distance;
 
@@ -307,7 +304,7 @@ public partial class enemy_plane : Plane
 		{
 			health -= damage;
 			var damageSound = GetNode<AudioStreamPlayer2D>("TakeDamageSound");
-			damageSound.PitchScale = 1 + (maxHealth - health) / maxHealth;
+			damageSound.PitchScale = 1 + Mathf.Clamp((maxHealth - health) / maxHealth, 0.05f, 1);
 			damageSound.Play();
 
 			if (health <= 0.0f)

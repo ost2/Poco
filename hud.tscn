@@ -48,14 +48,13 @@ offset = Vector2(2.08165e-12, -45)
 transform = Transform2D(1, 0, 0, 1, 2.08165e-12, -45)
 
 [node name="TimerLabel" type="Label" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0.847059)
-offset_left = 944.0
-offset_top = 24.0
-offset_right = 980.0
-offset_bottom = 45.0
+offset_left = 80.0
+offset_top = 470.0
+offset_right = 116.0
+offset_bottom = 491.0
 scale = Vector2(6, 6)
-pivot_offset = Vector2(17.5, 2.08165e-12)
+pivot_offset = Vector2(2.08165e-12, 2.08165e-12)
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_75i73")
@@ -65,7 +64,6 @@ vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="TempBoostLabel" type="Label" parent="."]
-visible = false
 self_modulate = Color(1, 1, 1, 0.847059)
 offset_left = 1608.0
 offset_top = 920.0
@@ -94,6 +92,22 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_75i73")
 theme_override_font_sizes/font_size = 20
 text = "FPS: 000"
+metadata/_edit_use_anchors_ = true
+
+[node name="PosLabel" type="Label" parent="."]
+offset_left = 80.0
+offset_top = 658.0
+offset_right = 160.0
+offset_bottom = 708.0
+rotation = 0.000242133
+scale = Vector2(5, 5)
+theme_override_colors/font_color = Color(0.996078, 0.992157, 0.988235, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_75i73")
+theme_override_font_sizes/font_size = 20
+text = "X: 000
+y: 000"
 metadata/_edit_use_anchors_ = true
 
 [node name="CloudValueLabel" type="Label" parent="."]

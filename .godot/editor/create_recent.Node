@@ -1,3 +1,4 @@
+Sprite2D
 CPUParticles2D
 GPUParticles2D
 AnimatedSprite2D
@@ -13,7 +14,6 @@ CharacterBody2D
 HSlider
 Timer
 CanvasLayer
-Sprite2D
 Button
 PointLight2D
 TextureProgressBar

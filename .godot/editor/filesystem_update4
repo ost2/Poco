@@ -1,3 +1,4 @@
+res://player_trail.tscn
 res://player.tscn
 res://menu.tscn
 res://clouds.tscn
@@ -51,6 +52,7 @@ res://options_menu.cs
 res://pause_menu.cs
 res://Plane.cs
 res://player.cs
+res://player_trail.cs
 res://point_to.cs
 res://power_up.cs
 res://rocket.cs

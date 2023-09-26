@@ -1,16 +1,58 @@
-[gd_scene load_steps=3 format=3 uid="uid://k6wexvj63y1d"]
+[gd_scene load_steps=8 format=3 uid="uid://dppntcp8sv16x"]
 
-[sub_resource type="Gradient" id="Gradient_gfk58"]
-colors = PackedColorArray(0, 0.781735, 0.845784, 1, 0.607843, 1, 1, 1)
+[ext_resource type="Script" path="res://Background.cs" id="1_6x20s"]
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_7lkd2"]
-gradient = SubResource("Gradient_gfk58")
+[sub_resource type="Gradient" id="Gradient_ii018"]
+offsets = PackedFloat32Array(0, 0.725806, 0.774194, 0.83871, 0.912903, 0.948387)
+colors = PackedColorArray(0, 0.670588, 0.898039, 1, 0.203837, 0.82806, 0.914876, 1, 1, 0.926124, 0.842811, 1, 0.227451, 0.831373, 0.211765, 1, 0.227451, 0.592157, 0.211765, 1, 0.235294, 0.243137, 0.239216, 1)
 
-[node name="Background" type="Node2D"]
-scale = Vector2(1.5, 1.5)
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_20syv"]
+noise_type = 3
+frequency = 0.006
+fractal_type = 3
+fractal_octaves = 7
+fractal_lacunarity = 2.1
+fractal_gain = 0.45
+fractal_ping_pong_strength = 1.5
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-position = Vector2(-1, -2)
-scale = Vector2(7.51953, 1081.75)
-texture = SubResource("GradientTexture1D_7lkd2")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_gm742"]
+width = 1000
+height = 600
+normalize = false
+color_ramp = SubResource("Gradient_ii018")
+noise = SubResource("FastNoiseLite_20syv")
+
+[sub_resource type="Gradient" id="Gradient_lxro5"]
+offsets = PackedFloat32Array(0, 0.316129, 0.509677, 0.816129)
+colors = PackedColorArray(1, 1, 1, 0, 0.991148, 0.991148, 0.991148, 0.0578818, 0.92549, 0.92549, 0.92549, 0.243137, 0.847059, 0.847059, 0.847059, 0.945098)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_bi2y3"]
+noise_type = 3
+frequency = 0.012
+offset = Vector3(2.08167e-08, 2.08167e-08, 2.08167e-08)
+domain_warp_type = 2
+domain_warp_amplitude = 10.0
+domain_warp_frequency = 0.04
+domain_warp_fractal_type = 0
+domain_warp_fractal_gain = 0.2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_rr0vp"]
+width = 1000
+height = 600
+generate_mipmaps = false
+normalize = false
+color_ramp = SubResource("Gradient_lxro5")
+noise = SubResource("FastNoiseLite_bi2y3")
+
+[node name="Background" type="Sprite2D"]
+self_modulate = Color(0.639216, 0.933333, 0.94902, 1)
+light_mask = 0
+texture_filter = 5
+scale = Vector2(5, 5)
+texture = SubResource("NoiseTexture2D_gm742")
+script = ExtResource("1_6x20s")
+
+[node name="CloudsSprite" type="Sprite2D" parent="."]
+position = Vector2(2.08165e-12, 2.08165e-12)
+scale = Vector2(1.01, 1)
+texture = SubResource("NoiseTexture2D_rr0vp")

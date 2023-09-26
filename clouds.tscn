@@ -2,14 +2,15 @@
 
 [ext_resource type="Script" path="res://clouds.cs" id="1_mc3so"]
 
-[sub_resource type="Gradient" id="Gradient_lxro5"]
-offsets = PackedFloat32Array(0, 0.448387, 0.570968, 0.677419, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0, 0.926651, 0.926651, 0.926651, 0.479592, 0.847059, 0.847059, 0.847059, 1, 0.847059, 0.847059, 0.847059, 1)
+[sub_resource type="Gradient" id="Gradient_82evj"]
+offsets = PackedFloat32Array(0, 0.46129, 0.670968, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.054902, 0.847059, 0.847059, 0.847059, 0.658824, 0.847059, 0.847059, 0.847059, 1)
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_bi2y3"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_plybv"]
 noise_type = 3
-frequency = 0.002
+frequency = 0.0021
 offset = Vector3(2.08167e-08, 2.08167e-08, 2.08167e-08)
+fractal_gain = 0.6
 domain_warp_type = 2
 domain_warp_amplitude = 10.0
 domain_warp_frequency = 0.04
@@ -21,8 +22,8 @@ width = 720
 height = 480
 generate_mipmaps = false
 normalize = false
-color_ramp = SubResource("Gradient_lxro5")
-noise = SubResource("FastNoiseLite_bi2y3")
+color_ramp = SubResource("Gradient_82evj")
+noise = SubResource("FastNoiseLite_plybv")
 
 [node name="Clouds" type="Node2D"]
 script = ExtResource("1_mc3so")

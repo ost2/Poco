@@ -133,10 +133,12 @@ public partial class power_up : Area2D
 
 		if (isCollected)
 		{
+			pointer.isActive = false;
+
 			collectedTime += (float)delta;
 
 			var dirVec = main.PlayerPos - Position;
-			Position += dirVec * (float)delta * (collectedTime * 30);
+			Position += dirVec * (float)delta * (collectedTime * 22);
 
 			if (Scale.X > 0)
 			{	
@@ -154,8 +156,10 @@ public partial class power_up : Area2D
 		if (hoveredTime < 100)
 		{
 			hoveredTime += (float)delta;
-			if (hoveredTime <= 0.4f)
-			scaleVal += Mathf.Clamp(Mathf.Sin(hoveredTime * 7.5f), 0, 1);
+			if (hoveredTime <= 0.5f)
+			{
+				scaleVal += Mathf.Clamp(Mathf.Sin(hoveredTime * 8), 0, 1);
+			}
 		}
 		sprite.Scale = new Vector2(x: scaleVal, y: scaleVal);
 
@@ -178,7 +182,7 @@ public partial class power_up : Area2D
 	bool hovered = false;
 	void _on_mouse_entered()
 	{
-		if (!hovered)
+		if (!hovered && !isCollected)
 		{
 			hovered = true;
 			hoveredTime = 0;

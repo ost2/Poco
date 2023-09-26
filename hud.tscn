@@ -44,8 +44,8 @@ animations = [{
 script = ExtResource("1_k233h")
 
 [node name="WaveText" parent="." instance=ExtResource("2_5asrq")]
-offset = Vector2(2.08165e-12, -45)
-transform = Transform2D(1, 0, 0, 1, 2.08165e-12, -45)
+offset = Vector2(2.08165e-12, -25)
+transform = Transform2D(1, 0, 0, 1, 2.08165e-12, -25)
 
 [node name="TimerLabel" type="Label" parent="."]
 self_modulate = Color(1, 1, 1, 0.847059)

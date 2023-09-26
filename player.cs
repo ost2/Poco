@@ -692,30 +692,35 @@ public partial class player : Plane
 		{
 			case "AgilityPack":
 			{
+				powerTimer.agilityTemp.first = true;
 				powerTimer.agilityTemp.time = 0;
 				powerTimer.agilityTemp.shouldIncrement = true;
 				break;
 			}
 			case "SpeedPack":
 			{
+				powerTimer.speedTemp.first = true;
 				powerTimer.speedTemp.time = 0;
 				powerTimer.speedTemp.shouldIncrement = true;
 				break;
 			}
 			case "RegenPack":
 			{
+				powerTimer.regenTemp.first = true;
 				powerTimer.regenTemp.time = 0;
 				powerTimer.regenTemp.shouldIncrement = true;
 				break;
 			}
 			case "FireSpeedPack":
 			{
+				powerTimer.fireSpeedTemp.first = true;
 				powerTimer.fireSpeedTemp.time = 0;
 				powerTimer.fireSpeedTemp.shouldIncrement = true;
 				break;
 			}
 			case "DamAccPack":
 			{
+				powerTimer.damAccTemp.first = true;
 				powerTimer.damAccTemp.time = 0;
 				powerTimer.damAccTemp.shouldIncrement = true;
 				break;

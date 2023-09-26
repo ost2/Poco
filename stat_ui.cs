@@ -259,11 +259,15 @@ public partial class stat_ui : AnimatedSprite2D
 		arrowTime = 0;
 		showArrow = true;
 		arrow.Play();
+
+		doButton();
 	}
 	public void dontArrow()
 	{
 		arrowTime = 0;
 		showArrow = false;
+
+		dontButton();
 	}
 
 	public void doButton()

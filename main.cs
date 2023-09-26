@@ -110,19 +110,16 @@ public partial class main : Node
 			{
 				case difficulty.easy:
 				{
-					return 0.65f;
+					return 0.7f;
 				}
 				case difficulty.medium:
+				default:
 				{
-					return 0.9f;
+					return 0.85f;
 				}
 				case difficulty.hard:
 				{
-					return 1.15f;
-				}
-				default:
-				{
-					return 1.0f;
+					return 1.05f;
 				}
 			}
 		}
@@ -153,7 +150,6 @@ public partial class main : Node
 		player = GetNode<player>("Player");
 		mainCam = GetNode<Camera2D>("PlayerCamera");
 		clouds = GetNode<Node2D>("Clouds");
-		background = GetNode<Node2D>("Background");
 		enemyPath = mainCam.GetNode<Path2D>("EnemySpawnPath");
 		enemyPoint = enemyPath.GetNode<PathFollow2D>("EnemySpawnPoint");
 		boxPath = mainCam.GetNode<Path2D>("BoxSpawnPath");
@@ -220,6 +216,7 @@ public partial class main : Node
 
 		hud.showWaveText();
 		hud.stopBoxClock();
+		hud.hideArrows();
 	}
 
 	// MENUS
@@ -375,6 +372,7 @@ public partial class main : Node
 			//updateCloudThickness();
 		}
 
+		moveBackground((float)delta);
 		moveCamera((float)delta);
 		moveClouds((float)delta);
 	}
@@ -451,6 +449,10 @@ public partial class main : Node
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 
 		player.hasLevels = 0;
+
+		hud.hideArrows();
+
+		removeAllTemporary();
 	
 		var deathScreenTimer = GetNode<Timer>("ShowDeathScreenTimer");
 		deathScreenTimer.Start();
@@ -697,6 +699,14 @@ public partial class main : Node
 		}
 	}
 
+	void moveBackground(float delta)
+	{
+		var bg = GetNode<Background>("Background");
+
+		bg.pos = mainCam.GlobalPosition;
+		bg.otherPos = (mainCam.GlobalPosition * 1.5f + player.GlobalPosition * 0.5f) / 2;
+	}
+
 	// CLOUDS
 	void moveClouds(float delta)
 	{	
@@ -705,7 +715,6 @@ public partial class main : Node
 			var pos = player.GlobalPosition;// + player.frontVector * player.Velocity * delta;
 
 			GetNode<Node2D>("LowerClouds").Position = pos;
-			background.Position = player.Position;
 			clouds.Position = pos;
 			var cloudsSprite = clouds.GetNode<Sprite2D>("CloudsSprite");
 
@@ -811,9 +820,9 @@ public partial class main : Node
 		}
 		if (Input.IsActionJustPressed("spawn_health_pack"))
 		{
-			spawnPowerUp(MousePos, false, "OneRocket");
+			//spawnPowerUp(MousePos, false, "OneRocket");
 			//spawnPowerUp(MousePos, false, "HealthPack");
-			//spawnPowerUp(MousePos, false, "AgilityPack");
+			spawnPowerUp(MousePos, false, "AgilityPack", true);
 		}
 		if (Input.IsActionJustPressed("minigun"))
 		{

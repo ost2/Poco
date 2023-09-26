@@ -1,15 +1,14 @@
-[gd_scene load_steps=23 format=3 uid="uid://wei60vyv43c6"]
+[gd_scene load_steps=22 format=3 uid="uid://wei60vyv43c6"]
 
-[ext_resource type="PackedScene" uid="uid://k6wexvj63y1d" path="res://background.tscn" id="1_fy8cw"]
 [ext_resource type="PackedScene" uid="uid://cj6gir6s4argx" path="res://player.tscn" id="1_r1ibf"]
 [ext_resource type="Script" path="res://main.cs" id="1_tnpdv"]
-[ext_resource type="Texture2D" uid="uid://xdo1vn7gmit" path="res://Sprites/BackgroundSprites/Unknown.jpg" id="2_g0c7x"]
 [ext_resource type="PackedScene" uid="uid://dxa01to7rcrfv" path="res://boss_plane.tscn" id="3_cyali"]
 [ext_resource type="PackedScene" uid="uid://bqdynpxlxq48" path="res://explosion.tscn" id="3_hnffk"]
 [ext_resource type="PackedScene" uid="uid://duyg0ecpqydng" path="res://clouds.tscn" id="4_4i1pm"]
 [ext_resource type="PackedScene" uid="uid://bgbk3rbflio4p" path="res://box.tscn" id="4_38njs"]
 [ext_resource type="Texture2D" uid="uid://bxjsjra4m0ta1" path="res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp" id="4_bwih3"]
 [ext_resource type="PackedScene" uid="uid://41b2tbrmutew" path="res://power_up.tscn" id="5_f0rea"]
+[ext_resource type="PackedScene" uid="uid://dppntcp8sv16x" path="res://Background.tscn" id="7_i62nx"]
 [ext_resource type="PackedScene" uid="uid://bo66m56a2ikla" path="res://enemy_plane.tscn" id="7_idsnj"]
 [ext_resource type="PackedScene" uid="uid://bqtqoew0owjhn" path="res://hud.tscn" id="8_abmcm"]
 [ext_resource type="AudioStream" uid="uid://y137u5b8l4o4" path="res://Audio/Music/BossMusic.mp3" id="13_88p64"]
@@ -73,18 +72,7 @@ explosionScene = ExtResource("3_hnffk")
 boxScene = ExtResource("4_38njs")
 powerUpScene = ExtResource("5_f0rea")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(0.2, 0.2)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer"]
-texture_filter = 6
-position = Vector2(13697, 15218)
-scale = Vector2(400, 400)
-texture = ExtResource("2_g0c7x")
-
-[node name="Background" parent="." instance=ExtResource("1_fy8cw")]
+[node name="Background" parent="." instance=ExtResource("7_i62nx")]
 
 [node name="LowerClouds" parent="." instance=ExtResource("4_4i1pm")]
 modulate = Color(1, 1, 1, 0.501961)

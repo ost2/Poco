@@ -1,4 +1,6 @@
 Sprite2D
+ParallaxLayer
+ParallaxBackground
 CPUParticles2D
 GPUParticles2D
 AnimatedSprite2D
@@ -22,8 +24,6 @@ PathFollow2D
 Path2D
 Marker2D
 RigidBody2D
-ParallaxLayer
-ParallaxBackground
 DirectionalLight2D
 WorldEnvironment
 Node

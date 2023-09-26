@@ -376,13 +376,19 @@ public partial class hud : menu
 			}
 		}
 	}
+	public void hideArrows()
+	{
+		foreach (var statUI in statUIs)
+		{
+			if (statUI.showArrow)
+			{
+				statUI.dontArrow();
+			}
+		}
+	}
 	public void doHudLevelUp()
 	{
 		doArrowFlash();
-		foreach (var statUI in statUIs)
-		{
-			statUI.doButton();
-		}
 		levelUpLabelTimer = 0.0f;
 	}
 
@@ -399,7 +405,6 @@ public partial class hud : menu
 			foreach (var statUI in statUIs)
 			{
 				statUI.dontArrow();
-				statUI.dontButton();
 			}
 		}
 	}
@@ -498,6 +503,7 @@ public partial class hud : menu
 		else
 		{
 			stat.stopClock();
+			stat.shouldStartClock = false;
 		}
 	}
 

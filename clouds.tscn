@@ -3,14 +3,13 @@
 [ext_resource type="Script" path="res://clouds.cs" id="1_mc3so"]
 
 [sub_resource type="Gradient" id="Gradient_82evj"]
-offsets = PackedFloat32Array(0, 0.46129, 0.670968, 1)
-colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.054902, 0.847059, 0.847059, 0.847059, 0.658824, 0.847059, 0.847059, 0.847059, 1)
+offsets = PackedFloat32Array(0.458065, 0.493548, 0.622581, 0.896774)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 0.054902, 0.897204, 0.897204, 0.897204, 0.690132, 0.847059, 0.847059, 0.847059, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_plybv"]
 noise_type = 3
-frequency = 0.0021
+frequency = 0.002
 offset = Vector3(2.08167e-08, 2.08167e-08, 2.08167e-08)
-fractal_gain = 0.6
 domain_warp_type = 2
 domain_warp_amplitude = 10.0
 domain_warp_frequency = 0.04

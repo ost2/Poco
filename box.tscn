@@ -124,6 +124,7 @@ volume_db = -7.027
 max_polyphony = 10
 
 [node name="PointTo" parent="." instance=ExtResource("16_kbdti")]
+visible = false
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="animation_finished" from="BoxSprite" to="." method="_on_box_sprite_animation_finished"]

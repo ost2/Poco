@@ -35,3 +35,4 @@ res://stat_ui.cs
 res://Trail2D.cs
 res://value_changed_label.cs
 res://wave_text.cs
+res://box.tscn

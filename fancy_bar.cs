@@ -57,11 +57,12 @@ public partial class fancy_bar : TextureProgressBar
 
 		if (!showNegative && (float)Value - lastValue < 0)
 		{
+			number.QueueFree();
 			return;
 		}
 		else 
 		{
-			AddChild(number);
+			CallDeferred("add_child", number);
 		}
 	}
 }

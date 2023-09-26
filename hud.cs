@@ -45,6 +45,8 @@ public partial class hud : menu
 
 	Vector2 statUpLabelStartPos;
 
+	AudioStreamPlayer2D statUpSound;
+
 	public bool showDeathScreen = false;
 
 	// Called when the node enters the scene tree for the first time.
@@ -95,6 +97,8 @@ public partial class hud : menu
 
 		statUpLabel = xpElement.GetNode<Label>("StatUpLabel");
 		levelUpLabel = xpElement.GetNode<Label>("LevelUpLabel");
+
+		statUpSound = GetNode<AudioStreamPlayer2D>("StatUpSound");
 	
 		agilityUI.Play();
 		speedUI.Play();
@@ -303,6 +307,8 @@ public partial class hud : menu
             var mark = new Marker2D { Position = statUpLabel.Position };
 
             surgeAnimation(mark, delta, statUpLabelTimer * 2, 1.5f, 1.05f, 0, -20);
+
+			mark.QueueFree();
 			
 			statUpLabel.Position = mark.Position;
 			statUpLabel.Scale = mark.Scale;
@@ -412,7 +418,6 @@ public partial class hud : menu
 	void doStatUp()
 	{
 		main.player.hasLevels -= 1;
-		var statUpSound = GetNode<AudioStreamPlayer2D>("StatUpSound");
 		statUpSound.GlobalPosition = main.PlayerPos;
 		statUpSound.Play();
 	}

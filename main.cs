@@ -546,9 +546,9 @@ public partial class main : Node
 
 		// boxPoint.ProgressRatio = GD.Randf();
 
-		var pos = new Vector2(x: rand.RandfRange(-1000, 1000), y: rand.RandfRange(-1000, 1000));
+		var pos = new Vector2(x: rand.RandfRange(-3000, 0), y: rand.RandfRange(-1000, 1000));
 		
-		var boxDistance = rand.RandfRange(1500, 2500);
+		var boxDistance = rand.RandfRange(1500, 2500 + (pos - player.GlobalPosition).Length() * 0.2f);
 
 		var boxVec = pos - player.GlobalPosition.Normalized() * boxDistance;
 		var boxPos = player.GlobalPosition + boxVec;
@@ -781,13 +781,13 @@ public partial class main : Node
 	void handleBossMusic(float delta)
 	{
 		bossMusic.Position = PlayerPos;
-		if (bossDead || GameOver)
-		{
-			bossMusic.VolumeDb -= delta * 3.5f;
-		}
 		if (bossMusic.VolumeDb < -50)
 		{
 			bossMusic.Stop();
+		}
+		else if (bossDead || GameOver)
+		{
+			bossMusic.VolumeDb -= delta * 3.5f;
 		}
 	}
 

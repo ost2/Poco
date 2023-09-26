@@ -27,6 +27,7 @@ public partial class cannon : RayCast2D
 	public main main;
 	Plane plane;
 
+	Color baseColor;
 	// §READY
 	public override void _Ready()
 	{
@@ -36,6 +37,8 @@ public partial class cannon : RayCast2D
 		muzzleFlashSprite = tip.GetNode<AnimatedSprite2D>("MuzzleFlashSprite");
 		plane = GetParent<Plane>();
 		main = plane.GetParent<main>();
+
+		baseColor = cannonSprite.SelfModulate;
 
 		if (!plane.isPlayer)
 		{
@@ -93,6 +96,9 @@ public partial class cannon : RayCast2D
 		var sway = (plane.inaccuracyRad / 2) - (realFireTime - fireTime);
 		var curSway = rand.RandfRange(-sway, sway);
 		angle = Vector2.FromAngle(angle.Angle() + curSway);
+
+		var speedLerp = Mathf.InverseLerp(fireTime * 0.5f, fireTime * 2.0f, realFireTime);
+		cannonSprite.SelfModulate = new Color(baseColor.R + speedLerp * 10, baseColor.G + speedLerp, baseColor.B, baseColor.A + speedLerp);
 
 		var shouldShoot = false;
 		if (plane.isPlayer)

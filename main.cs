@@ -194,6 +194,7 @@ public partial class main : Node
 		player.cantMove = false;
 		player.isDead = false;
 		player.resetLevels();
+		player.clearRockets();
 		player.Show();
 
 		hud.stopBoxClock();
@@ -261,6 +262,7 @@ public partial class main : Node
 		clearBoxes();
 		clearEnemies();
 		clearPowerUps();
+		setStartingValues();
 
 		gameRunning = false;
 		doMainMenu = true;

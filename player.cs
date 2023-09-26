@@ -120,10 +120,11 @@ public partial class player : Plane
 		// rTrail1 = makeTrail(false);
 		// lTrail2 = makeTrail(true);
 		// rTrail2 = makeTrail(false);
+
+		canAim = true;
 	}
 	void assignStats()
 	{
-		canAim = true;
 		isPlayer = true;
 
 		maxOverHeal = pMaxHealth;
@@ -845,6 +846,10 @@ public partial class player : Plane
 	void getRegen()
 	{
 		regenLvl += 1;
+	}
+	public void clearRockets()
+	{
+		rocketCount = 0;
 	}
 
 	public void resetLevels()

@@ -129,6 +129,8 @@ public partial class power_up : Area2D
 
 		time += (float)delta;
 
+		float scaleVal = 0;
+
 		if (isCollected)
 		{
 			collectedTime += (float)delta;
@@ -138,7 +140,7 @@ public partial class power_up : Area2D
 
 			if (Scale.X > 0)
 			{	
-				Scale -= new Vector2(x: 0.02f, y: 0.02f);
+				scaleVal = Mathf.Clamp(1 - collectedTime * 0.5f, 0, 3);
 			}
 			else 
 			{
@@ -147,14 +149,15 @@ public partial class power_up : Area2D
 		}
 		else 
 		{
-			var scaleVal = (Mathf.Sin(time * 2) * 0.1f) + 0.8f;
-			sprite.Scale = new Vector2(x: scaleVal, y: scaleVal);
+			scaleVal = (Mathf.Sin(time * 2) * 0.1f) + 0.8f;
 		}
-
 		if (hoveredTime < 100)
 		{
 			hoveredTime += (float)delta;
+			if (hoveredTime <= 0.4f)
+			scaleVal += Mathf.Clamp(Mathf.Sin(hoveredTime * 7.5f), 0, 1);
 		}
+		sprite.Scale = new Vector2(x: scaleVal, y: scaleVal);
 
 		if (moveToPlayer && !isCollected)
 		{
@@ -172,11 +175,15 @@ public partial class power_up : Area2D
 		isCollected = true;
 		pickUpSound.Play();
 	}
-
+	bool hovered = false;
 	void _on_mouse_entered()
 	{
-		hoveredTime = 0;
-		moveToPlayer = true;
-		GetNode<AudioStreamPlayer2D>("HoverSound").Play();
+		if (!hovered)
+		{
+			hovered = true;
+			hoveredTime = 0;
+			moveToPlayer = true;
+			GetNode<AudioStreamPlayer2D>("HoverSound").Play();
+		}
 	}
 }

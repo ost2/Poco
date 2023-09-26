@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://cp3vnt7b22oga" path="res://Sprites/RocketSprites/Rocket4.png" id="16_vpsgq"]
 [ext_resource type="Texture2D" uid="uid://yr1nuh7ij5no" path="res://Sprites/PowerUps/Watch/Watch2.png" id="17_00xn8"]
 [ext_resource type="Texture2D" uid="uid://c78c40dspovqg" path="res://Sprites/RocketSprites/Rocket7.png" id="17_eokc5"]
-[ext_resource type="AudioStream" uid="uid://bc8bnh3ojscvq" path="res://Audio/UISounds/HoverSound.mp3" id="25_e2ssu"]
+[ext_resource type="AudioStream" uid="uid://woecmxopksp4" path="res://Audio/BoxSounds/BoxDamageSound.mp3" id="25_y475i"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtdnd"]
 radius = 11.3355
@@ -190,8 +190,9 @@ volume_db = 7.726
 max_polyphony = 30
 
 [node name="HoverSound" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("25_e2ssu")
-volume_db = 19.0
-pitch_scale = 2.0
+stream = ExtResource("25_y475i")
+volume_db = -5.0
+pitch_scale = 8.0
+max_polyphony = 10
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

@@ -1,12 +1,12 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1695759396
+::res://::1695759789
 aaImplem.cs::CSharpScript::-1::1694204553::0::1::::<><>::
 Background.cs::CSharpScript::-1::1695757933::0::1::::<><>::
-Background.tscn::PackedScene::8243883752693888709::1695759148::0::1::::<><>::res://Background.cs
+Background.tscn::PackedScene::8243883752693888709::1695759682::0::1::::<><>::res://Background.cs
 boss_plane.cs::CSharpScript::-1::1694922392::0::1::::<><>::
 boss_plane.tscn::PackedScene::8775170831262401187::1695747847::0::1::::<><>::res://boss_plane.cs<>uid://bp3cqaaypo8mw
 box.cs::CSharpScript::-1::1695395157::0::1::::<><>::
-box.tscn::PackedScene::2810276190116322161::1695747847::0::1::::<><>::res://box.cs<>uid://bocrgbiewd1js
+box.tscn::PackedScene::2810276190116322161::1695759682::0::1::::<><>::res://box.cs<>uid://bocrgbiewd1js::::res://Sprites/BoxSprites/Box1.png<>uid://bd2ae23113rj::::res://Sprites/BoxSprites/Box2.png<>uid://cgn8hpj1cqr8w::::res://Sprites/BoxSprites/Box3.png<>uid://bh5w5g16pg1o5::::res://Sprites/BoxSprites/Box4.png<>uid://dqvv74x0h50mr::::res://Sprites/BoxSprites/Box5.png<>uid://81tem3qg0q4h::::res://Sprites/BoxSprites/Parachute1.png<>uid://c0lelsrhtxnoc::::res://Sprites/BoxSprites/Parachute2.png<>uid://cajhljm5bb2me::::res://Sprites/BoxSprites/Parachute3.png<>uid://d3mdoheybm6bl::::res://Sprites/BoxSprites/Parachute4.png<>uid://ew2cvqhp35ni::::res://Sprites/BoxSprites/Box6.png<>uid://bsmfh32cp6j3a::::res://Sprites/BoxSprites/Box7.png<>uid://buekhynw2c7pq::::res://Sprites/BoxSprites/Box8.png<>uid://woecmxopksp4::::res://Audio/BoxSounds/BoxDamageSound.mp3<>uid://bmyg70jxcbbw1::::res://Audio/BoxSounds/BoxBreakSound.mp3<>uid://c5g26addaeitr::::res://point_to.tscn
 bullet.cs::CSharpScript::-1::1694480485::0::1::::<><>::
 bullet.tscn::PackedScene::7837287027891066801::1695747847::0::1::::<><>::res://bullet.cs<>uid://bwcct7e40l0bi
 cannon.cs::CSharpScript::-1::1695696627::0::1::::<><>::
@@ -14,7 +14,7 @@ cannon.tscn::PackedScene::3497205923176355858::1695747847::0::1::::<><>::res://c
 clock.cs::CSharpScript::-1::1695395495::0::1::::<><>::
 clock.tscn::PackedScene::8283695912367115986::1695747847::0::1::::<><>::uid://c5f2owxmcx6my
 clouds.cs::CSharpScript::-1::1694204553::0::1::::<><>::
-clouds.tscn::PackedScene::8612993150628476012::1695759396::0::1::::<><>::res://clouds.cs
+clouds.tscn::PackedScene::8612993150628476012::1695759789::0::1::::<><>::res://clouds.cs
 death_screen.cs::CSharpScript::-1::1694204553::0::1::::<><>::
 death_screen.tscn::PackedScene::1522597912908949085::1695747847::0::1::::<><>::res://death_screen.cs<>uid://d104wrtyun42s
 enemy_plane.cs::CSharpScript::-1::1695691212::0::1::::<><>::
@@ -30,10 +30,10 @@ fancy_slider.tscn::PackedScene::861222265953073537::1695747847::0::1::::<><>::re
 hit_particles.cs::CSharpScript::-1::1694920542::0::1::::<><>::
 hit_particles.tscn::PackedScene::5487697348386869540::1695747847::0::1::::<><>::res://hit_particles.cs
 hud.cs::CSharpScript::-1::1695759291::0::1::::<><>::
-hud.tscn::PackedScene::3549662077462254287::1695759148::0::1::::<><>::res://hud.cs<>uid://cv8wfg2v3sxti::::res://wave_text.tscn<>uid://d104wrtyun42s::::res://Fonts/Evil Empire.otf<>uid://vxs720dd7dll::::res://death_screen.tscn<>uid://dvjcoqt6kgn4k::::res://fancy_bar.tscn<>uid://bfjsxv68fl3te::::res://Sprites/UISprites/EnemyIcon.png<>uid://ejhtyjdx8ret::::res://Sprites/UISprites/HealthBarSprites/HealthBar3.png<>uid://dnj760a7g311u::::res://Sprites/UISprites/GreenArrow.png<>uid://dqaxi5gumi7co::::res://clock.tscn<>uid://d0unvfyl6mecw::::res://stat_ui.tscn<>uid://bocrgbiewd1js::::res://Sprites/BoxSprites/Box1.png<>uid://bsmfh32cp6j3a::::res://Sprites/BoxSprites/Box7.png<>uid://buekhynw2c7pq::::res://Sprites/BoxSprites/Box8.png<>uid://cosmkpp5x55pi::::res://Audio/PowerUpSounds/StatUpSound.mp3
+hud.tscn::PackedScene::3549662077462254287::1695759682::0::1::::<><>::res://hud.cs<>uid://cv8wfg2v3sxti::::res://wave_text.tscn<>uid://d104wrtyun42s::::res://Fonts/Evil Empire.otf<>uid://vxs720dd7dll::::res://death_screen.tscn<>uid://dvjcoqt6kgn4k::::res://fancy_bar.tscn<>uid://bfjsxv68fl3te::::res://Sprites/UISprites/EnemyIcon.png<>uid://ejhtyjdx8ret::::res://Sprites/UISprites/HealthBarSprites/HealthBar3.png<>uid://dnj760a7g311u::::res://Sprites/UISprites/GreenArrow.png<>uid://dqaxi5gumi7co::::res://clock.tscn<>uid://d0unvfyl6mecw::::res://stat_ui.tscn<>uid://bocrgbiewd1js::::res://Sprites/BoxSprites/Box1.png<>uid://bsmfh32cp6j3a::::res://Sprites/BoxSprites/Box7.png<>uid://buekhynw2c7pq::::res://Sprites/BoxSprites/Box8.png<>uid://cosmkpp5x55pi::::res://Audio/PowerUpSounds/StatUpSound.mp3
 icon.svg::CompressedTexture2D::8014483810227289740::1694204553::1694204553::1::::<><>::
 main.cs::CSharpScript::-1::1695759137::0::1::::<><>::
-main.tscn::PackedScene::1552954513250466891::1695759148::0::1::::<><>::uid://cj6gir6s4argx::::res://player.tscn<>res://main.cs<>uid://dxa01to7rcrfv::::res://boss_plane.tscn<>uid://bqdynpxlxq48::::res://explosion.tscn<>uid://duyg0ecpqydng::::res://clouds.tscn<>uid://bgbk3rbflio4p::::res://box.tscn<>uid://bxjsjra4m0ta1::::res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp<>uid://41b2tbrmutew::::res://power_up.tscn<>uid://dppntcp8sv16x::::res://Background.tscn<>uid://bo66m56a2ikla::::res://enemy_plane.tscn<>uid://bqtqoew0owjhn::::res://hud.tscn<>uid://y137u5b8l4o4::::res://Audio/Music/BossMusic.mp3<>uid://4wqof8vkn6b4::::res://main_menu.tscn<>uid://bul02td2xsoyq::::res://pause_menu.tscn<>uid://c21x1dy4ye40h::::res://options_menu.tscn
+main.tscn::PackedScene::1552954513250466891::1695759682::0::1::::<><>::uid://cj6gir6s4argx::::res://player.tscn<>res://main.cs<>uid://dxa01to7rcrfv::::res://boss_plane.tscn<>uid://bqdynpxlxq48::::res://explosion.tscn<>uid://duyg0ecpqydng::::res://clouds.tscn<>uid://bgbk3rbflio4p::::res://box.tscn<>uid://bxjsjra4m0ta1::::res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp<>uid://41b2tbrmutew::::res://power_up.tscn<>uid://dppntcp8sv16x::::res://Background.tscn<>uid://bo66m56a2ikla::::res://enemy_plane.tscn<>uid://bqtqoew0owjhn::::res://hud.tscn<>uid://y137u5b8l4o4::::res://Audio/Music/BossMusic.mp3<>uid://4wqof8vkn6b4::::res://main_menu.tscn<>uid://bul02td2xsoyq::::res://pause_menu.tscn<>uid://c21x1dy4ye40h::::res://options_menu.tscn
 main_menu.cs::CSharpScript::-1::1694204553::0::1::::<><>::
 main_menu.tscn::PackedScene::2081889563654536739::1695747847::0::1::::<><>::res://main_menu.cs<>uid://cqnmbimsmym2
 menu.cs::CSharpScript::-1::1694204553::0::1::::<><>::
@@ -136,7 +136,7 @@ BigPropeller3.png::CompressedTexture2D::2229166338196014150::1694204553::1694204
 BigPropeller4.png::CompressedTexture2D::5606938209987598507::1694204553::1694204553::1::::<><>::
 BigPropeller5.png::CompressedTexture2D::7197450606220272947::1694204553::1694204553::1::::<><>::
 BigPropeller6.png::CompressedTexture2D::1468417451197665832::1694204553::1694204553::1::::<><>::
-::res://Sprites/BoxSprites/::1694204553
+::res://Sprites/BoxSprites/::1695759500
 Box1.png::CompressedTexture2D::3374236218867208100::1695759496::1695759500::1::::<><>::
 Box2.png::CompressedTexture2D::78021588816017515::1695759496::1695759500::1::::<><>::
 Box3.png::CompressedTexture2D::5222828304273936348::1695759496::1695759500::1::::<><>::
@@ -182,10 +182,16 @@ MediumPlane8.png::CompressedTexture2D::5293654146496513331::1694204553::16942045
 MediumPlane9.png::CompressedTexture2D::717079646930330677::1694204553::1694204553::1::::<><>::
 MediumPlane10.png::CompressedTexture2D::8641352946122826684::1694204553::1694204553::1::::<><>::
 MediumPlane.png::CompressedTexture2D::824077194712261167::1694204553::1694204553::1::::<><>::
-::res://Sprites/PlayerSprites/::1694204553
+::res://Sprites/PlayerSprites/::1695760122
 Plane1 damagepng-1.png.png::CompressedTexture2D::2130416756188420760::1694204553::1694204553::1::::<><>::
+Plane1-1.png1.png::CompressedTexture2D::1109048703557264334::1695760123::1695760124::1::::<><>::
+Plane1-1.png2.png::CompressedTexture2D::4295514356294190801::1695760123::1695760124::1::::<><>::
+Plane1-1.png3.png::CompressedTexture2D::6801998895945846201::1695760123::1695760124::1::::<><>::
 Plane1-1.png.png::CompressedTexture2D::2580026015216827937::1694204553::1694204553::1::::<><>::
+Plane1.png::CompressedTexture2D::5012968915258212340::1695760122::1695760124::1::::<><>::
+Plane2.png::CompressedTexture2D::2340327580121564921::1695760122::1695760124::1::::<><>::
 Plane2.png-1.png.png::CompressedTexture2D::4390544944589322203::1694204553::1694204553::1::::<><>::
+Plane3.png::CompressedTexture2D::6975628104840567193::1695760122::1695760124::1::::<><>::
 Plane3.png-1.png.png::CompressedTexture2D::540147683380973458::1694204553::1694204553::1::::<><>::
 Propeller1-1.png.png::CompressedTexture2D::7394942912859267686::1694204553::1694204553::1::::<><>::
 Propeller2.png-1.png.png::CompressedTexture2D::3431681569019243667::1694204553::1694204553::1::::<><>::

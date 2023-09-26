@@ -345,6 +345,7 @@ public partial class main : Node
 	// §PROCESS
 	public override void _PhysicsProcess(double delta)
 	{
+		PrintOrphanNodes();
 		if (!GameOver && !doMainMenu)
 		{
 			if (gameTimer > 0.1f)
@@ -414,7 +415,7 @@ public partial class main : Node
 			if (!GameOver && !doMainMenu)
 			{
 				var dist = 0; //camDistance - player.curSpeed / 3;
-				//mainCam.Position 
+				//mainCam.Position
 
 				var camPoint = player.Position + (player.frontVector * dist) + MouseVector * 0.3f;
 
@@ -530,7 +531,7 @@ public partial class main : Node
 
 		enemy.bigMode = big;
 		
-		AddChild(enemy);
+		CallDeferred("add_child", enemy);
 	}
 	void spawnBossPlane(int lvl = 1)
 	{
@@ -541,7 +542,7 @@ public partial class main : Node
 		boss.Position = enemyPoint.Position + mainCam.Position;
 		boss.bossLevel = lvl;
 
-		AddChild(boss);
+		CallDeferred("add_child", boss);
 	}
 	void spawnBox(bool onMouse = false)
 	{
@@ -559,7 +560,7 @@ public partial class main : Node
 		
 		box.Position = onMouse ? MousePos : boxPos; //boxPoint.Position + mainCam.Position;
 
-		AddChild(box);
+		CallDeferred("add_child", box);
 	}
 
 	public void spawnExplosion(CharacterBody2D plane = null, float scale = 1, float volume = -10, bullet bullet = null, float speed = 1, float randomPos = 0, float damage = 0, float pitch = 0.7f)
@@ -666,7 +667,7 @@ public partial class main : Node
 				2 => "FireSpeedPack",
 				3 => "DamAccPack",
 				4 => "RegenPack",
-				_ => "Null",
+				_ => "AgilityPack",
 			};
 		}
         return rand.Next(0, 12) switch

@@ -1,3 +1,4 @@
+res://Sprites/PlayerSprites
 res://
 res://Sprites/RocketSprites
 res://Sprites/UISprites/HealthBarSprites
@@ -10,7 +11,6 @@ res://Sprites/PowerUps/DamAccSprites
 res://Sprites/PowerUps/Watch
 res://Sprites/UISprites/SliderSprites
 /Users/sigurdsevaldrud/GodotProjects/Poco
-res://Sprites/PlayerSprites
 res://Sprites/CannonSprites
 res://Sprites/PointerSprites
 res://Sprites/UISprites/MenuButtonSprites

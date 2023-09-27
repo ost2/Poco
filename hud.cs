@@ -463,7 +463,7 @@ public partial class hud : menu
 
 	public void startClock(string powID, float time, bool stop = false)
 	{
-		var stat = new stat_ui();
+		stat_ui stat = null;
 
 		switch (powID)
 		{

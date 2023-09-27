@@ -38,3 +38,6 @@ res://wave_text.cs
 res://box.tscn
 res://player.tscn
 res://enemy_plane.tscn
+res://explosion.tscn
+res://bullet.tscn
+res://player_trail.tscn

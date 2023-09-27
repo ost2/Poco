@@ -551,7 +551,7 @@ public partial class main : Node
 
 		// boxPoint.ProgressRatio = GD.Randf();
 
-		var pos = new Vector2(x: rand.RandfRange(-3000, 0), y: rand.RandfRange(-1000, 1000));
+		var pos = new Vector2(x: rand.RandfRange(-3000, 0), y: rand.RandfRange(-3000, 3000));
 		
 		var boxDistance = rand.RandfRange(1500, 2500 + (pos - player.GlobalPosition).Length() * 0.2f);
 
@@ -705,7 +705,7 @@ public partial class main : Node
 		var bg = GetNode<Background>("Background");
 
 		bg.pos = mainCam.GlobalPosition;
-		bg.otherPos = (mainCam.GlobalPosition * 1.5f + player.GlobalPosition * 0.5f) / 2;
+		bg.otherPos = (mainCam.GlobalPosition * 1.8f + player.GlobalPosition * 0.2f) / 2;
 	}
 
 	// CLOUDS

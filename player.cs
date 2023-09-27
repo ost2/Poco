@@ -601,6 +601,11 @@ public partial class player : Plane
 		main.pDie();
 	}
 
+	public void playKillSound()
+	{
+		GetNode<AudioStreamPlayer>("KillSound").Play();
+	}
+
 	List<Plane> rocketTargets = new List<Plane>();
 
 	// SIGNAL METHODS

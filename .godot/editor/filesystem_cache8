@@ -1,40 +1,40 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1695759789
+::res://::1695775030
 aaImplem.cs::CSharpScript::-1::1694204553::0::1::::<><>::
 Background.cs::CSharpScript::-1::1695757933::0::1::::<><>::
-Background.tscn::PackedScene::8243883752693888709::1695759682::0::1::::<><>::res://Background.cs
+Background.tscn::PackedScene::8243883752693888709::1695775029::0::1::::<><>::res://Background.cs
 boss_plane.cs::CSharpScript::-1::1694922392::0::1::::<><>::
 boss_plane.tscn::PackedScene::8775170831262401187::1695747847::0::1::::<><>::res://boss_plane.cs<>uid://bp3cqaaypo8mw
 box.cs::CSharpScript::-1::1695395157::0::1::::<><>::
-box.tscn::PackedScene::2810276190116322161::1695759682::0::1::::<><>::res://box.cs<>uid://bocrgbiewd1js::::res://Sprites/BoxSprites/Box1.png<>uid://bd2ae23113rj::::res://Sprites/BoxSprites/Box2.png<>uid://cgn8hpj1cqr8w::::res://Sprites/BoxSprites/Box3.png<>uid://bh5w5g16pg1o5::::res://Sprites/BoxSprites/Box4.png<>uid://dqvv74x0h50mr::::res://Sprites/BoxSprites/Box5.png<>uid://81tem3qg0q4h::::res://Sprites/BoxSprites/Parachute1.png<>uid://c0lelsrhtxnoc::::res://Sprites/BoxSprites/Parachute2.png<>uid://cajhljm5bb2me::::res://Sprites/BoxSprites/Parachute3.png<>uid://d3mdoheybm6bl::::res://Sprites/BoxSprites/Parachute4.png<>uid://ew2cvqhp35ni::::res://Sprites/BoxSprites/Box6.png<>uid://bsmfh32cp6j3a::::res://Sprites/BoxSprites/Box7.png<>uid://buekhynw2c7pq::::res://Sprites/BoxSprites/Box8.png<>uid://woecmxopksp4::::res://Audio/BoxSounds/BoxDamageSound.mp3<>uid://bmyg70jxcbbw1::::res://Audio/BoxSounds/BoxBreakSound.mp3<>uid://c5g26addaeitr::::res://point_to.tscn
-bullet.cs::CSharpScript::-1::1694480485::0::1::::<><>::
-bullet.tscn::PackedScene::7837287027891066801::1695747847::0::1::::<><>::res://bullet.cs<>uid://bwcct7e40l0bi
+box.tscn::PackedScene::2810276190116322161::1695775029::0::1::::<><>::res://box.cs<>uid://bocrgbiewd1js::::res://Sprites/BoxSprites/Box1.png<>uid://bd2ae23113rj::::res://Sprites/BoxSprites/Box2.png<>uid://cgn8hpj1cqr8w::::res://Sprites/BoxSprites/Box3.png<>uid://bh5w5g16pg1o5::::res://Sprites/BoxSprites/Box4.png<>uid://dqvv74x0h50mr::::res://Sprites/BoxSprites/Box5.png<>uid://81tem3qg0q4h::::res://Sprites/BoxSprites/Parachute1.png<>uid://c0lelsrhtxnoc::::res://Sprites/BoxSprites/Parachute2.png<>uid://cajhljm5bb2me::::res://Sprites/BoxSprites/Parachute3.png<>uid://d3mdoheybm6bl::::res://Sprites/BoxSprites/Parachute4.png<>uid://ew2cvqhp35ni::::res://Sprites/BoxSprites/Box6.png<>uid://bsmfh32cp6j3a::::res://Sprites/BoxSprites/Box7.png<>uid://buekhynw2c7pq::::res://Sprites/BoxSprites/Box8.png<>uid://woecmxopksp4::::res://Audio/BoxSounds/BoxDamageSound.mp3<>uid://bmyg70jxcbbw1::::res://Audio/BoxSounds/BoxBreakSound.mp3<>uid://c5g26addaeitr::::res://point_to.tscn
+bullet.cs::CSharpScript::-1::1695774017::0::1::::<><>::
+bullet.tscn::PackedScene::7837287027891066801::1695775030::0::1::::<><>::res://bullet.cs<>uid://bwcct7e40l0bi::::res://Sprites/CannonSprites/Bullet-1.png.png<>uid://bsl8lyvkixpdr::::res://Audio/MachinegunSounds/SingleBullet.mp3
 cannon.cs::CSharpScript::-1::1695696627::0::1::::<><>::
 cannon.tscn::PackedScene::3497205923176355858::1695747847::0::1::::<><>::res://cannon.cs<>uid://cqc2ll0rxc4fa
 clock.cs::CSharpScript::-1::1695395495::0::1::::<><>::
 clock.tscn::PackedScene::8283695912367115986::1695747847::0::1::::<><>::uid://c5f2owxmcx6my
 clouds.cs::CSharpScript::-1::1694204553::0::1::::<><>::
-clouds.tscn::PackedScene::8612993150628476012::1695759789::0::1::::<><>::res://clouds.cs
+clouds.tscn::PackedScene::8612993150628476012::1695775029::0::1::::<><>::res://clouds.cs
 death_screen.cs::CSharpScript::-1::1694204553::0::1::::<><>::
 death_screen.tscn::PackedScene::1522597912908949085::1695747847::0::1::::<><>::res://death_screen.cs<>uid://d104wrtyun42s
-enemy_plane.cs::CSharpScript::-1::1695691212::0::1::::<><>::
+enemy_plane.cs::CSharpScript::-1::1695774880::0::1::::<><>::
 enemy_plane.tres::SpriteFrames::1551271293738324169::1694204553::0::1::::<><>::uid://dtmdgefnk7jqk
-enemy_plane.tscn::PackedScene::3434965484929875278::1695747847::0::1::::<><>::res://enemy_plane.cs<>uid://ckgjtrbn8jume
-explosion.cs::CSharpScript::-1::1695401171::0::1::::<><>::
-explosion.tscn::PackedScene::103444604771261763::1695747847::0::1::::<><>::uid://d4mhkjsmpj41k
+enemy_plane.tscn::PackedScene::3434965484929875278::1695775030::0::1::::<><>::res://enemy_plane.cs<>uid://ckgjtrbn8jume::::res://hit_particles.tscn<>uid://ocw2fh6vy0vl::::res://Sprites/TwinPlaneSprites/TwinPlane1.png<>uid://wdphgtk8todd::::res://enemy_plane.tres<>uid://et83havsa763::::res://Sprites/TwinPlaneSprites/TwinPlane2.png<>uid://en0pfa276hrn::::res://Sprites/TwinPlaneSprites/TwinPlane3.png<>uid://dhxuuh15acfv4::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller1.png<>uid://p5uq2kj1q87o::::res://Sprites/TwinPlaneSprites/TwinPlane4.png<>uid://b8eekvnpsxwcr::::res://Sprites/TwinPlaneSprites/TwinPlane5.png<>uid://bfjts5f461lrn::::res://Audio/PropellerSounds/PropellerAmbiance.mp3<>uid://b2im838shcaf3::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller2.png<>uid://603bq0vtw8d3::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller3.png<>uid://ke2acehuhlwl::::res://trail_2d.tscn<>uid://q0f58lu6iju7::::res://Sprites/TwinPlaneSprites/TwinPlane6.png<>uid://cl5bpn3abmukx::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller4.png<>uid://bp3cqaaypo8mw::::res://cannon.tscn<>uid://cqhekssar65gw::::res://Sprites/TwinPlaneSprites/TwinPlane7.png<>uid://clqpin3mb4178::::res://Audio/DamageSounds/EnemyDamageSlap.mp3<>uid://dasq7vw3w1i8b::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller5.png<>uid://cveru6ws6qx1e::::res://Sprites/TwinPlaneSprites/TwinPlane8.png<>uid://rx67rkqbyiie::::res://Sprites/TwinPlaneSprites/TwinPlane9.png<>uid://u6kvd0f8bsom::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller6.png<>uid://bgvoi0a24xqdf::::res://Sprites/TwinPlaneSprites/TwinPlane10.png<>uid://c5g26addaeitr::::res://point_to.tscn
+explosion.cs::CSharpScript::-1::1695774125::0::1::::<><>::
+explosion.tscn::PackedScene::103444604771261763::1695775030::0::1::::<><>::uid://d4mhkjsmpj41k::::res://Sprites/ExplosionSprites/Explosion1.png<>uid://sv7rm4t1sws7::::res://Sprites/ExplosionSprites/Explosion2.png<>uid://r7sipbwfl5pw::::res://Sprites/ExplosionSprites/Explosion3.png<>uid://cvni11rp1uko6::::res://Sprites/ExplosionSprites/Explosion4.png<>uid://d0cyokyput0w5::::res://Sprites/ExplosionSprites/Explosion5.png<>uid://smfy0tglem2i::::res://Sprites/ExplosionSprites/Explosion6.png<>res://explosion.cs<>uid://bxjsjra4m0ta1::::res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp<>uid://cofj32tbtb5mn::::res://Audio/ExplosionSounds/E.mp3<>uid://cq52bh5lju4r5::::res://Sprites/ExplosionSprites/Smoke.png<>uid://cvpx65i670rmw::::res://Sprites/ExplosionSprites/Particle.png
 export_presets.cfg::TextFile::-1::1694191438::0::1::::<><>::
-fancy_bar.cs::CSharpScript::-1::1694800239::0::1::::<><>::
+fancy_bar.cs::CSharpScript::-1::1695770167::0::1::::<><>::
 fancy_bar.tscn::PackedScene::8651954473511722248::1695747847::0::1::::<><>::uid://53wvjw8l3675
 fancy_slider.cs::CSharpScript::-1::1694204553::0::1::::<><>::
 fancy_slider.tscn::PackedScene::861222265953073537::1695747847::0::1::::<><>::res://fancy_slider.cs<>uid://brn2tbhv7b8nq
 hit_particles.cs::CSharpScript::-1::1694920542::0::1::::<><>::
 hit_particles.tscn::PackedScene::5487697348386869540::1695747847::0::1::::<><>::res://hit_particles.cs
-hud.cs::CSharpScript::-1::1695759291::0::1::::<><>::
-hud.tscn::PackedScene::3549662077462254287::1695759682::0::1::::<><>::res://hud.cs<>uid://cv8wfg2v3sxti::::res://wave_text.tscn<>uid://d104wrtyun42s::::res://Fonts/Evil Empire.otf<>uid://vxs720dd7dll::::res://death_screen.tscn<>uid://dvjcoqt6kgn4k::::res://fancy_bar.tscn<>uid://bfjsxv68fl3te::::res://Sprites/UISprites/EnemyIcon.png<>uid://ejhtyjdx8ret::::res://Sprites/UISprites/HealthBarSprites/HealthBar3.png<>uid://dnj760a7g311u::::res://Sprites/UISprites/GreenArrow.png<>uid://dqaxi5gumi7co::::res://clock.tscn<>uid://d0unvfyl6mecw::::res://stat_ui.tscn<>uid://bocrgbiewd1js::::res://Sprites/BoxSprites/Box1.png<>uid://bsmfh32cp6j3a::::res://Sprites/BoxSprites/Box7.png<>uid://buekhynw2c7pq::::res://Sprites/BoxSprites/Box8.png<>uid://cosmkpp5x55pi::::res://Audio/PowerUpSounds/StatUpSound.mp3
+hud.cs::CSharpScript::-1::1695770517::0::1::::<><>::
+hud.tscn::PackedScene::3549662077462254287::1695775029::0::1::::<><>::res://hud.cs<>uid://cv8wfg2v3sxti::::res://wave_text.tscn<>uid://d104wrtyun42s::::res://Fonts/Evil Empire.otf<>uid://vxs720dd7dll::::res://death_screen.tscn<>uid://dvjcoqt6kgn4k::::res://fancy_bar.tscn<>uid://bfjsxv68fl3te::::res://Sprites/UISprites/EnemyIcon.png<>uid://ejhtyjdx8ret::::res://Sprites/UISprites/HealthBarSprites/HealthBar3.png<>uid://dnj760a7g311u::::res://Sprites/UISprites/GreenArrow.png<>uid://dqaxi5gumi7co::::res://clock.tscn<>uid://d0unvfyl6mecw::::res://stat_ui.tscn<>uid://bocrgbiewd1js::::res://Sprites/BoxSprites/Box1.png<>uid://bsmfh32cp6j3a::::res://Sprites/BoxSprites/Box7.png<>uid://buekhynw2c7pq::::res://Sprites/BoxSprites/Box8.png<>uid://cosmkpp5x55pi::::res://Audio/PowerUpSounds/StatUpSound.mp3
 icon.svg::CompressedTexture2D::8014483810227289740::1694204553::1694204553::1::::<><>::
-main.cs::CSharpScript::-1::1695759137::0::1::::<><>::
-main.tscn::PackedScene::1552954513250466891::1695759682::0::1::::<><>::uid://cj6gir6s4argx::::res://player.tscn<>res://main.cs<>uid://dxa01to7rcrfv::::res://boss_plane.tscn<>uid://bqdynpxlxq48::::res://explosion.tscn<>uid://duyg0ecpqydng::::res://clouds.tscn<>uid://bgbk3rbflio4p::::res://box.tscn<>uid://bxjsjra4m0ta1::::res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp<>uid://41b2tbrmutew::::res://power_up.tscn<>uid://dppntcp8sv16x::::res://Background.tscn<>uid://bo66m56a2ikla::::res://enemy_plane.tscn<>uid://bqtqoew0owjhn::::res://hud.tscn<>uid://y137u5b8l4o4::::res://Audio/Music/BossMusic.mp3<>uid://4wqof8vkn6b4::::res://main_menu.tscn<>uid://bul02td2xsoyq::::res://pause_menu.tscn<>uid://c21x1dy4ye40h::::res://options_menu.tscn
-main_menu.cs::CSharpScript::-1::1694204553::0::1::::<><>::
+main.cs::CSharpScript::-1::1695772830::0::1::::<><>::
+main.tscn::PackedScene::1552954513250466891::1695775029::0::1::::<><>::uid://cj6gir6s4argx::::res://player.tscn<>res://main.cs<>uid://dxa01to7rcrfv::::res://boss_plane.tscn<>uid://bqdynpxlxq48::::res://explosion.tscn<>uid://duyg0ecpqydng::::res://clouds.tscn<>uid://bgbk3rbflio4p::::res://box.tscn<>uid://bxjsjra4m0ta1::::res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp<>uid://41b2tbrmutew::::res://power_up.tscn<>uid://dppntcp8sv16x::::res://Background.tscn<>uid://bo66m56a2ikla::::res://enemy_plane.tscn<>uid://bqtqoew0owjhn::::res://hud.tscn<>uid://y137u5b8l4o4::::res://Audio/Music/BossMusic.mp3<>uid://4wqof8vkn6b4::::res://main_menu.tscn<>uid://bul02td2xsoyq::::res://pause_menu.tscn<>uid://c21x1dy4ye40h::::res://options_menu.tscn
+main_menu.cs::CSharpScript::-1::1695770195::0::1::::<><>::
 main_menu.tscn::PackedScene::2081889563654536739::1695747847::0::1::::<><>::res://main_menu.cs<>uid://cqnmbimsmym2
 menu.cs::CSharpScript::-1::1694204553::0::1::::<><>::
 menu.tscn::PackedScene::6725078540945128241::1695747846::0::1::::<><>::res://menu.cs
@@ -46,10 +46,10 @@ pause_menu.cs::CSharpScript::-1::1694204553::0::1::::<><>::
 pause_menu.tscn::PackedScene::3814472856839282712::1695747847::0::1::::<><>::res://pause_menu.cs<>uid://cqnmbimsmym2
 Plane.cs::CSharpScript::-1::1695690911::0::1::::<><>::
 plane.tscn::PackedScene::4119421497095898021::1695747847::0::1::::<><>::res://Plane.cs<>uid://ckgjtrbn8jume
-player.cs::CSharpScript::-1::1695746027::0::1::::<><>::
-player.tscn::PackedScene::5468916200454685175::1695747846::0::1::::<><>::res://player.cs<>uid://dqgymekmblygr
-player_trail.cs::CSharpScript::-1::1695692515::0::1::::<><>::
-player_trail.tscn::PackedScene::8296148679253900325::1695747847::0::1::::<><>::res://player_trail.cs
+player.cs::CSharpScript::-1::1695774714::0::1::::<><>::
+player.tscn::PackedScene::5468916200454685175::1695775030::0::1::::<><>::res://player.cs<>uid://dqgymekmblygr::::res://player_trail.tscn<>uid://p2h4t37b3jfq::::res://Sprites/PlayerSprites/Plane1-1.png1.png<>uid://b2g1q155p3fbl::::res://Sprites/PlayerSprites/Plane1-1.png2.png<>uid://5l8wgsm0jt8s::::res://Sprites/PlayerSprites/Plane1 damagepng-1.png.png<>uid://dhxuuh15acfv4::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller1.png<>uid://c3566s2mie7cv::::res://Sprites/PlayerSprites/Plane1-1.png3.png<>uid://b2im838shcaf3::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller2.png<>uid://603bq0vtw8d3::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller3.png<>uid://cl5bpn3abmukx::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller4.png<>uid://bp3cqaaypo8mw::::res://cannon.tscn<>uid://dasq7vw3w1i8b::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller5.png<>uid://bfjts5f461lrn::::res://Audio/PropellerSounds/PropellerAmbiance.mp3<>uid://u6kvd0f8bsom::::res://Sprites/BigPlaneSprites/Propeller/BigPropeller6.png<>uid://db3lk60qe5dwa::::res://Audio/DamageSounds/PlayerDamageSlap.mp3<>uid://c5g26addaeitr::::res://point_to.tscn<>uid://cjr21dwql6078::::res://Audio/PowerUpSounds/LevelUpSound.mp3<>uid://cynyln1wg2fu7::::res://rocket_cannon.tscn<>uid://bheo2lax350dc::::res://rocket_target.tscn<>uid://ckvk7kn3lqr2j::::res://Audio/DamageSounds/KillSound.mp3
+player_trail.cs::CSharpScript::-1::1695774719::0::1::::<><>::
+player_trail.tscn::PackedScene::8296148679253900325::1695775030::0::1::::<><>::res://player_trail.cs
 point_to.cs::CSharpScript::-1::1695690919::0::1::::<><>::
 point_to.tscn::PackedScene::6892587666238165239::1695747847::0::1::::<><>::res://point_to.cs<>uid://bbw8u8mu1i606
 powerTimer.cs::CSharpScript::-1::1695396222::0::1::::<><>::
@@ -69,7 +69,7 @@ stat_ui.cs::CSharpScript::-1::1695746352::0::1::::<><>::
 stat_ui.tscn::PackedScene::8956097819923024282::1695747847::0::1::::<><>::uid://bvu3qdjxvqxlw
 Trail2D.cs::CSharpScript::-1::1695692384::0::1::::<><>::
 trail_2d.tscn::PackedScene::711785417772238715::1695747847::0::1::::<><>::res://Trail2D.cs
-value_changed_label.cs::CSharpScript::-1::1694204553::0::1::::<><>::
+value_changed_label.cs::CSharpScript::-1::1695767843::0::1::::<><>::
 value_changed_label.tscn::PackedScene::9133039443989345329::1695747847::0::1::::<><>::uid://d104wrtyun42s
 wave_text.cs::CSharpScript::-1::1694204553::0::1::::<><>::
 wave_text.tscn::PackedScene::6316276610321357594::1695747847::0::1::::<><>::uid://d104wrtyun42s
@@ -78,12 +78,13 @@ wave_text.tscn::PackedScene::6316276610321357594::1695747847::0::1::::<><>::uid:
 ::res://Audio/BoxSounds/::1694204552
 BoxBreakSound.mp3::AudioStreamMP3::3278654648843201746::1694204552::1694204552::1::::<><>::
 BoxDamageSound.mp3::AudioStreamMP3::1573302954619683619::1694204552::1694204552::1::::<><>::
-::res://Audio/DamageSounds/::1694204552
+::res://Audio/DamageSounds/::1695775589
 Cling - 05:08:2023, 03.49.mp3::AudioStreamMP3::3649861397990077192::1694204552::1694204552::1::::<><>::
 EnemyDamageSlap.mp3::AudioStreamMP3::5578874459318058817::1694204552::1694204552::1::::<><>::
 EnemyTakeDamage.mp3::AudioStreamMP3::5762098633029362439::1694204552::1694204552::1::::<><>::
 Explosion1.mp3::AudioStreamMP3::6699407979825527837::1694204552::1694204552::1::::<><>::
 Explosion.mp3::AudioStreamMP3::490846474699539893::1694204552::1694204552::1::::<><>::
+KillSound.mp3::AudioStreamMP3::5518746598537902419::1695775589::1695775591::1::::<><>::
 PlayerDamageSlap.mp3::AudioStreamMP3::7287940884267949672::1694204552::1694204552::1::::<><>::
 TakeDamage.mp3::AudioStreamMP3::4362723810244691585::1694204552::1694204552::1::::<><>::
 ::res://Audio/ExplosionSounds/::1694204552
@@ -102,8 +103,9 @@ PowerUpSound.mp3::AudioStreamMP3::4930838548720438427::1694204552::1694204552::1
 StatUpSound.mp3::AudioStreamMP3::5793391252161309150::1694204552::1694204552::1::::<><>::
 ::res://Audio/PropellerSounds/::1694204552
 PropellerAmbiance.mp3::AudioStreamMP3::2757131653607267227::1694204552::1694204552::1::::<><>::
-::res://Audio/RocketSounds/::1694835359
+::res://Audio/RocketSounds/::1695774475
 RocketSound.mp3::AudioStreamMP3::3037819476697955607::1694835310::1694835359::1::::<><>::
+TakeDamage - 27:09:2023, 02.27.mp3::AudioStreamMP3::4419354220492162510::1695774466::1695774475::1::::<><>::
 ::res://Audio/UISounds/::1694204552
 ClickSound1.mp3::AudioStreamMP3::2013362597413065024::1694204552::1694204552::1::::<><>::
 ClickSound2.mp3::AudioStreamMP3::168788253997529004::1694204552::1694204552::1::::<><>::
@@ -161,13 +163,15 @@ MuzzleFlash1.png::CompressedTexture2D::2417492071260228351::1694204553::16942045
 MuzzleFlash2.png::CompressedTexture2D::6633362996693774541::1694204553::1694204553::1::::<><>::
 MuzzleFlash3.png::CompressedTexture2D::2475074086456924010::1694204553::1694204553::1::::<><>::
 MuzzleFlash4.png::CompressedTexture2D::4888340472152473414::1694204553::1694204553::1::::<><>::
-::res://Sprites/ExplosionSprites/::1695005443
+::res://Sprites/ExplosionSprites/::1695771671
 Explosion1.png::CompressedTexture2D::9219954427601662890::1695005441::1695005443::1::::<><>::
 Explosion2.png::CompressedTexture2D::1308725096563029420::1695005441::1695005443::1::::<><>::
 Explosion3.png::CompressedTexture2D::1260378412599284020::1695005441::1695005443::1::::<><>::
 Explosion4.png::CompressedTexture2D::6274177553757171331::1695005441::1695005443::1::::<><>::
 Explosion5.png::CompressedTexture2D::8919594669497137958::1695005441::1695005443::1::::<><>::
 Explosion6.png::CompressedTexture2D::1288519505273371806::1695005441::1695005443::1::::<><>::
+Particle.png::CompressedTexture2D::6279226190051662490::1695771667::1695771671::1::::<><>::
+Smoke.png::CompressedTexture2D::5959435757335333348::1695771421::1695771423::1::::<><>::
 ::res://Sprites/LightSprites/::1694204553
 2d_lights_and_shadows_neutral_point_light.webp::CompressedTexture2D::4020453359400944654::1694204553::1694204553::1::::<><>::
 ::res://Sprites/MediumPlane/::1694204553
@@ -182,7 +186,7 @@ MediumPlane8.png::CompressedTexture2D::5293654146496513331::1694204553::16942045
 MediumPlane9.png::CompressedTexture2D::717079646930330677::1694204553::1694204553::1::::<><>::
 MediumPlane10.png::CompressedTexture2D::8641352946122826684::1694204553::1694204553::1::::<><>::
 MediumPlane.png::CompressedTexture2D::824077194712261167::1694204553::1694204553::1::::<><>::
-::res://Sprites/PlayerSprites/::1695760122
+::res://Sprites/PlayerSprites/::1695760124
 Plane1 damagepng-1.png.png::CompressedTexture2D::2130416756188420760::1694204553::1694204553::1::::<><>::
 Plane1-1.png1.png::CompressedTexture2D::1109048703557264334::1695760123::1695760124::1::::<><>::
 Plane1-1.png2.png::CompressedTexture2D::4295514356294190801::1695760123::1695760124::1::::<><>::

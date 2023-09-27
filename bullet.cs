@@ -51,7 +51,7 @@ public partial class bullet : Area2D
 
 		if (trailAlpha < 1)
 		{
-			trailAlpha += (float)delta;
+			trailAlpha += (float)delta * 3;
 			trail.SelfModulate = new Color(1, 1, 1, trailAlpha);
 		}
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cj6gir6s4argx"]
+[gd_scene load_steps=26 format=3 uid="uid://cj6gir6s4argx"]
 
 [ext_resource type="Script" path="res://player.cs" id="1_kd50i"]
 [ext_resource type="PackedScene" uid="uid://dqgymekmblygr" path="res://player_trail.tscn" id="3_aixtj"]
@@ -19,6 +19,7 @@
 [ext_resource type="AudioStream" uid="uid://cjr21dwql6078" path="res://Audio/PowerUpSounds/LevelUpSound.mp3" id="17_ut4vf"]
 [ext_resource type="PackedScene" uid="uid://cynyln1wg2fu7" path="res://rocket_cannon.tscn" id="18_v0jti"]
 [ext_resource type="PackedScene" uid="uid://bheo2lax350dc" path="res://rocket_target.tscn" id="19_3jklp"]
+[ext_resource type="AudioStream" uid="uid://ckvk7kn3lqr2j" path="res://Audio/DamageSounds/KillSound.mp3" id="20_pajvv"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ssw1t"]
 animations = [{
@@ -196,6 +197,11 @@ self_modulate = Color(0.537255, 0.537255, 0.537255, 0.960784)
 stream = ExtResource("17_ut4vf")
 
 [node name="RocketTarget" parent="." instance=ExtResource("19_3jklp")]
+
+[node name="KillSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("20_pajvv")
+volume_db = -3.0
+max_polyphony = 20
 
 [connection signal="animation_finished" from="MainSprite" to="." method="_on_main_sprite_animation_finished"]
 [connection signal="area_entered" from="TakeDamageHitBox" to="." method="_on_take_damage_hit_box_area_entered"]

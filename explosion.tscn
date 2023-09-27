@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bqdynpxlxq48"]
+[gd_scene load_steps=17 format=3 uid="uid://bqdynpxlxq48"]
 
 [ext_resource type="Texture2D" uid="uid://d4mhkjsmpj41k" path="res://Sprites/ExplosionSprites/Explosion1.png" id="1_7gj3k"]
 [ext_resource type="Texture2D" uid="uid://sv7rm4t1sws7" path="res://Sprites/ExplosionSprites/Explosion2.png" id="2_6uvf0"]
@@ -9,6 +9,8 @@
 [ext_resource type="Script" path="res://explosion.cs" id="7_qguse"]
 [ext_resource type="Texture2D" uid="uid://bxjsjra4m0ta1" path="res://Sprites/LightSprites/2d_lights_and_shadows_neutral_point_light.webp" id="8_hru8b"]
 [ext_resource type="AudioStream" uid="uid://cofj32tbtb5mn" path="res://Audio/ExplosionSounds/E.mp3" id="9_4yuq5"]
+[ext_resource type="Texture2D" uid="uid://cq52bh5lju4r5" path="res://Sprites/ExplosionSprites/Smoke.png" id="10_c52wc"]
+[ext_resource type="Texture2D" uid="uid://cvpx65i670rmw" path="res://Sprites/ExplosionSprites/Particle.png" id="10_kaawg"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_krmr4"]
 animations = [{
@@ -33,28 +35,23 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 12.0
+"speed": 11.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ggtqa"]
 radius = 0.01
 
 [sub_resource type="Curve" id="Curve_lqryl"]
-_data = [Vector2(0, 0.0923694), 0.0, 0.0, 0, 0, Vector2(0.331908, 0.568821), 0.0, 0.0, 0, 0, Vector2(0.924363, 0.912924), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 0.214129), 0.0, 0.0, 0, 0, Vector2(0.251995, 0.505294), 0.649399, 0.649399, 0, 0, Vector2(0.505511, 0.568821), -0.182966, -0.182966, 0, 0, Vector2(1, 0.00766695), 0.0, 0.0, 0, 0]
+point_count = 4
 
 [sub_resource type="Gradient" id="Gradient_lfe36"]
-offsets = PackedFloat32Array(0.119205, 0.486755, 0.811258, 1)
+offsets = PackedFloat32Array(0.119205, 0.486755, 0.798013, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.945098, 0.792157, 0.317647, 1, 0.819608, 0.282353, 0.14902, 1, 0.513726, 0.513726, 0.513726, 0.631373)
 
-[sub_resource type="Curve" id="Curve_56q73"]
-min_value = -1.0
-_data = [Vector2(0, 0.349398), 0.0, 0.0, 0, 0, Vector2(0.31813, 0.158817), 0.0, 0.0, 0, 0, Vector2(0.968453, 0), 0.0, 0.0, 0, 0]
-point_count = 3
-
 [sub_resource type="Gradient" id="Gradient_ocdr7"]
-offsets = PackedFloat32Array(0.0198676, 0.241722, 0.86755)
-colors = PackedColorArray(0.529067, 0.529067, 0.529067, 0, 0.93408, 0.93408, 0.93408, 0.854902, 0.243137, 0.243137, 0.243137, 0)
+offsets = PackedFloat32Array(0.0198676, 0.248344, 0.86755)
+colors = PackedColorArray(0.529067, 0.529067, 0.529067, 0, 0.802616, 0.802616, 0.802616, 0.854902, 0.243137, 0.243137, 0.243137, 0)
 
 [node name="Explosion" type="AnimatedSprite2D"]
 top_level = true
@@ -96,12 +93,13 @@ amount = 120
 lifetime = 10.0
 one_shot = true
 speed_scale = 14.0
-explosiveness = 0.7
+explosiveness = 0.85
 randomness = 1.0
 lifetime_randomness = 1.0
 local_coords = true
+texture = ExtResource("10_kaawg")
 emission_shape = 1
-emission_sphere_radius = 30.0
+emission_sphere_radius = 10.0
 direction = Vector2(2.08165e-12, 2.08165e-12)
 spread = 180.0
 gravity = Vector2(2.08165e-12, 2.08165e-12)
@@ -109,11 +107,9 @@ initial_velocity_min = 10.0
 initial_velocity_max = 50.0
 angular_velocity_min = 20.0
 angular_velocity_max = 50.0
-scale_amount_min = 6.0
-scale_amount_max = 15.0
+scale_amount_max = 3.0
 scale_amount_curve = SubResource("Curve_lqryl")
 color_ramp = SubResource("Gradient_lfe36")
-hue_variation_curve = SubResource("Curve_56q73")
 
 [node name="Smoke" type="CPUParticles2D" parent="."]
 show_behind_parent = true
@@ -124,10 +120,11 @@ amount = 60
 lifetime = 25.0
 one_shot = true
 speed_scale = 15.0
-explosiveness = 0.7
+explosiveness = 0.85
 randomness = 0.4
 lifetime_randomness = 0.4
 local_coords = true
+texture = ExtResource("10_c52wc")
 emission_shape = 1
 emission_sphere_radius = 30.0
 direction = Vector2(2.08165e-12, 2.08165e-12)
@@ -135,13 +132,13 @@ spread = 180.0
 gravity = Vector2(2.08165e-12, 2.08165e-12)
 initial_velocity_min = 10.0
 initial_velocity_max = 20.0
-angular_velocity_min = 20.0
+angular_velocity_min = -30.0
 angular_velocity_max = 30.0
 radial_accel_min = -1.0
 radial_accel_max = -0.1
 damping_max = 1.0
-scale_amount_min = 18.0
-scale_amount_max = 40.0
+scale_amount_min = 2.0
+scale_amount_max = 6.0
 scale_amount_curve = SubResource("Curve_lqryl")
 color_ramp = SubResource("Gradient_ocdr7")
 

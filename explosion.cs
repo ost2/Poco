@@ -99,7 +99,7 @@ public partial class explosion : AnimatedSprite2D
 		
 		if (!animOver)
 		{
-			light.Energy = 0.5f + Mathf.Cos(time * 2) * 4; 
+			light.Energy = 0.5f + Mathf.Clamp(Mathf.Cos(time * 4), 0, 1) * 4; 
 		}
 		light.TextureScale += (float)delta * 5;
 

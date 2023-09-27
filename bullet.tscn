@@ -9,8 +9,8 @@ radius = 2.0
 height = 8.0
 
 [sub_resource type="Gradient" id="Gradient_yk0xc"]
-offsets = PackedFloat32Array(0, 0.232258, 0.922581)
-colors = PackedColorArray(0, 0, 0, 0, 0.487097, 0.487097, 0.487097, 0.487097, 1, 1, 1, 1)
+offsets = PackedFloat32Array(0, 0.9)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_ik2oc"]
 gradient = SubResource("Gradient_yk0xc")
@@ -38,9 +38,7 @@ volume_db = -15.204
 autoplay = true
 
 [node name="TrailSprite" type="Sprite2D" parent="."]
-self_modulate = Color(1, 1, 1, 0.745098)
 show_behind_parent = true
-z_index = -2
-position = Vector2(-19.6458, 0)
+position = Vector2(-19.3333, 0)
 scale = Vector2(0.531901, 0.0332031)
 texture = SubResource("GradientTexture2D_ik2oc")

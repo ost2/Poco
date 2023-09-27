@@ -357,6 +357,7 @@ public partial class enemy_plane : Plane
 			cannon.Hide();
 		}
 		main.spawnExplosion(this);
+		main.player.playKillSound();
 
 		var spawnRocketChance = xpValue / 5;
 		var rocketCountProb = xpValue * 1.5f;

@@ -289,10 +289,10 @@ public partial class enemy_plane : Plane
 			QueueFree();
 		}
 	}
-
+	Vector2 randPos;
 	Vector2 getPlayerDirVector()
 	{
-		var randPos = new Vector2(x: player.Position.X + randX, y: player.Position.Y + randY);
+		randPos = new Vector2(x: player.Position.X + randX, y: player.Position.Y + randY);
 
 		var pVec = randPos - Position;
 		var invVec = pVec.Inverse().Normalized();

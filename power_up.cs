@@ -167,6 +167,11 @@ public partial class power_up : Area2D
 		{
 			Position += (main.PlayerPos - Position).Normalized() * hoveredTime * 25;
 		}
+
+		if (collectedTime > 5)
+		{
+			despawn();
+		}
 	}
 
 	public void despawn()

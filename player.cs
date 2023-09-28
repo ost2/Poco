@@ -62,6 +62,9 @@ public partial class player : Plane
 
 	point_to pointer;
 
+	player_trail lTrail;
+	player_trail rTrail;
+
 
 	// [Export]
 	// public PackedScene trailScene;
@@ -87,6 +90,9 @@ public partial class player : Plane
 		engineSound = GetNode<AudioStreamPlayer2D>("EngineSound");
 		propeller = GetNode<AnimatedSprite2D>("PropellerSprite");
 		propeller.Play();
+
+		lTrail = GetNode<Node2D>("WingTips").GetNode<Node2D>("LeftWingTip").GetNode<player_trail>("PlayerTrail");
+		rTrail = GetNode<Node2D>("WingTips").GetNode<Node2D>("RightWingTip").GetNode<player_trail>("PlayerTrail");
 
 		regenTimer = GetNode<Timer>("RegenTimer");
 		regenTimer.Start();
@@ -599,6 +605,16 @@ public partial class player : Plane
 		main.spawnExplosion(this);
 		Hide();
 		main.pDie();
+	}
+	public void stopTrails()
+	{
+		lTrail.stopDrawing();
+		rTrail.stopDrawing();
+	}
+	public void startTrails()
+	{
+		lTrail.startDrawing();
+		rTrail.startDrawing();
 	}
 
 	public void playKillSound()

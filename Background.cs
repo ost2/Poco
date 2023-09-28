@@ -4,7 +4,8 @@ using System;
 public partial class Background : Sprite2D
 {
 	public Vector2 pos;
-	public Vector2 otherPos;
+	public Vector2 cloudPos;
+	public Vector2 cloudOPos;
 	FastNoiseLite noise;
 
 	Sprite2D clouds;
@@ -26,7 +27,7 @@ public partial class Background : Sprite2D
 		GlobalPosition = pos;
 		noise.Offset = new Vector3(x: pos.X * speed, y: pos.Y * speed, z: 0);
 
-		clouds.GlobalPosition = otherPos;
-		cloudNoise.Offset = new Vector3(x: otherPos.X * cloudSpeed, y: otherPos.Y * cloudSpeed, z: 0);
+		clouds.GlobalPosition = cloudPos;
+		cloudNoise.Offset = new Vector3(x: cloudOPos.X * cloudSpeed, y: cloudOPos.Y * cloudSpeed, z: 0);
 	}
 }

@@ -8,6 +8,9 @@ public partial class enemy_plane : Plane
 	public int enemyLevel = 1;
 	public bool bigMode = false;
 
+	float randX;
+	float randY;
+
 	// MOVEMENT
 	float distance;
 
@@ -65,6 +68,10 @@ public partial class enemy_plane : Plane
 		Rotation = getPlayerDirVector().Angle();
 
 		GetNode<Area2D>("DamageHitBox").Name = "Enemy";
+
+		var RNG = new RandomNumberGenerator();
+		randX = RNG.RandfRange(-100 * main.DifficultyMult, 100 * main.DifficultyMult);
+		randY = RNG.RandfRange(-100 * main.DifficultyMult, 100 * main.DifficultyMult);
 
 		if (bigMode)
 		{
@@ -285,12 +292,11 @@ public partial class enemy_plane : Plane
 
 	Vector2 getPlayerDirVector()
 	{
-		// var backVec = player.frontVector.Inverse();
-		// var backPoint = player.Position + backVec * distance / 5;
+		var randPos = new Vector2(x: player.Position.X + randX, y: player.Position.Y + randY);
 
-		var pVec = player.Position - Position;
+		var pVec = randPos - Position;
 		var invVec = pVec.Inverse().Normalized();
-		var pos = player.Position + invVec * distance;
+		var pos = randPos + invVec * distance;
 
 		return (pos - Position).Normalized();
 	}

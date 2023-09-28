@@ -11,6 +11,8 @@ public partial class player_trail : Line2D
 
 	float time = 0;
 
+	bool draw;
+
 	public Vector2 pos = Vector2.Zero;
 	public override void _PhysicsProcess(double delta)
 	{
@@ -19,7 +21,7 @@ public partial class player_trail : Line2D
 		var mark = GetParent<Node2D>();
 		var plane = mark.GetParent<Node2D>().GetParent<Plane>();
 
-		var fpiBalls = 0.99996f - (0.00000042f * time);
+		var fpiBalls = 0.99996f; // - (0.00000042f * time);
 
 		length = plane.curSpeed / 40;
 
@@ -32,10 +34,24 @@ public partial class player_trail : Line2D
 		// Modulate = color;
 		// SelfModulate = color;
 
-		AddPoint(point);
+		if (draw)
+		{
+			AddPoint(point);
+		}
+
 		while (GetPointCount() > length)
 		{
 			RemovePoint(0);
 		}
+	}
+
+	public void stopDrawing()
+	{
+		draw = false;
+		ClearPoints();
+	}
+	public void startDrawing()
+	{
+		draw = true;
 	}
 }

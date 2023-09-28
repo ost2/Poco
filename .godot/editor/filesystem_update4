@@ -1,7 +1,13 @@
-res://clouds.tscn
 res://main.tscn
 res://Background.tscn
+res://clouds.tscn
 res://hud.tscn
+res://box.tscn
+res://player.tscn
+res://enemy_plane.tscn
+res://explosion.tscn
+res://bullet.tscn
+res://player_trail.tscn
 res://Background.cs
 res://boss_plane.cs
 res://box.cs
@@ -35,9 +41,3 @@ res://stat_ui.cs
 res://Trail2D.cs
 res://value_changed_label.cs
 res://wave_text.cs
-res://box.tscn
-res://player.tscn
-res://enemy_plane.tscn
-res://explosion.tscn
-res://bullet.tscn
-res://player_trail.tscn

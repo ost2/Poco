@@ -74,12 +74,6 @@ powerUpScene = ExtResource("5_f0rea")
 
 [node name="Background" parent="." instance=ExtResource("7_i62nx")]
 
-[node name="LowerClouds" parent="." instance=ExtResource("4_4i1pm")]
-modulate = Color(1, 1, 1, 0.501961)
-self_modulate = Color(1, 1, 1, 0.501961)
-position = Vector2(2.08165e-12, 2.08165e-12)
-scale = Vector2(2.1, 2.1)
-
 [node name="Player" parent="." instance=ExtResource("1_r1ibf")]
 position = Vector2(2.08165e-12, 2.08165e-12)
 

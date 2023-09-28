@@ -209,6 +209,9 @@ public partial class main : Node
 		clearEnemies();
 		clearPowerUps();
 
+		stopTrails();
+		player.GlobalPosition = Vector2.Zero;
+
 		setStartingValues();
 
 		doEnemyWave();
@@ -328,6 +331,16 @@ public partial class main : Node
 			enemy.QueueFree();
 		}
 	}
+	void startTrails()
+	{
+		player.startTrails();
+		trailsStarted = true;
+	}
+	void stopTrails()
+	{
+		player.stopTrails();
+		trailsStarted = false;
+	}
 
 	// §READY
 	public override void _Ready()
@@ -340,16 +353,22 @@ public partial class main : Node
 		showMainMenu();
 
 		baseZoom = mainCam.Zoom;
+
+		startTrails();
 	}
 
 	// §PROCESS
+	bool trailsStarted = false;
 	public override void _PhysicsProcess(double delta)
 	{
-		PrintOrphanNodes();
 		if (!GameOver && !doMainMenu)
 		{
 			if (gameTimer > 0.1f)
 			{
+				if (!trailsStarted)
+				{
+					startTrails();
+				}
 				gameRunning = true;
 			}
 
@@ -450,6 +469,7 @@ public partial class main : Node
 		Input.MouseMode = Input.MouseModeEnum.Visible;
 
 		player.hasLevels = 0;
+		stopTrails();
 
 		hud.hideArrows();
 
@@ -705,27 +725,45 @@ public partial class main : Node
 		var bg = GetNode<Background>("Background");
 
 		bg.pos = mainCam.GlobalPosition;
-		bg.otherPos = (mainCam.GlobalPosition * 1.8f + player.GlobalPosition * 0.2f) / 2;
+		
+		if (!GameOver)
+		{
+			bg.cloudPos = (mainCam.GlobalPosition * 1.8f + player.GlobalPosition * 0.2f) / 2;
+			bg.cloudOPos = bg.cloudPos;
+		}
+		else
+		{
+			bg.cloudPos = mainCam.GlobalPosition;
+			bg.cloudOPos = (mainCam.GlobalPosition * 1.0f + player.GlobalPosition * 1.0f) / 2;
+		}
 	}
 
 	// CLOUDS
 	void moveClouds(float delta)
 	{	
+		var pos = Vector2.Zero;
+		var oPos = Vector2.Zero;
+
 		if (!GameOver)
 		{
-			var pos = player.GlobalPosition;// + player.frontVector * player.Velocity * delta;
-
-			GetNode<Node2D>("LowerClouds").Position = pos;
-			clouds.Position = pos;
-			var cloudsSprite = clouds.GetNode<Sprite2D>("CloudsSprite");
-
-			var noiseTexture = cloudsSprite.Texture as NoiseTexture2D;
-			// noiseTexture.Width = (int)(480 * mainMenu.getScaleFactor());
-			// noiseTexture.Height = (int)(360 * mainMenu.getScaleFactor());
-			
-			cloudNoise = noiseTexture.Noise as FastNoiseLite;
-			cloudNoise.Offset = new Vector3(x: pos.X / 6, y: pos.Y / 6, z: 0);
+			pos = player.GlobalPosition;// + player.frontVector * player.Velocity * delta;
+			oPos = pos;
 		}
+		else
+		{
+			pos = mainCam.GlobalPosition;
+			oPos = player.GlobalPosition;
+		}
+
+		clouds.Position = pos;
+		var cloudsSprite = clouds.GetNode<Sprite2D>("CloudsSprite");
+
+		var noiseTexture = cloudsSprite.Texture as NoiseTexture2D;
+		// noiseTexture.Width = (int)(480 * mainMenu.getScaleFactor());
+		// noiseTexture.Height = (int)(360 * mainMenu.getScaleFactor());
+		
+		cloudNoise = noiseTexture.Noise as FastNoiseLite;
+		cloudNoise.Offset = new Vector3(x: oPos.X / 6, y: oPos.Y / 6, z: 0);
 	}
 
 	void updateCloudThickness()

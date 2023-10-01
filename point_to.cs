@@ -101,7 +101,6 @@ public partial class point_to : RayCast2D
 
 		GlobalRotation = 0;
 	}
-
 	public bool isOnScreen()
 	{
 		if (Mathf.Abs(parent.Position.X - main.mainCam.Position.X) > 1920 / 2 || Mathf.Abs(parent.Position.Y - main.mainCam.Position.Y) > 1080 / 2)

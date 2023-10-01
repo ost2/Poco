@@ -55,7 +55,7 @@ public partial class rocket : CharacterBody2D
 		}
 		frontVector = Vector2.FromAngle(GlobalRotation);
 
-		curSpeed = startSpeed * speedMult * time;
+		curSpeed = (startSpeed + time) * speedMult * time;
 		Velocity = frontVector * curSpeed;
 
 		MoveAndSlide();

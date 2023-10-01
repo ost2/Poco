@@ -573,7 +573,7 @@ public partial class main : Node
 
 		var pos = new Vector2(x: rand.RandfRange(-3000, 0), y: rand.RandfRange(-3000, 3000));
 		
-		var boxDistance = rand.RandfRange(1500, 2500 + (pos - player.GlobalPosition).Length() * 0.2f);
+		var boxDistance = rand.RandfRange(1500, 2500 + (pos - player.GlobalPosition).Length() * 0.2f + waveNumber * 200);
 
 		var boxVec = pos - player.GlobalPosition.Normalized() * boxDistance;
 		var boxPos = player.GlobalPosition + boxVec;

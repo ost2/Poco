@@ -151,7 +151,7 @@ public partial class power_up : Area2D
 		}
 		else 
 		{
-			scaleVal = (Mathf.Sin(time * 2) * 0.1f) + 0.8f;
+			scaleVal = Mathf.Clamp(time * 4, 0, 1) * ((Mathf.Sin(time * 2) * 0.1f) + 0.8f);
 		}
 		if (hoveredTime < 100)
 		{

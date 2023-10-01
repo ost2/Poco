@@ -25,7 +25,7 @@ public partial class box : Area2D
 		main = GetParent<main>();
 
 		var rand = new RandomNumberGenerator();
-		speed = rand.RandfRange(100, 200);
+		speed = rand.RandfRange(30, 50);
 		
 		boxSprite = GetNode<AnimatedSprite2D>("BoxSprite");
 		boxSprite.Animation = "default";
@@ -39,6 +39,7 @@ public partial class box : Area2D
 		pointer.showLine = false;
 
 		pointer.previewSprite.Animation = "box";
+		pointer.maxRange = 20000;
 		pointer.previewSprite.Play();
 	}
 

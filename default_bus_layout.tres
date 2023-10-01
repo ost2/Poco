@@ -1,0 +1,14 @@
+[gd_resource type="AudioBusLayout" load_steps=3 format=3 uid="uid://dakvf21njntby"]
+
+[sub_resource type="AudioEffectCompressor" id="AudioEffectCompressor_udt7f"]
+resource_name = "Compressor"
+
+[sub_resource type="AudioEffectLimiter" id="AudioEffectLimiter_1o0yo"]
+resource_name = "Limiter"
+
+[resource]
+bus/0/volume_db = -6.5751
+bus/0/effect/0/effect = SubResource("AudioEffectCompressor_udt7f")
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = SubResource("AudioEffectLimiter_1o0yo")
+bus/0/effect/1/enabled = true

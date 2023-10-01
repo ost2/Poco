@@ -16,9 +16,13 @@ public partial class Background : Sprite2D
 	// Called when the node enters the scene tree for the first time.
 	public override void _Ready()
 	{
+		var rand = new Random();
+
 		noise = (Texture as NoiseTexture2D).Noise as FastNoiseLite;
 		clouds = GetNode<Sprite2D>("CloudsSprite");
 		cloudNoise = (clouds.Texture as NoiseTexture2D).Noise as FastNoiseLite;
+
+		cloudNoise.Seed = rand.Next(0, 10000);
 	}
 
 	// Called every frame. 'delta' is the elapsed time since the previous frame.

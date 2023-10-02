@@ -32,12 +32,12 @@ public partial class value_changed_label : Label
 
 		RotationDegrees = -90 + Mathf.Cos(time * 5) * 10;
 
-		var scaleVal = Mathf.Sin(time * 3) * 0.4f;
+		var scaleVal = Mathf.Sin(time * 3) * 0.6f;
 		Scale = new Vector2(x: scaleVal, y: scaleVal);
 
 		SelfModulate = bar.TintProgress;
 
-		var posVal = Mathf.Cos(time * freq);
+		var posVal = Mathf.Cos(time * freq / 3);
 
 		freq -= (float)delta * 28;
 

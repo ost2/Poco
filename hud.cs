@@ -163,12 +163,10 @@ public partial class hud : menu
 			}
 			case main.waveType.bossWave:
 			{
-				killsLabel.Text = main.bossDead ? "1 / 1" : "0 / 1";
+				killsLabel.Text = main.deadBossNumber + "/" + main.bossNumber;
 				break;
 			}
 		}
-
-
 
 		lvlLabel.Text = main.PHasLevels > 0 ? main.PTotalLevel + " + " + main.PHasLevels : "X  " + main.PTotalLevel;
 

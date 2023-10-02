@@ -21,7 +21,7 @@ public partial class player_trail : Line2D
 		var mark = GetParent<Node2D>();
 		var plane = mark.GetParent<Node2D>().GetParent<Plane>();
 
-		var fpiBalls = 0.99996f - (0.0000001f * time);
+		var fpiBalls = 0.99996f - (0.00000005f * time);
 
 		length = plane.curSpeed / 40;
 

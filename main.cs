@@ -490,9 +490,9 @@ public partial class main : Node
 			waveTypeMult = 0.5f;
 		}
 
-		lvl1EnemyTimer += delta * enemyTimerMult * waveTypeMult * DifficultyMult;
-		lvl2EnemyTimer += delta * (enemyTimerMult * 1.5f) * waveTypeMult * DifficultyMult;
-		lvl3EnemyTimer += delta * (enemyTimerMult * 2.0f) * waveTypeMult * DifficultyMult;
+		lvl1EnemyTimer += Mathf.Clamp(delta * enemyTimerMult * waveTypeMult * DifficultyMult, 0, lvl1EnemySpawnTime / 4);
+		lvl2EnemyTimer += Mathf.Clamp(delta * (enemyTimerMult * 1.5f) * waveTypeMult * DifficultyMult, 0, lvl2EnemySpawnTime / 4);
+		lvl3EnemyTimer += Mathf.Clamp(delta * (enemyTimerMult * 2.0f) * waveTypeMult * DifficultyMult, 0, lvl3EnemySpawnTime / 4);
 
 		var waveNumVar = 1 - (waveNumber * 0.05f);
 
@@ -791,16 +791,25 @@ public partial class main : Node
 		curWaveType = waveType.enemyWave;
 		lastWaveType = waveType.enemyWave;
 	}
+	bool skipBoxWave = false;
 	void doBoxWave()
 	{
 		waveTimer.Start();
 		hud.startBoxClock((float)waveTimer.TimeLeft);
 		hud.showWaveText();
 		curWaveType = waveType.boxWave;
-	}
+
+		if (skipBoxWave)
+		{
+			skipBoxWave = false;
+			waveTimer.Stop();
+			waveTimer.EmitSignal("Timeout");
+		}
+	}	
+	
 	public bool bossDead = false;
-	float bossNumber = 1;
-	float deadBossNumber = 0;
+	public float bossNumber = 1;
+	public float deadBossNumber = 0;
 	int bossLevel = 1;
 	
 	public int bossWaveNumber = 0;
@@ -824,6 +833,7 @@ public partial class main : Node
 		
 		if (bossWaveNumber % 3 == 0)
 		{
+			bossLevel = 0;
 			bossNumber++;
 		}
 		bossLevel++;
@@ -899,6 +909,17 @@ public partial class main : Node
 		{
 			spawnBox(true);
 		}
+		if (Input.IsActionJustPressed("skip_wave"))
+		{
+			finishWave();
+			skipBoxWave = true;
+		}
+	}
+	
+	void finishWave()
+	{
+		clearEnemies();
+		killsThisWave = killsToProgress;
 	}
 
 	// SIGNAL METHODS

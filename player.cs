@@ -14,7 +14,7 @@ public partial class player : Plane
 	// BASE STAT VARS
 	float pMaxHealth = 100.0f;
 
-	float pFireTime = 0.19f;
+	float pFireTime = 0.23f;
 	float pBulletSpeed = 900.0f;
 	float pDamage = 8.0f;
 	float pInaccuracyRad = 0.25f;
@@ -270,7 +270,7 @@ public partial class player : Plane
 			turnVal += turnDecay * (float)delta;
 		}
 
-		velocity = frontVector * curSpeed;
+		velocity = frontVector * curSpeed -GlobalPosition * 0.001f;
 
 		Velocity = velocity;
 
@@ -847,7 +847,7 @@ public partial class player : Plane
 	float coolDownBonus;
 	void getFireSpeed()
 	{
-		fireSpeedBonus += 0.0009f;
+		fireSpeedBonus += 0.0011f;
 		heatUpBonus += 0.00001f;
 		coolDownBonus += 0.003f;
 

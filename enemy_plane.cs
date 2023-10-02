@@ -214,9 +214,18 @@ public partial class enemy_plane : Plane
 	}
 	
 	float storedRotation;
+	float deadTime = 0;
 	// §PROCESS
 	public override void _PhysicsProcess(double delta)
 	{
+		if (isDead)
+		{
+			deadTime += (float)delta;
+			if (deadTime > 3)
+			{
+				QueueFree();
+			}
+		}
 		var dirVector = getPlayerDirVector();
 
 		if (main.killsThisWave == main.killsToProgress - 1)
@@ -267,7 +276,7 @@ public partial class enemy_plane : Plane
 				Velocity = frontVector * curSpeed;
 			}
 
-			if (planeSprite.Animation != "take_damage")
+			if (planeSprite.Animation != "take_damage" && planeSprite.Animation != "explode")
 			{
 				handleTiltAnim(planeSprite);
 				//showStuff(null, propellerSprite);
@@ -284,10 +293,10 @@ public partial class enemy_plane : Plane
 
 		MoveAndSlide();
 
-		if ((main.PlayerPos - Position).Length() > 30000)
-		{
-			QueueFree();
-		}
+		// if ((main.PlayerPos - Position).Length() > 30000)
+		// {
+		// 	QueueFree();
+		// }
 	}
 	Vector2 randPos;
 	Vector2 getPlayerDirVector()
@@ -360,9 +369,9 @@ public partial class enemy_plane : Plane
 		}
 		else
 		{
+			main.spawnExplosion(this);
 			cannon.Hide();
 		}
-		main.spawnExplosion(this);
 		main.player.playKillSound();
 
 		var spawnRocketChance = xpValue / 5;

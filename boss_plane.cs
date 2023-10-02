@@ -182,7 +182,7 @@ public partial class boss_plane : Plane
 			spinPropeller(propellerSprite2);
 			spinPropeller(propellerSprite3);
 
-			if (planeSprite.Animation != "take_damage")
+			if (planeSprite.Animation != "take_damage" && planeSprite.Animation != "explode")
 			{
 				handleTiltAnim(planeSprite);
 				//showStuff(null, propellerSprite, propellerSprite2, propellerSprite3);
@@ -196,6 +196,10 @@ public partial class boss_plane : Plane
 		{
 			var rand = new Random();
 			deadTime += (float)delta;
+			if (deadTime > 5)
+			{
+				QueueFree();
+			}
 
 			if (deadTime % 0.04f == 0 && deadTime < 0.25f)
 			{

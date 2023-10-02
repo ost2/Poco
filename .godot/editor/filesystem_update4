@@ -42,3 +42,4 @@ res://Trail2D.cs
 res://value_changed_label.cs
 res://wave_text.cs
 res://default_bus_layout.tres
+res://value_changed_label.tscn

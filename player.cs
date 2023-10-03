@@ -847,8 +847,8 @@ public partial class player : Plane
 	float coolDownBonus;
 	void getFireSpeed()
 	{
-		fireSpeedBonus += 0.0011f;
-		heatUpBonus += 0.00001f;
+		fireSpeedBonus += 0.00125f;
+		heatUpBonus += 0.0000075f;
 		coolDownBonus += 0.003f;
 
 		fireSpeedLvl += 1;

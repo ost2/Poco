@@ -189,7 +189,7 @@ animations = [{
 
 [node name="PointTo" type="RayCast2D"]
 self_modulate = Color(1, 1, 1, 0.960784)
-scale = Vector2(5, 5)
+scale = Vector2(1.5, 1.5)
 target_position = Vector2(100, 50)
 script = ExtResource("1_bdgji")
 

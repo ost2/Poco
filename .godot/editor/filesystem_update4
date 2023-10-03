@@ -43,3 +43,6 @@ res://value_changed_label.cs
 res://wave_text.cs
 res://default_bus_layout.tres
 res://value_changed_label.tscn
+res://trail_2d.tscn
+res://rocket.tscn
+res://point_to.tscn
